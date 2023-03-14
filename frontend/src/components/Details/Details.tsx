@@ -33,7 +33,7 @@ export function Details(){
                         <div className="Card-Image">
                             <img src={details.strDrinkThumb} alt="" />
                         </div>
-                        <div className="Card-Body">
+                        <div className="Details_Card-Body">
                             <div className="Card-Title">{details.strDrink}</div>
                             <button className="AddToFavorites" disabled = {disable} onClick={() => {addCocktail(details); setDisable(true)}}></button>
 
