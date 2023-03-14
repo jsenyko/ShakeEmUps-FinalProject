@@ -1,0 +1,65 @@
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: #111;
+    transition: 0.5s;
+    padding: 10px 30px;
+    z-index: 1000;
+}
+
+.Header.sticky {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    padding: 5px 20px;
+}
+
+.Header.sticky .Name,
+.Header.sticky .NavBar li a {
+    color: #000;
+}
+
+.Header.sticky .Logo img {
+    height: 65px;
+}
+
+.Header .Name {
+    font-size: 30px;
+    color: #fff;
+}
+
+.Header .Logo {
+    transform: translateX(120px);
+}
+
+.Header .Logo img {
+    height: 100px;
+}
+
+.Header .NavBar ul {
+    display: flex;
+    flex-direction: row;
+}
+
+.Header .NavBar ul li {
+    margin: 0 10px;
+    font-size: 20px;
+    list-style-type: none;
+}
+
+.Header .NavBar ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.Header .NavBar ul li a:hover {
+    color: #3586ff;
+}
