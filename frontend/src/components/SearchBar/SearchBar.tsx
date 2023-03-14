@@ -1,8 +1,7 @@
 import "./searchBar.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Recipe } from "../../models/Recipe";
-import { getRandomCocktail, getCocktailByName, getCocktailByFirstLetter, getCocktailByIngredient, getCocktailDetails } from "../../services/RecipeService"
-import { DefaultSerializer } from "v8";
+import { getRandomCocktail, getCocktailByName, getCocktailByFirstLetter, getCocktailByIngredient } from "../../services/RecipeService"
 import { RecipeList } from "../RecipeList/RecipeList";
 
 const searchTypes = [
@@ -27,12 +26,13 @@ const searchTypes = [
 export function SearchBar(){
     const [value, setValue] = useState("");
     const [recipes, setRecipes] = useState<Recipe[]>([]);
-    const [selectedSearchType, setSelectedSearchType] = useState("random");
+    const [selectedSearchType, setSelectedSearchType] = useState("findByIngredient");
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
 
+    // Passes the chosen API call + required params
     const onSearchClick = () => {
         switch (selectedSearchType){
             case "findByName":
@@ -57,12 +57,14 @@ export function SearchBar(){
                 break;
                 default:
                 break;
-        }
+        };
     };
 
     return (
         <div className="SearchBar">
             <div className="SearchContainer">
+
+                {/* Map out different search types into radio buttons */}
                 <div>{searchTypes.map((searchType) => (
                     <label className="radio" key={searchType.value}>
                     <input
@@ -76,6 +78,8 @@ export function SearchBar(){
                     {searchType.label}</label>
                 ))}
                 </div>
+                
+                {/* Search Types */}
                 {selectedSearchType === "findByName" && (
                     <input
                         className="bar"
@@ -119,5 +123,5 @@ export function SearchBar(){
             {recipes &&<RecipeList recipes={recipes}/>}
             
         </div>
-    )
-}
+    );
+};
