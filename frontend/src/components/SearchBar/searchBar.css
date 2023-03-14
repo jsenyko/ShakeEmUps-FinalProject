@@ -1,0 +1,67 @@
+.SearchBar {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .SearchBar .bar {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 50%;
+    padding: 2px 7px;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .SearchBar .SearchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    /* background-image: url(./recipe.jpg); */
+    background-size: cover;
+  }
+  
+  .SearchBar .SearchContainer .radio {
+    padding-right: 5px;
+    color: #000;
+    margin-right: 30px;
+    transform: translateX(10px);
+    font-size: 18px;
+  }
+  
+  .SearchBar .SearchContainer .radio #input {
+    margin-right: 7px;
+  }
+  
+  .SearchBar .SearchContainer select {
+    font-size: 18px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .SearchBar .SearchContainer button {
+    border-radius: 5px;
+    margin-top: 10px;
+    background: #3586ff;
+    border-color: #3586ff;
+    color: #E3E3E3;
+    cursor: pointer;
+  }
+  
+  .SearchBar .SearchContainer button:hover {
+    background: #E3E3E3;
+    border-color: #E3E3E3;
+    color: #3586ff;
+    cursor: pointer;
+  }
+  
+  .SearchBar .SearchContainer #btn-search {
+    font-size: 20px;
+    padding: 2px 20px;
+    transition: 0.3s;
+  }

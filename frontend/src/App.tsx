@@ -1,21 +1,34 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
-import { Favorites } from './components/Favorites/Favorites';
+import { FavoritesCarousel } from './components/FavoritesCarousel/FavoritesCarousel';
+import { SearchBar } from './components/SearchBar/SearchBar';
 import { AboutUs } from './components/AboutUs/AboutUs';
 import { Footer } from './components/Footer/Footer';
+import { Details } from "./components/Details/Details";
+import CocktailContextProvider from './context/CocktailContextProvider';
+
 
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Hero />
-      <Favorites />
-      <AboutUs />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <CocktailContextProvider>
+          <Header />
+          <Hero />
+          <FavoritesCarousel />
+          {/* <Routes> */}
+            <SearchBar />
+            <Details />
+            <AboutUs />
+          {/* </Routes> */}
+          <Footer />
+        </CocktailContextProvider>
+      </div>
+    </BrowserRouter>
   );
 }
 

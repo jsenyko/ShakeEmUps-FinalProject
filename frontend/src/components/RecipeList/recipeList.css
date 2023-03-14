@@ -1,0 +1,9 @@
+.RecipeList {
+    background: #fff;
+}
+
+.RecipeList .RecipeCard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
