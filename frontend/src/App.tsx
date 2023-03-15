@@ -17,10 +17,8 @@ function App() {
       <div className="App">
         <CocktailContextProvider>
           <Header />
-          <Hero />
-          <FavoritesCarousel />
           <Routes>
-            <Route path="/" element={<SearchBar />} />
+            <Route path="/" element={<div><Hero /> <FavoritesCarousel /> <SearchBar /></div>} />
             <Route path="/details/:id" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
