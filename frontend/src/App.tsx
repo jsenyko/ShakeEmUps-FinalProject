@@ -7,10 +7,9 @@ import { FavoritesCarousel } from './components/FavoritesCarousel/FavoritesCarou
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { AboutUs } from './components/AboutUs/AboutUs';
 import { Footer } from './components/Footer/Footer';
+import { Favorites } from './components/Favorites/Favorites';
 import { Details } from "./components/Details/Details";
 import CocktailContextProvider from './context/CocktailContextProvider';
-
-
 
 function App() {
   return (
@@ -20,11 +19,12 @@ function App() {
           <Header />
           <Hero />
           <FavoritesCarousel />
-          {/* <Routes> */}
-            <SearchBar />
-            <Details />
-            <AboutUs />
-          {/* </Routes> */}
+          <Routes>
+            <Route path="/" element={<SearchBar />} />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+          </Routes>
           <Footer />
         </CocktailContextProvider>
       </div>
