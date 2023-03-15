@@ -25,10 +25,9 @@ export function Header(){
             </div>
             <div className="NavBar">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Favorites</a></li>
-                    <li><a href="#">Team</a></li>
+                   <li><a href="/">Home</a></li>
+                    <li><a href="/aboutus">About</a></li>
+                    <li><a href="/favorites">Favorites</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
