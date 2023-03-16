@@ -6,23 +6,39 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 220px;
 }
 
-.AboutUs h1 {
+.AboutUs .AboutUs-Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.AboutUs .AboutUs-Header h1 {
     color: #000;
     font-size: 50px;
     padding-bottom: 30px;
+    text-align: center;
 }
 
-.AboutUs .cards {
+.AboutUs .AboutUs-Header p {
+    width: 90%;
+    margin: -20px 0 30px 0;
+}
+
+.AboutUs .AboutUs-Cards {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    width: 80%;
 }
 
-.AboutUs .card {
+.AboutUs .AboutUs-Cards .AboutUs-Card {
     position: relative;
     flex-wrap: wrap;
     width: 600px;
@@ -31,10 +47,10 @@
     display: flex;
     align-items: center;
     transition: 500ms;
-    margin: 10px 0;
+    margin: 20px 0 50px 0;
 }
 
-.AboutUs .card .circle {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Circle {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +60,7 @@
     overflow: hidden;
 }
 
-.AboutUs .card .circle:before {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Circle:before {
     content: '';
     position: absolute;
     top: 0;
@@ -56,12 +72,12 @@
     transition: 500ms;
 }
 
-.AboutUs .card:hover .circle:before {
+.AboutUs .AboutUs-Cards .AboutUs-Card:hover .AboutUs-Circle:before {
     background: #3586ff;
     clip-path: circle(400px at center);
 }
 
-.AboutUs .card img {
+.AboutUs .AboutUs-Cards .AboutUs-Card img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,13 +91,13 @@
     border: 2px solid white;
 }
 
-.AboutUs .card:hover img {
+.AboutUs .AboutUs-Cards .AboutUs-Card:hover img {
     left: 72%;
     height: 350px;
     width: 275px;
 }
 
-.AboutUs .card .content {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content {
     position: relative;
     width: 50%;
     left: 20%;
@@ -91,13 +107,13 @@
     visibility: hidden;
 }
 
-.AboutUs .card:hover .content {
+.AboutUs .AboutUs-Cards .AboutUs-Card:hover .AboutUs-Content {
     left: 0;
     opacity: 1;
     visibility: visible;
 }
 
-.AboutUs .card .content h2 {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content h2 {
     color: #fff;
     text-transform: uppercase;
     font-size: 2em;
@@ -105,19 +121,24 @@
     margin-bottom: 5px;
 }
 
-.AboutUs .card .content p {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content p {
     color: #fff;
 }
 
-.AboutUs .card .content a {
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content a {
     position: relative;
     color: #fff;
     padding: 10px 20px;
     border-radius: 10px;
     background: #fff;
     color: #111;
-    margin-top: 10px;
+    margin-top: 20px;
     display: inline-block;
     text-decoration: none;
     font-weight: 700;
+}
+
+.AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content a:hover {
+    background: #d83133;
+    color: #fff;
 }

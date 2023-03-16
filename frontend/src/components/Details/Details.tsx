@@ -3,30 +3,30 @@ import { useContext, useState, useEffect } from "react";
 import CocktailContext from "../../context/CocktailContext";
 import { useParams } from "react-router-dom";
 import { getCocktailDetails } from "../../services/RecipeService";
-import { Recipe } from "../../models/Recipe";
+import { Root, Drink } from "../../models/Recipe";
 import React from "react";
 
 export function Details(){
 
-    const [details, setDetails] = useState<Recipe>();
+    const [details, setDetails] = useState<Drink>();
     const [disable, setDisable] = React.useState(false);
 
-    const drinkId = useParams().idDrink;
+    const idDrink = useParams().idDrink;
 
     const { addCocktail } = useContext(CocktailContext);
 
     useEffect(() => {
-        let recipeResult = getCocktailDetails(Number(drinkId));
+        let recipeResult = getCocktailDetails(String(idDrink));
 
         recipeResult.then((x) => setDetails(x))
     }, [])
 
     return (
         <div className="Details" id="details">
-            {details !== undefined && 
+            {details !==undefined && 
             <div>
                 <div className="Details_Header">
-                    <h2>Your Detailed Cocktail</h2>
+                    <h2>Let's get Shakin'!</h2>
                 </div>
                 <div key={details.idDrink} className="Details_Card">
                     <div className="Details_Card-Head">

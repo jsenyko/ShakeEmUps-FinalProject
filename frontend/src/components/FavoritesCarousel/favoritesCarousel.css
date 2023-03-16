@@ -8,7 +8,13 @@
     background: #111;
     position: relative;
     padding: 30px 0;
-    height: 250px;
+    height: 300px;
+}
+
+.FavoritesCarousel h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* media scroller */

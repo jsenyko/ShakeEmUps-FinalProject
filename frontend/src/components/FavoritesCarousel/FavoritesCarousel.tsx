@@ -4,7 +4,7 @@ export function FavoritesCarousel(){
 
     return (
     <div className="FavoritesCarousel">
-
+        <h2>Already have a favorite in mind?  Click below to find the recipe!</h2>
         <div className="media-container">
             <div className="media-scroller">
             {/* Currently this is done manually, but instead we would map and slice to return the results from MongoDB into groups */}

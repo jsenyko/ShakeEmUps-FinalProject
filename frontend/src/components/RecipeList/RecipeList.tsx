@@ -1,18 +1,18 @@
 import "./recipeList.css";
 import { useState, useEffect } from "react";
 import { RecipeItem } from "../RecipeItem/RecipeItem";
-import { Recipe } from "../../models/Recipe";
+import { Drink } from "../../models/Recipe";
 
 export interface IRecipeListProps {
-    recipes: Recipe[];
+    cocktails: Drink[];
 };
 
 export function RecipeList(props: IRecipeListProps){
 
     return (
         <div className="RecipeList">
-            <div className="RecipeCard">
-                {props.recipes.map((recipe) => <RecipeItem recipe={recipe} />)}
+            <div className="RecipeCards">
+                {props.cocktails.slice(0,10).map((cocktail) => <RecipeItem cocktail={cocktail} key={cocktail.idDrink} />)}
             </div>
         </div>
     );

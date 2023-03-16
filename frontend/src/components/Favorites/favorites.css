@@ -4,8 +4,8 @@
     align-items: center;
     height: 200px;
     width: 100%;
-    background-image: url(../../css/recipe.jpg);
     background-size: 100%;
+    margin-top: 100px;
 }
 
 .Favorites_Header .Favorites_Header-Title {

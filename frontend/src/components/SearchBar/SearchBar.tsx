@@ -1,9 +1,11 @@
 import "./searchBar.css";
-import { useState } from "react";
-import { Recipe } from "../../models/Recipe";
+import { useState, useEffect } from "react";
+import { Root, Drink } from "../../models/Recipe";
 import { getRandomCocktail, getCocktailByName, getCocktailByFirstLetter, getCocktailByIngredient } from "../../services/RecipeService"
 import { RecipeList } from "../RecipeList/RecipeList";
 
+
+// Labels that appear in the Search Bar, which are passed to determine which API Call to make
 const searchTypes = [
     {
         value: "findByName",
@@ -24,35 +26,53 @@ const searchTypes = [
 ];
 
 export function SearchBar(){
+    
+    const [cocktails, setCocktails] = useState<Root>();
+
+    useEffect(() => {
+        getCocktailByFirstLetter("j").then(data => setCocktails(data))
+    }, []);
+
+    useEffect(() => {
+        console.log(cocktails)
+    }, [cocktails]);
+
+
+    // Saves the value enter in the search bar, which is then passed to the API Call as a parameter
     const [value, setValue] = useState("");
-    const [recipes, setRecipes] = useState<Recipe[]>([]);
-    const [selectedSearchType, setSelectedSearchType] = useState("findByIngredient");
+
+    // The empty array created to hold the API Call results
+    const [recipes, setRecipes] = useState<Root>();
+
+    // Default search type entered, useState changes this based on radio button selected
+    const [selectedSearchType, setSelectedSearchType] = useState("findByName");
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
 
-    // Passes the chosen API call + required params
+
+    // Radio button selection impacts useState for the selectedSearchType
     const onSearchClick = () => {
         switch (selectedSearchType){
             case "findByName":
-                getCocktailByName(value).then((recipes) => {
-                    setRecipes(recipes);
+                getCocktailByName(value).then((cocktails) => {
+                    setRecipes(cocktails);
                 });
                 break;
             case "findByFirstLetter":
-                getCocktailByFirstLetter(value).then((recipes) => {
-                    setRecipes(recipes);
+                getCocktailByFirstLetter(value).then((cocktails) => {
+                    setRecipes(cocktails);
                 });
                 break;
             case "findByIngredient":
-                getCocktailByIngredient(value).then((recipes) => {
-                    setRecipes(recipes);
+                getCocktailByIngredient(value).then((cocktails) => {
+                    setRecipes(cocktails);
                 });
                 break;
             case "findByRandom":
-                getRandomCocktail().then((recipes) => {
-                    setRecipes(recipes);
+                getRandomCocktail().then((cocktails) => {
+                    setRecipes(cocktails);
                 });
                 break;
                 default:
@@ -79,7 +99,9 @@ export function SearchBar(){
                 ))}
                 </div>
                 
-                {/* Search Types */}
+                {/* Search Types with search bar input
+                when clicked, uses onChange above to update screen
+                with value passed to the API Call as a parameter */}
                 {selectedSearchType === "findByName" && (
                     <input
                         className="bar"
@@ -117,11 +139,12 @@ export function SearchBar(){
                     />
                 )}
 
+                {/* Clicking submit button makes the appropriate API Call */}
                 <button id="btn-search" onClick={onSearchClick}>Search</button>
             </div>
             
-            {recipes &&<RecipeList recipes={recipes}/>}
-            
+            {/* Generate the Recipe List, passing the recipes, which are then turned to cards */}
+            { cocktails !==undefined && <RecipeList cocktails={cocktails.drinks} /> }
         </div>
     );
 };

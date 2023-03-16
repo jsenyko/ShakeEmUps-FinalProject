@@ -1,5 +1,5 @@
 import { ReactNode, useState} from "react";
-import { Recipe } from "../models/Recipe";
+import { Drink } from "../models/Recipe";
 import CocktailContext from "./CocktailContext";
 
 interface ICocktailContextProviderProps {
@@ -7,14 +7,14 @@ interface ICocktailContextProviderProps {
 };
 
 const CocktailContextProvider = ({children}:ICocktailContextProviderProps) => {
-    const [favorites, setCocktail] = useState<Recipe[]>([]);
+    const [favorites, setCocktail] = useState<Drink[]>([]);
 
-    const addCocktail = (recipe:Recipe) => {
+    const addCocktail = (recipe:Drink) => {
         setCocktail([...favorites, recipe]);
     };
 
-    const removeCocktail = (idDrink:number) => {
-        setCocktail(favorites.filter((x) => x.idDrink !== idDrink));
+    const removeCocktail = (idDrink:string) => {
+        setCocktail(favorites?.filter((x) => x.idDrink !== idDrink));
     };
 
     return(<CocktailContext.Provider value={{
