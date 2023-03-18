@@ -15,13 +15,14 @@ export function RecipeItem(props: IRecipeItemProps){
     const navigate = useNavigate()
     const [disable, setDisable] = React.useState(false);
 
+    // Calls the 'addCocktail' function found in Context to add recipe to Favorites page
     const { addCocktail } = useContext(CocktailContext);
 
-
-    const [favoriteButtonStyle, setfavoriteButtonStyle] = useState<string>("Button-Favorites active");
+    // Changes the Button-Favorite styling when it is clicked
+    const [favoriteButtonStyle, setfavoriteButtonStyle] = useState<string>("Button-Favorites unclicked");
 
     const changeStyle = () => {
-       return (favoriteButtonStyle === "Button-Favorites active") ? setfavoriteButtonStyle("Button-Favorites disabled") : setfavoriteButtonStyle("Button-Favorites active")
+       return (favoriteButtonStyle === "Button-Favorites unclicked") ? setfavoriteButtonStyle("Button-Favorites clicked") : setfavoriteButtonStyle("Button-Favorites unclicked")
     };
 
     return (
@@ -37,8 +38,8 @@ export function RecipeItem(props: IRecipeItemProps){
                 <button className="Button-Details" onClick={() => navigate(`/Details/${cocktail.idDrink}`)}>
                     Details
                 </button>
-                <button  className={favoriteButtonStyle} disabled={disable} onClick={() => {addCocktail(cocktail); setDisable(true)} }>
-                    <i className="fa-regular fa-heart"></i>
+                <button  className={favoriteButtonStyle} disabled={disable} onClick={() => {addCocktail(cocktail); setDisable(true); changeStyle();} }>
+                    <i className="fa-solid fa-heart"></i>
                 </button>
             </div>
             </div>

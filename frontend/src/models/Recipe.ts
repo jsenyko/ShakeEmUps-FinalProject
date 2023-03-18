@@ -4,6 +4,9 @@
 // Notice that there are up to 15 ingredients and measures per drink, though not all
 // cocktails will use that many so we will have to account for that in the Details page
 
+// Their JSON code is setup so the base level is Root and then contains Drink[]
+// In some places this requires using Root (not an array) and others Drink[] (an array)
+
 export interface Root {
     drinks: Drink[]
   }

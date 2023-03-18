@@ -1,3 +1,4 @@
+/* Basic page and card styling */
 .AboutUs {
     position: relative;
     width: 100%;
@@ -50,6 +51,7 @@
     margin: 20px 0 50px 0;
 }
 
+/* Creating the box that will hold our pictures */
 .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Circle {
     position: absolute;
     top: 0;
@@ -60,6 +62,7 @@
     overflow: hidden;
 }
 
+/* Creating the circle that will sit behind our photos */
 .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Circle:before {
     content: '';
     position: absolute;
@@ -72,6 +75,7 @@
     transition: 500ms;
 }
 
+/* Card changes upon hover and the background changes from circle to square with different background color */
 .AboutUs .AboutUs-Cards .AboutUs-Card:hover .AboutUs-Circle:before {
     background: #3586ff;
     clip-path: circle(400px at center);
@@ -97,6 +101,7 @@
     width: 275px;
 }
 
+/* Paragraph that appears on the card (hidden to start) */
 .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content {
     position: relative;
     width: 50%;
@@ -125,6 +130,7 @@
     color: #fff;
 }
 
+/* Links that appear on the cards + hover effects */
 .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content a {
     position: relative;
     color: #fff;
