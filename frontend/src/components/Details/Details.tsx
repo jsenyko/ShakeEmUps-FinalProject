@@ -19,14 +19,14 @@ export function Details(){
         let recipeResult = getCocktailDetails(String(idDrink));
 
         recipeResult.then((x) => setDetails(x))
-    }, [])
+    }, [idDrink])
 
     return (
         <div className="Details" id="details">
             {details !==undefined && 
             <div>
                 <div className="Details_Header">
-                    <h2>Let's get Shakin'!</h2>
+                    <h2>Let's get Shakin'! hello</h2>
                 </div>
                 <div key={details.idDrink} className="Details_Card">
                     <div className="Details_Card-Head">

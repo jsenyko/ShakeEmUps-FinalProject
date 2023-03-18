@@ -134,3 +134,12 @@
     transition: 0.5s;
     cursor: pointer;
 }
+
+/* When heart icon is clicked, useState changes the className, which changes styling */
+.RecipeCard .card .RecipeCard-Buttons .Button-Favorites.clicked {
+    background: #c0c0c0;
+}
+
+.RecipeCard .card .RecipeCard-Buttons .Button-Favorites.clicked i {
+    color: #d83133;
+}

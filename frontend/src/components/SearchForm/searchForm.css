@@ -1,0 +1,63 @@
+.SearchForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    width: 100%;
+}
+
+.SearchForm h1 {
+    margin-bottom: 20px;
+}
+  
+.SearchForm .radio {
+    padding-right: 5px;
+    color: #000;
+    margin-right: 30px;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+}
+  
+.SearchForm .radio:hover {
+    color: #3586ff;
+}
+
+.SearchForm .radio.active {
+    color: #d83133;
+    transition: 250ms;
+}
+  
+.SearchForm .radio #input {
+    opacity: 0;
+}
+
+.SearchForm .bar {
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 65%;
+    padding: 2px 7px;
+    font-size: 18px;
+    text-align: center;
+}
+  
+.SearchForm button {
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+    padding: 2px 20px;
+    transition: 0.3s;
+    background: #3586ff;
+    border-color: #3586ff;
+    color: #E3E3E3;
+    cursor: pointer;
+}
+  
+.SearchForm button:hover {
+    background: #E3E3E3;
+    border-color: #E3E3E3;
+    color: #3586ff;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@ import "./header.css";
 
 export function Header(){
 
+    // Measure if the user has scrolled down on the App and change state
     const [state, setState] = useState(false);
     const changeClassOnScroll = () => {
         const scrollValue = document.documentElement.scrollTop;
@@ -15,6 +16,7 @@ export function Header(){
 
     window.addEventListener('scroll', changeClassOnScroll);
 
+    // Manages whether the Hamburger Button is hidden or visible by changing the className via useState
     const [menuStyle, setMenuStyle] = useState<string>("Hamburger-Container hidden");
 
     const changeStyle = () => {
@@ -22,6 +24,7 @@ export function Header(){
     }
 
     return (
+        // useState above determines the Header's className; upon scroll -> add sticky
         <div className={state? "Header sticky" : "Header"}>
             <div className="Name">
                 <p>What's Shakin'</p>
@@ -33,6 +36,7 @@ export function Header(){
             </div>
             <div className="NavBar">
                 <ul>
+                    {/* These make use of Routes to direct user to that page */}
                    <li><a href="/">Home</a></li>
                     <li><a href="/aboutus">About</a></li>
                     <li><a href="/favorites">Favorites</a></li>
@@ -43,14 +47,15 @@ export function Header(){
             <div className="Header-Hamburger">
                 <div className="Hamburger-Closed" onClick={changeStyle}><i className="fa-solid fa-bars"></i></div>
 
+                {/* Hamburger Icon - default is 'Closed', but useState can change to 'Visible' */}
                 <div className={menuStyle}>
                     <div className="Icon" onClick={changeStyle}><i className="fa-solid fa-x"></i></div>
 
                     <ul className="Links">
-                        <li><a data-text="&nbsp;Home" href="/">Home</a></li>
-                        <li><a data-text="&nbsp;About" href="/aboutus">About</a></li>
-                        <li><a data-text="&nbsp;Favorites" href="/favorites">Favorites</a></li>
-                        <li><a data-text="&nbsp;Contact" href="#">Contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/aboutus">About</a></li>
+                        <li><a href="/favorites">Favorites</a></li>
+                        <li><a href="#">Contact</a></li>
                     </ul>
 
                     <p>Follow us:</p>
