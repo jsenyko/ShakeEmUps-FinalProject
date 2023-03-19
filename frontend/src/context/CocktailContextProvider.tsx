@@ -1,20 +1,20 @@
-import { ReactNode, useState} from "react";
+import { ReactNode, useState } from "react";
 import { Drink } from "../models/Recipe";
 import CocktailContext from "./CocktailContext";
 
-interface ICocktailContextProviderProps {
-    children: ReactNode,
+interface ICocktailContextProviderProps{
+    children: ReactNode
 };
 
 const CocktailContextProvider = ({children}:ICocktailContextProviderProps) => {
-    const [favorites, setCocktail] = useState<Drink[]>([]);
+    const [favorites, setFavorites] = useState<Drink[]>([]);
 
-    const addCocktail = (recipe:Drink) => {
-        setCocktail([...favorites, recipe]);
+    const addCocktail = (cocktail:Drink) => {
+        setFavorites([...favorites, cocktail]);
     };
 
-    const removeCocktail = (idDrink:string) => {
-        setCocktail(favorites?.filter((x) => x.idDrink !== idDrink));
+    const removeCocktail = (idDrink: string) => {
+        setFavorites(favorites.filter((x) => x.idDrink !== idDrink));
     };
 
     return(<CocktailContext.Provider value={{

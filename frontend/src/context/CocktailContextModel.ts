@@ -2,6 +2,6 @@ import { Drink } from "../models/Recipe";
 
 export interface CocktailContextModel {
     favorites: Drink[],
-    addCocktail: (recipe:Drink) => void,
+    addCocktail: (cocktail:Drink) => void,
     removeCocktail: (idDrink:string) => void,
 };

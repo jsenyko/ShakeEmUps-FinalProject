@@ -22,7 +22,6 @@ export function getCocktailByName(strDrink: string): Promise<Root>{
     return axios
     // The API call to Search By Name requires the name (strDrink) in the URL
     .get<Root>(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${strDrink}`, {
-        // params: { strDrink }
     })
     // .then is a callback to execute when the Promise is resolved
     .then((response) => response.data)
@@ -33,7 +32,6 @@ export function getCocktailByFirstLetter(letter: string): Promise<Root>{
     return axios
     // The API call to Search By First Letter requires a letter in the URL
     .get<Root>(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`, {
-        // params: { strDrink }
     })
     .then((response) => response.data)
 };
@@ -44,16 +42,15 @@ export function getCocktailByIngredient(strIngredient1: string): Promise<Root>{
     // The API call to Search By Ingredient requires an Ingredient Name be provided in the URL
     // The base spirit appears to always come first in the recipe so that is what was used
     .get<Root>(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${strIngredient1}`, {
-        // params: { strIngredient1 }
     })
     .then((response) => response.data)
 };
 
 
-export function getCocktailDetails(idDrink: string): Promise<Drink>{
+export function getCocktailDetails(idDrink: string): Promise<Root>{
     return axios
     // The API call to Search By ID Letter requires the drink's ID (idDrink) in the URL
-    .get<Drink>(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`, {
+    .get<Root>(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`, {
     })
     .then((response) => response.data)
 };

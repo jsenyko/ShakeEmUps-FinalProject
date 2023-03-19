@@ -1,21 +1,20 @@
 import "./recipeItem.css";
 import * as React from 'react';
 import { useContext, useState } from "react";
+import CocktailContext from "../../context/CocktailContext";
 import { Drink } from "../../models/Recipe";
 import { useNavigate } from 'react-router-dom';
-import CocktailContext from "../../context/CocktailContext";
 
 interface IRecipeItemProps {
     cocktail: Drink
 };
 
-export function RecipeItem(props: IRecipeItemProps){
+export function RecipeItem(props:IRecipeItemProps){
 
-    const cocktail = props.cocktail;
+    const {cocktail} = props;
     const navigate = useNavigate()
     const [disable, setDisable] = React.useState(false);
 
-    // Calls the 'addCocktail' function found in Context to add recipe to Favorites page
     const { addCocktail } = useContext(CocktailContext);
 
     // Changes the Button-Favorite styling when it is clicked
@@ -35,7 +34,7 @@ export function RecipeItem(props: IRecipeItemProps){
                 <h2>{cocktail.strDrink}</h2>
             </div>
             <div className="RecipeCard-Buttons">
-                <button className="Button-Details" onClick={() => navigate(`/Details/${cocktail.idDrink}`)}>
+                <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
                     Details
                 </button>
                 <button  className={favoriteButtonStyle} disabled={disable} onClick={() => {addCocktail(cocktail); setDisable(true); changeStyle();} }>

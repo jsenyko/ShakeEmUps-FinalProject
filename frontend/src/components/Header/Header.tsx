@@ -1,5 +1,6 @@
-import { useState } from "react";
 import "./header.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Header(){
 
@@ -27,12 +28,10 @@ export function Header(){
         // useState above determines the Header's className; upon scroll -> add sticky
         <div className={state? "Header sticky" : "Header"}>
             <div className="Name">
-                <p>What's Shakin'</p>
-                <a href="/" />
+                <Link to="/"><p>What's Shakin'</p></Link>
             </div>
             <div className="Logo">
-                <img src="https://cdn1.iconfinder.com/data/icons/food-and-drinks-2-15/24/cocktail-shaker-512.png" alt="" />
-                <a href="/" />
+                <Link to="/"><img src="https://cdn1.iconfinder.com/data/icons/food-and-drinks-2-15/24/cocktail-shaker-512.png" alt="" /></Link>
             </div>
             <div className="NavBar">
                 <ul>

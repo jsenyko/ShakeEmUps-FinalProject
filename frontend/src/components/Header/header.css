@@ -32,6 +32,23 @@
     height: 65px;
 }
 
+.Header .Name a,
+.Header.sticky .Name a,
+.Header .Logo a,
+.Header.sticky .Logo a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.Header .Name a:hover,
+.Header.sticky .Name a:hover,
+.Header .Logo a:hover,
+.Header.sticky .Logo a:hover {
+    color: #3586ff;
+}
+
 /* Basic styling */
 .Header .Name {
     font-size: 30px;
@@ -60,7 +77,7 @@
 .Header .NavBar ul li a {
     text-decoration: none;
     color: #fff;
-    transition: 0.5s;
+    transition: 500ms;
 }
 
 .Header .NavBar ul li a:hover {

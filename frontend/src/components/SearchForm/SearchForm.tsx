@@ -6,17 +6,20 @@ import { RecipeList } from "../RecipeList/RecipeList";
 
 export function SearchForm(){
 
+    // Initial state of cocktails returned is empty
+    const [cocktails, setCocktails] = useState<Root>();
+
+    // Initial state of the search bar is blank
     const [value, setValue] = useState("");
+
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
       };
 
-    const [cocktails, setCocktails] = useState<Root>();
-
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
     // Default value selected is 'findByName'
-    const [searchType, setSearchType] = useState("findByName");
+    const [searchType, setSearchType] = useState("");
 
     // When user clicks a different option the searchType changes
     // and the text in the Search Bar resets to blank so you can see the placeholder
@@ -41,18 +44,27 @@ export function SearchForm(){
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
+                if(value === ""){
+                    alert("Please enter a search term")
+                }
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
                 });
                 console.log(value)
                 break;
             case "findByFirstLetter":
+                if(value === ""){
+                    alert("Please enter a search term")
+                }
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
                 });
                 console.log(value)
                 break;
             case "findByIngredient":
+                if(value === ""){
+                    alert("Please enter a search term")
+                }
                 getCocktailByIngredient(value).then((cocktails) => {
                     setCocktails(cocktails);
                 });
@@ -64,11 +76,15 @@ export function SearchForm(){
                 });
                 console.log(value)
                 break;
-            default:
+            case "":
+                if(value === ""){
+                    alert("Please select a search type")
+                }
+                break;
+              default:
                 break;
         };
     };
-
 
     return (
         <div className="SearchForm">
@@ -118,47 +134,81 @@ export function SearchForm(){
             </div>
 
             {/* Search Bar text changes based on searchType selected, which impacts API call made */}
+            {searchType === "" && (
+                <input
+                    className="bar"
+                    type="search"
+                    value={value}
+                    onChange={onChange}
+                    placeholder="Let's get started!"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
+                />
+            )}
             {searchType === "findByName" && (
                 <input
                     className="bar"
-                    type="text"
+                    type="search"
                     value={value}
                     onChange={onChange}
                     placeholder="What's it called?"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
                 />
             )}
             {searchType === "findByFirstLetter" && (
                 <input
                     className="bar"
-                    type="text"
+                    type="search"
                     value={value}
                     onChange={onChange}
                     placeholder="What does it start with?"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
                 />
             )}
             {searchType === "findByIngredient" && (
                 <input
                     className="bar"
-                    type="text"
+                    type="search"
                     value={value}
                     onChange={onChange}
                     placeholder="What's your spirit of choice?"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
                 />
             )}
             {searchType === "findByRandom" && (
                 <input
                     className="bar"
-                    type="text"
+                    type="search"
                     value={value}
                     onChange={onChange}
                     placeholder="Not sure what you want?"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
                 />
             )}
 
         {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
         <button id="Button-Search" onClick={onSearchClick}>Search</button>
 
-        {cocktails && <RecipeList cocktails={cocktails.drinks}/>}
+        {cocktails && <RecipeList cocktails={cocktails}/>}
     </div>
     )
 }
