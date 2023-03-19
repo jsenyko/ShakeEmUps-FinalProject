@@ -14,9 +14,14 @@ export function RecipeItem(props:IRecipeItemProps){
     const cocktail = props.cocktail;
     const navigate = useNavigate()
 
+<<<<<<< HEAD
     // Context used so you can call the function addCocktail that adds
     // the cocktail selected to the Favorites array / page
     const { addCocktail, removeCocktail } = useContext(CocktailContext);
+=======
+    // Calls the 'addCocktail' function found in Context to add recipe to Favorites page
+    const { addCocktail } = useContext(CocktailContext);
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
 
     // Toggles the Button-Favorite styling when it is clicked
     const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)

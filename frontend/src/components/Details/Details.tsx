@@ -29,6 +29,7 @@ export function Details(){
         recipeResult.then((x) => setDetails(x))
     }, [])
 
+<<<<<<< HEAD
     // Context used so you can call the function addCocktail that adds
     // the cocktail selected to the Favorites array / page
     const { addCocktail, removeCocktail } = useContext(CocktailContext);
@@ -38,6 +39,9 @@ export function Details(){
     const ToggleFavoriteButtonClass = () => {
         setFavoriteButtonClicked(!favoriteButtonClicked);
     };
+=======
+    const { addCocktail } = useContext(CocktailContext);
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
 
     return (
         <div className="Details" id="details">
