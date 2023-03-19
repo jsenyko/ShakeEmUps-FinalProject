@@ -35,7 +35,7 @@ export function RecipeItem(props: IRecipeItemProps){
                 <h2>{cocktail.strDrink}</h2>
             </div>
             <div className="RecipeCard-Buttons">
-                <button className="Button-Details" onClick={() => navigate(`/Details/${cocktail.idDrink}`)}>
+                <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
                     Details
                 </button>
                 <button  className={favoriteButtonStyle} disabled={disable} onClick={() => {addCocktail(cocktail); setDisable(true); changeStyle();} }>
