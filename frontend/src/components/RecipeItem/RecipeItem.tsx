@@ -1,17 +1,17 @@
 import "./recipeItem.css";
 import * as React from 'react';
 import { useContext, useState } from "react";
+import CocktailContext from "../../context/CocktailContext";
 import { Drink } from "../../models/Recipe";
 import { useNavigate } from 'react-router-dom';
-import CocktailContext from "../../context/CocktailContext";
 
 interface IRecipeItemProps {
     cocktail: Drink
 };
 
-export function RecipeItem(props: IRecipeItemProps){
+export function RecipeItem(props:IRecipeItemProps){
 
-    const cocktail = props.cocktail;
+    const {cocktail} = props;
     const navigate = useNavigate()
     const [disable, setDisable] = React.useState(false);
 

@@ -1,8 +1,8 @@
 import "./details.css";
-import { useContext, useState, useEffect } from "react";
-import CocktailContext from "../../context/CocktailContext";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getCocktailDetails } from "../../services/RecipeService";
+import CocktailContext from "../../context/CocktailContext";
 import { Root, Drink } from "../../models/Recipe";
 import React from "react";
 
@@ -10,16 +10,15 @@ export function Details(){
 
     const [details, setDetails] = useState<Root>();
     const [disable, setDisable] = React.useState(false);
-
-    const idDrink = useParams<{idDrink: any}>();
-
-    const { addCocktail } = useContext(CocktailContext);
+    const idDrink = useParams().idDrink;
 
     useEffect(() => {
         let recipeResult = getCocktailDetails(String(idDrink));
 
         recipeResult.then((x) => setDetails(x))
     }, [])
+
+    const { addCocktail } = useContext(CocktailContext);
 
     return (
         <div className="Details" id="details">
@@ -29,29 +28,59 @@ export function Details(){
                     <h2>Let's get Shakin'!</h2>
                 </div>
                 <div key={details?.drinks[0].idDrink} className="Details_Card">
-                    <div className="Details_Card-Head">
                         <div className="Card-Image">
                             <img src={details?.drinks[0].strDrinkThumb} alt="" />
                         </div>
-                        <div className="Details_Card-Body">
+                        <div className="Card-Body">
                             <div className="Card-Title">{details?.drinks[0].strDrink}</div>
                             <button className="AddToFavorites" disabled = {disable} onClick={() => {setDisable(true)}}></button>
 
-                            <div className="Card-Glass">{details?.drinks[0].strGlass}</div>
-                            
+                            <ul className="Card-Glass">
+                                <li className="GlassType-Text">Glass Type:</li>
+                                <li className="GlassType-Result">{details?.drinks[0].strGlass}</li>
+                            </ul>
+
                             {/* This will require a loop to determine how many ingredients + measurements there are in the recipe */}
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient1} {details?.drinks[0].strMeasure1}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient2} {details?.drinks[0].strMeasure2}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient3} {details?.drinks[0].strMeasure3}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient4} {details?.drinks[0].strMeasure4}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient5} {details?.drinks[0].strMeasure5}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient6} {details?.drinks[0].strMeasure6}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient7} {details?.drinks[0].strMeasure7}</div>
-                            <div className="Card-Ingredient">{details?.drinks[0].strIngredient8} {details?.drinks[0].strMeasure8}</div>
+                            <div className="Card-Ingredients">
+                                <ul className="Ingredients">
+                                    <li>{details?.drinks[0].strIngredient1}</li>
+                                    <li>{details?.drinks[0].strIngredient2}</li>
+                                    <li>{details?.drinks[0].strIngredient3}</li>
+                                    <li>{details?.drinks[0].strIngredient4}</li>
+                                    <li>{details?.drinks[0].strIngredient5}</li>
+                                    <li>{details?.drinks[0].strIngredient6}</li>
+                                    <li>{details?.drinks[0].strIngredient7}</li>
+                                    <li>{details?.drinks[0].strIngredient8}</li>
+                                    <li>{details?.drinks[0].strIngredient9}</li>
+                                    <li>{details?.drinks[0].strIngredient10}</li>
+                                    <li>{details?.drinks[0].strIngredient11}</li>
+                                    <li>{details?.drinks[0].strIngredient12}</li>
+                                    <li>{details?.drinks[0].strIngredient13}</li>
+                                    <li>{details?.drinks[0].strIngredient14}</li>
+                                    <li>{details?.drinks[0].strIngredient15}</li>
+                                </ul>
+                                <ul className="Measurements">
+                                    <li>{details?.drinks[0].strMeasure1}</li>
+                                    <li>{details?.drinks[0].strMeasure2}</li>
+                                    <li>{details?.drinks[0].strMeasure3}</li>
+                                    <li>{details?.drinks[0].strMeasure4}</li>
+                                    <li>{details?.drinks[0].strMeasure5}</li>
+                                    <li>{details?.drinks[0].strMeasure6}</li>
+                                    <li>{details?.drinks[0].strMeasure7}</li>
+                                    <li>{details?.drinks[0].strMeasure8}</li>
+                                    <li>{details?.drinks[0].strMeasure9}</li>
+                                    <li>{details?.drinks[0].strMeasure10}</li>
+                                    <li>{details?.drinks[0].strMeasure11}</li>
+                                    <li>{details?.drinks[0].strMeasure12}</li>
+                                    <li>{details?.drinks[0].strMeasure13}</li>
+                                    <li>{details?.drinks[0].strMeasure14}</li>
+                                    <li>{details?.drinks[0].strMeasure15}</li>
+                                </ul>
+
+                            </div>
 
                             <div className="Card-Instructions">{details?.drinks[0].strInstructions}</div>
                         </div>
-                    </div>
                 </div>
             </div>
             }
