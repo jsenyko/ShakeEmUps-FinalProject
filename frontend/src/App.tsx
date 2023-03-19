@@ -12,6 +12,7 @@ import { RecipeList } from './components/RecipeList/RecipeList';
 import CocktailContextProvider from './context/CocktailContextProvider';
 import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
           </Routes>
+          {/* <SearchForm /> */}
           <Footer />
         </CocktailContextProvider>
       </div>

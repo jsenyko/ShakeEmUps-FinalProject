@@ -18,10 +18,6 @@ export function Details(){
         recipeResult.then((x) => setDetails(x))
     }, [])
 
-    console.log(details);
-    console.log(details?.drinks[0].strMeasure1);
-
-
     const { addCocktail } = useContext(CocktailContext);
 
     return (

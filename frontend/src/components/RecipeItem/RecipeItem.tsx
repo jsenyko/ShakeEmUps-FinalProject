@@ -15,6 +15,7 @@ export function RecipeItem(props:IRecipeItemProps){
     const navigate = useNavigate()
     const [disable, setDisable] = React.useState(false);
 
+    // Calls the 'addCocktail' function found in Context to add recipe to Favorites page
     const { addCocktail } = useContext(CocktailContext);
 
     // Changes the Button-Favorite styling when it is clicked

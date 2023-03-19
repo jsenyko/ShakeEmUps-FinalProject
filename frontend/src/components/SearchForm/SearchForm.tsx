@@ -11,7 +11,7 @@ export function SearchForm(){
 
     // Initial state of the search bar is blank
     const [value, setValue] = useState("");
-
+    
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
       };
@@ -40,7 +40,7 @@ export function SearchForm(){
         setValue("");
     };
 
-    // Value of 'searchType' variable determines which API call to make
+// Value of 'searchType' variable determines which API call to make
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
@@ -85,7 +85,7 @@ export function SearchForm(){
                 break;
         };
     };
-
+    
     return (
         <div className="SearchForm">
             <h1>Find something new today!</h1>

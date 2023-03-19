@@ -1,7 +1,7 @@
 /* Basic card styling */
 .RecipeCard .card {
     position: relative;
-    width: 275px;
+    width: 290px;
     height: 375px;
     background: #fff;
     border-radius: 20px;
@@ -46,7 +46,7 @@
 
 .RecipeCard .card .RecipeCard-Image {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     z-index: 10000;
     width: 100%;
@@ -76,7 +76,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 75px;
+    height: 90px;
     text-align: center;
     transition: 500ms;
     transition-delay: 0s;
