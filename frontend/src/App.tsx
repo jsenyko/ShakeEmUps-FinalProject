@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
-import { FavoritesCarousel } from './components/FavoritesCarousel/FavoritesCarousel';
+import { RecommendationsCarousel } from "./components/RecommendationsCarousel/RecommendationsCarousel";
 import { AboutUs } from './components/AboutUs/AboutUs';
 import { Footer } from './components/Footer/Footer';
 import { Favorites } from './components/Favorites/Favorites';
@@ -11,6 +11,7 @@ import { SearchForm } from './components/SearchForm/SearchForm';
 import { RecipeList } from './components/RecipeList/RecipeList';
 import CocktailContextProvider from './context/CocktailContextProvider';
 import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm';
+import { ContactUs } from './components/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
         <CocktailContextProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<div><Hero /> <FavoritesCarousel /> <SearchForm /></div>} />
+            <Route path="/" element={<div><Hero /> <RecommendationsCarousel /> <SearchForm /></div>} />
             <Route path="/details/:idDrink" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contactus" element={<ContactUs />} />
           </Routes>
           <Footer />
         </CocktailContextProvider>

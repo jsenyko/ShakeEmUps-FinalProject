@@ -22,10 +22,11 @@
     padding: 5px 20px;
 }
 
-.Header.sticky .Name,
+.Header.sticky .Name a p,
 .Header.sticky .NavBar li a {
     color: #000;
-    z-index: 3;
+    z-index: 10;
+    transition: 500ms;
 }
 
 .Header.sticky .Logo img {
@@ -42,17 +43,18 @@
     transition: 500ms;
 }
 
-.Header .Name a:hover,
-.Header.sticky .Name a:hover,
+.Header .Name a p:hover,
+.Header.sticky .Name a p:hover,
 .Header .Logo a:hover,
 .Header.sticky .Logo a:hover {
     color: #3586ff;
 }
 
 /* Basic styling */
-.Header .Name {
+.Header .Name a p {
     font-size: 30px;
     color: #fff;
+    transition: 500ms;
 }
 
 .Header .Logo {
