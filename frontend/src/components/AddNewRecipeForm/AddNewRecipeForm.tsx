@@ -18,6 +18,7 @@ export function AddNewRecipeForm(){
 
             {/* User provides recommended glassware from drop-down list */}
             <label className="Form-Glass">Glass Used: </label>
+
             <input
                 type="list"
                 name="glasses"
@@ -54,7 +55,7 @@ export function AddNewRecipeForm(){
                 placeholder="Ingredient #1"
                 required
             />
-
+            
             <label className="Ingredient-Volume">Ingredient Volume: </label>
             <input
                 type="list"
@@ -85,6 +86,7 @@ export function AddNewRecipeForm(){
                 <option value="" />
                 <option value="" />
             </datalist>
+
 
             <label className="Ingredient-Measurement">Ingredient Measurement: </label>
             <input

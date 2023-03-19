@@ -12,14 +12,12 @@ export function Details(){
     // useState that brings in cocktails details from API Call return
     const [details, setDetails] = useState<Root>();
 
-    // useState related to disabling the 'Add to Favorites' button after clicked
-    const [disable, setDisable] = React.useState(false);
-
     // useState related to Cocktail Rating element
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
 
     // Gets the idDrink from the URL provided when you route here
+
     const idDrink = useParams().idDrink;
 
     // Makes the API Call using the idDrink param and returns a result
@@ -29,7 +27,6 @@ export function Details(){
         recipeResult.then((x) => setDetails(x))
     }, [])
 
-<<<<<<< HEAD
     // Context used so you can call the function addCocktail that adds
     // the cocktail selected to the Favorites array / page
     const { addCocktail, removeCocktail } = useContext(CocktailContext);
@@ -39,9 +36,7 @@ export function Details(){
     const ToggleFavoriteButtonClass = () => {
         setFavoriteButtonClicked(!favoriteButtonClicked);
     };
-=======
-    const { addCocktail } = useContext(CocktailContext);
->>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
+
 
     return (
         <div className="Details" id="details">

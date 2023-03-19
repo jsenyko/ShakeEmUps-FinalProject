@@ -11,7 +11,7 @@ interface IRecipeItemProps {
 
 export function RecipeItem(props:IRecipeItemProps){
 
-    const cocktail = props.cocktail;
+    const {cocktail} = props;
     const navigate = useNavigate()
 
 <<<<<<< HEAD
