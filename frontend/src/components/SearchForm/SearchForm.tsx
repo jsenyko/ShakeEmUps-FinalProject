@@ -1,8 +1,14 @@
 import "./searchForm.css";
-import { useEffect, useState } from "react";
-import { Root, Drink } from "../../models/Recipe";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
+import { EmptySearchAlert } from "./EmptySearchAlert";
+
+export interface ISearchFormProps {
+    onSearchClick: Function
+}
 
 export function SearchForm(){
 
@@ -44,8 +50,9 @@ export function SearchForm(){
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
+                // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("Please enter a search term")
+                    alert("Looks like you forgot to select a search type / enter a search term")
                 }
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
@@ -53,8 +60,9 @@ export function SearchForm(){
                 console.log(value)
                 break;
             case "findByFirstLetter":
+                // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("Please enter a search term")
+                    <EmptySearchAlert />
                 }
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
@@ -62,8 +70,9 @@ export function SearchForm(){
                 console.log(value)
                 break;
             case "findByIngredient":
+                // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("Please enter a search term")
+                    <EmptySearchAlert />
                 }
                 getCocktailByIngredient(value).then((cocktails) => {
                     setCocktails(cocktails);
@@ -77,8 +86,9 @@ export function SearchForm(){
                 console.log(value)
                 break;
             case "":
+                // Working on adding a modal to pop up if you don't select a search type
                 if(value === ""){
-                    alert("Please select a search type")
+                    <EmptySearchAlert />
                 }
                 break;
               default:

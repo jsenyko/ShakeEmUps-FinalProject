@@ -13,16 +13,20 @@ export function RecipeItem(props:IRecipeItemProps){
 
     const {cocktail} = props;
     const navigate = useNavigate()
-    const [disable, setDisable] = React.useState(false);
 
+<<<<<<< HEAD
+    // Context used so you can call the function addCocktail that adds
+    // the cocktail selected to the Favorites array / page
+    const { addCocktail, removeCocktail } = useContext(CocktailContext);
+=======
     // Calls the 'addCocktail' function found in Context to add recipe to Favorites page
     const { addCocktail } = useContext(CocktailContext);
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
 
-    // Changes the Button-Favorite styling when it is clicked
-    const [favoriteButtonStyle, setfavoriteButtonStyle] = useState<string>("Button-Favorites unclicked");
-
-    const changeStyle = () => {
-       return (favoriteButtonStyle === "Button-Favorites unclicked") ? setfavoriteButtonStyle("Button-Favorites clicked") : setfavoriteButtonStyle("Button-Favorites unclicked")
+    // Toggles the Button-Favorite styling when it is clicked
+    const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)
+    const ToggleFavoriteButtonClass = () => {
+        setFavoriteButtonClicked(!favoriteButtonClicked);
     };
 
     return (
@@ -38,7 +42,9 @@ export function RecipeItem(props:IRecipeItemProps){
                 <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
                     Details
                 </button>
-                <button  className={favoriteButtonStyle} disabled={disable} onClick={() => {addCocktail(cocktail); setDisable(true); changeStyle();} }>
+                <button
+                    className={favoriteButtonClicked ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
+                    onClick={() => {favoriteButtonClicked ? addCocktail(cocktail) : removeCocktail(cocktail.idDrink); ToggleFavoriteButtonClass();} }>
                     <i className="fa-solid fa-heart"></i>
                 </button>
             </div>

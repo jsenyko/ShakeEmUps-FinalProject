@@ -17,7 +17,7 @@ export function Favorites(){
 
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 
-                    <div className="RecipeCard">
+                    <div className="RecipeCard" key={cocktail.idDrink}>
                         <div className="card">
                         <div className="RecipeCard-Image">
                             <img src={cocktail.strDrinkThumb} alt="" />
@@ -26,7 +26,7 @@ export function Favorites(){
                             <h2>{cocktail.strDrink}</h2>
                         </div>
                         <div className="RecipeCard-Buttons">
-                            <button className="Button-Details" onClick={() => navigate(`/Details/${cocktail.idDrink}`)}>
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>

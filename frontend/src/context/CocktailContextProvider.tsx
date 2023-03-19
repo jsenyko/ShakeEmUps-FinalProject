@@ -20,7 +20,7 @@ const CocktailContextProvider = ({children}:ICocktailContextProviderProps) => {
     return(<CocktailContext.Provider value={{
         favorites: favorites,
         addCocktail: addCocktail,
-        removeCocktail: removeCocktail
+        removeCocktail: removeCocktail,
     }}>{children}</CocktailContext.Provider>)
 };
 

@@ -1,3 +1,4 @@
+/* Styling this page's header section */
 .Details_Header {
     display: flex;
     justify-content: center;
@@ -13,12 +14,13 @@
     color: #000;
 }
 
+/* Styling the main body of the results */
 .Details_Card {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 auto 110px;
 }
 
 .Details_Card .Card-Image {
@@ -44,16 +46,72 @@
 
 .Details_Card .Card-Body .Card-Title {
     font-size: 44px;
-    margin-bottom: 10px;
+    margin: -10px 0 20px 0;
     border-bottom: 2px solid rgb(0, 0, 0, 0.1);
     text-align: center;
+    width: 100%;
 }
 
+/* Styling the Add to Favorites button + text section */
+.Details_Card .Card-Body .Card-Favorites,
+.Details_Card .Card-Body .Card-Rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    font-size: 18px;
+    padding-bottom: 25px;
+}
+
+.Details_Card .Card-Body .Card-Favorites button {
+    background: #3586ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    transition: 0.5s;
+}
+
+.Details_Card .Card-Body .Card-Favorites button[disabled] {
+    opacity: 0.4;
+    cursor : not-allowed !important;
+}
+
+.Details_Card .Card-Body .Card-Favorites button:hover {
+    background: #111;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* When heart icon is clicked, useState changes the className, which changes styling */
+.Details_Card .Card-Body .Card-Favorites .Button-Favorites.clicked {
+    background: #c0c0c0;
+}
+
+.Details_Card .Card-Body .Card-Favorites .Button-Favorites.clicked i {
+    color: #d83133;
+}
+
+/* Styling the rating element */
+.Details_Card .Card-Body .Card-Rating input[type="radio"]{
+    display: none;
+}
+
+.Details_Card .Card-Body .Card-Rating .star {
+    cursor: pointer;
+    transition: color 200ms;
+}
+
+
+/* Styling the Glass Type info */
 .Details_Card .Card-Body .Card-Glass {
     display: flex;
     justify-content: space-between;
-    width: 350px;
-    margin-bottom: 20px;
+    width: 75%;
+    margin-bottom: 25px;
     font-size: 18px;
 }
 
@@ -69,11 +127,12 @@
     text-align: right;
 }
 
+/* Styling the Cocktail Ingredients info */
 .Details_Card .Card-Body .Card-Ingredients {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 350px;
+    width: 75%;
     margin-bottom: 20px;
     font-size: 18px;
 }
@@ -96,17 +155,12 @@
     text-align: right;
 }
 
-
+/* Styling the Cocktail's Instructions info */
 .Details_Card .Card-Body .Card-Instructions {
-    width: 350px;
+    width: 75%;
     text-align: left;
     display: flex;
     flex-direction: column;
     margin: 30px auto;
     font-size: 18px;
-}
-
-.Details_Card button[disabled] {
-    opacity:0.4;
-    cursor : not-allowed !important;
 }

@@ -1,11 +1,14 @@
 import "./addNewRecipeForm.css"
 
 export function AddNewRecipeForm(){
+
     return (
-        <form className="AddNewRecipeForm">
+        <div className="AddNewRecipe">
+        <h3>Let's add a new recipe!</h3>
+        <form className="AddNewRecipe-Form">
 
             {/* User provides name of the cocktail */}
-            <label>Cocktail Name: </label>
+            <label className="Form-Name">Cocktail Name: </label>
             <input
                 type="text"
                 name="name"
@@ -14,7 +17,8 @@ export function AddNewRecipeForm(){
             />
 
             {/* User provides recommended glassware from drop-down list */}
-            <label>Glass Used: </label>
+            <label className="Form-Glass">Glass Used: </label>
+
             <input
                 type="list"
                 name="glasses"
@@ -42,19 +46,21 @@ export function AddNewRecipeForm(){
                 </datalist>
             
             {/* User provides ingredients, with options to add more onClick */}
-            <label>Ingredient Name: </label>
+            <div className="Cocktail-Ingredients">
+
+            <label className="Ingredient-Name">Ingredient Name: </label>
             <input
                 type="text"
                 name="ingredient-name"
                 placeholder="Ingredient #1"
                 required
             />
-
-            <label>Ingredient Volume: </label>
+            
+            <label className="Ingredient-Volume">Ingredient Volume: </label>
             <input
                 type="list"
                 name="ingredient-volume"
-                placeholder="What scale?"
+                placeholder="How much?"
                 required
                 list="volumes"
             />
@@ -81,7 +87,8 @@ export function AddNewRecipeForm(){
                 <option value="" />
             </datalist>
 
-            <label>Ingredient Measurement: </label>
+
+            <label className="Ingredient-Measurement">Ingredient Measurement: </label>
             <input
                 type="list"
                 name="ingredient-measurement"
@@ -97,6 +104,10 @@ export function AddNewRecipeForm(){
                     <option value="" />
                     <option value="" />
                 </datalist>
+            
+            <button className="Ingredient-Add">Add another ingredient</button>
+            
+            </div>
 
             {/* User provides instructions, currently in paragraph format */}
             <label>Instructions: </label>
@@ -130,5 +141,7 @@ export function AddNewRecipeForm(){
             {/* User clicks button to POST recipe to backend (yet to be built) */}
             <button>Add new cocktail!</button>
         </form>
+
+        </div>
     )
 }

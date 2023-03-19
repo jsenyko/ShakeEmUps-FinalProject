@@ -39,7 +39,7 @@ export function Header(){
                    <li><a href="/">Home</a></li>
                     <li><a href="/aboutus">About</a></li>
                     <li><a href="/favorites">Favorites</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><Link to="/contactus">Contact</Link></li>
                 </ul>
             </div>
             

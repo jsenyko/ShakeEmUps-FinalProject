@@ -1,10 +1,26 @@
-import "./favoritesCarousel.css";
+import "./recommendationsCarousel.css";
+import { Root } from "../../models/Recipe";
+import { getCocktailDetails } from "../../services/RecipeService";
+import { useState, useEffect, useContext } from "react";
 
-export function FavoritesCarousel(){
+export function RecommendationsCarousel(){
+
+    // Here I'm trying to figure out how to make manual getCocktailDetails calls
+    // to return specific recommendations by the cocktail idDrink with an image + title
+    // Then the user can click the image to go to the Details page for that cocktail
+
+    // useState that brings in cocktails details from API Call return
+    // const [details, setDetails] = useState<Root>();
+
+    // let recommendation1 = useEffect(() => {
+    //     let recipeResult = getCocktailDetails(String("11007"));
+
+    //     recipeResult.then((x) => setDetails(x))
+    // }, [])
 
     return (
-    <div className="FavoritesCarousel">
-        <h2>Already have a favorite in mind?  Click below to find the recipe!</h2>
+    <div className="RecommendationsCarousel">
+        <h2>Checkout some seasonal recommendations we think you'll love!</h2>
         <div className="media-container">
             <div className="media-scroller">
             {/* Currently this is done manually, but instead we would map and slice to return the results from MongoDB into groups */}
@@ -59,62 +75,7 @@ export function FavoritesCarousel(){
 
             </div>
     
-            {/* Group 3 */}
-            <div className="media-group" id="group-3">
-                <a className="previous" href="#group-2">
-                    <svg><use href="#previous"></use></svg>
-                </a>
-
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642484865851-111e68695d71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc5NQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642237778207-24985a0bf876?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc5NQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642177584449-fa0b017dccc7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc5NQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1643249960396-d39d2a63ce8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0Mw&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1641424222187-1c336d21804c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0OA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-            
-                <a className="next" href="#group-4" aria-label="next">
-                    <svg><use href="#next"></use></svg>
-                </a>
-            </div>
-    
-            {/* Group 4 */}
-            <div className="media-group" id="group-4">
-                <a className="previous" href="#group-3">
-                    <svg><use href="#previous"></use></svg>
-                </a>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1640998483268-d1faffa789ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODkwNA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642034451735-2a8df1eaa2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg4OQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1640808238224-5520de93c939?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg4OQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1643039952431-38adfa91f320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0OA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1643148636637-58b3eb95cdad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODg0OA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
-                </div>
-
-                <a className="next" href="#group-1" aria-label="next">
-                    <svg><use href="#next"></use></svg>
-                </a>
-            </div>
-    
             <div className="navigation-indicators">
-                <div></div>
-                <div></div>
                 <div></div>
                 <div></div>
             </div>

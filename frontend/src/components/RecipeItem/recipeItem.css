@@ -1,7 +1,11 @@
 /* Basic card styling */
 .RecipeCard .card {
     position: relative;
+<<<<<<< HEAD
+    width: 310px;
+=======
     width: 290px;
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     height: 375px;
     background: #fff;
     border-radius: 20px;
@@ -46,18 +50,23 @@
 
 .RecipeCard .card .RecipeCard-Image {
     position: absolute;
+<<<<<<< HEAD
+    top: 50%;
+    transform: translateY(-55%);
+=======
     top: 40%;
     transform: translateY(-50%);
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     z-index: 10000;
     width: 100%;
-    height: 160px;
+    height: 180px;
     transition: 500ms;
     transition-delay: 0ms;
 }
 
 /* Moves the image up when you hover on the card, so the buttons can be exposed */
 .RecipeCard .card:hover .RecipeCard-Image {
-    top: 15%;
+    top: 10%;
     transform: translateY(0%);
     transition-delay: 0s;
 }
@@ -67,7 +76,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 220px;
+    width: 230px;
     border-radius: 20px;
 }
 
@@ -76,7 +85,11 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+<<<<<<< HEAD
+    height: 80px;
+=======
     height: 90px;
+>>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     text-align: center;
     transition: 500ms;
     transition-delay: 0s;
@@ -85,7 +98,7 @@
 
 /* Increasing the height on card hover moves the text up */
 .RecipeCard .card:hover .RecipeCard-Content {
-    height: 120px;
+    height: 130px;
 }
 
 .RecipeCard .card .RecipeCard-Content h2 {
