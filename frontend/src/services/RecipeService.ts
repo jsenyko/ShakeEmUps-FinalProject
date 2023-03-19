@@ -50,10 +50,10 @@ export function getCocktailByIngredient(strIngredient1: string): Promise<Root>{
 };
 
 
-export function getCocktailDetails(idDrink: string): Promise<Drink>{
+export function getCocktailDetails(idDrink: string): Promise<Root>{
     return axios
     // The API call to Search By ID Letter requires the drink's ID (idDrink) in the URL
-    .get<Drink>(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`, {
+    .get<Root>(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`, {
     })
     .then((response) => response.data)
 };
