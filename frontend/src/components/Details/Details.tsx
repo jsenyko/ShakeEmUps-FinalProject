@@ -11,7 +11,7 @@ export function Details(){
     const [details, setDetails] = useState<Drink>();
     const [disable, setDisable] = React.useState(false);
 
-    const idDrink = useParams().idDrink;
+    const idDrink = useParams<{idDrink: any}>();
 
     const { addCocktail } = useContext(CocktailContext);
 
