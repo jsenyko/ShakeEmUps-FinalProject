@@ -14,7 +14,6 @@ import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm
 import { ContactUs } from './components/ContactUs/ContactUs';
 
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +27,7 @@ function App() {
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />
           </Routes>
+          <AddNewRecipeForm />
           {/* <SearchForm /> */}
           <Footer />
         </CocktailContextProvider>
