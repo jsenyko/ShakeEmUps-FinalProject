@@ -1,11 +1,7 @@
 /* Basic card styling */
 .RecipeCard .card {
     position: relative;
-<<<<<<< HEAD
     width: 310px;
-=======
-    width: 290px;
->>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     height: 375px;
     background: #fff;
     border-radius: 20px;
@@ -50,13 +46,8 @@
 
 .RecipeCard .card .RecipeCard-Image {
     position: absolute;
-<<<<<<< HEAD
-    top: 50%;
-    transform: translateY(-55%);
-=======
     top: 40%;
     transform: translateY(-50%);
->>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     z-index: 10000;
     width: 100%;
     height: 180px;
@@ -85,11 +76,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-<<<<<<< HEAD
-    height: 80px;
-=======
     height: 90px;
->>>>>>> 9403dd9880d4d02c4385df0a078177bbce31aa04
     text-align: center;
     transition: 500ms;
     transition-delay: 0s;
