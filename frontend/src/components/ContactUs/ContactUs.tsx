@@ -25,7 +25,6 @@ export function ContactUs() {
 
                     <input type="submit" value="Submit" />
                 </div>
-
             </div>
         </form>
         </div>

@@ -28,7 +28,6 @@ function App() {
             <Route path="/contactus" element={<ContactUs />} />
           </Routes>
           <AddNewRecipeForm />
-          {/* <SearchForm /> */}
           <Footer />
         </CocktailContextProvider>
       </div>
