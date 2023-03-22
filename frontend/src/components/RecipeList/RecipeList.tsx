@@ -1,7 +1,6 @@
 import "./recipeList.css";
-import { useState, useEffect } from "react";
 import { RecipeItem } from "../RecipeItem/RecipeItem";
-import { Root, Drink } from "../../models/Recipe";
+import { Root } from "../../models/Recipe";
 
 export interface IRecipeListProps {
     cocktails: Root;

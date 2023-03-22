@@ -1,46 +1,111 @@
 import "./recommendationsCarousel.css";
 import { Root } from "../../models/Recipe";
-import { getCocktailDetails } from "../../services/RecipeService";
 import { useState, useEffect, useContext } from "react";
+import { getCocktailDetails } from "../../services/RecipeService";
+import { useNavigate } from 'react-router-dom';
 
 export function RecommendationsCarousel(){
 
-    // Here I'm trying to figure out how to make manual getCocktailDetails calls
-    // to return specific recommendations by the cocktail idDrink with an image + title
-    // Then the user can click the image to go to the Details page for that cocktail
+    const navigate = useNavigate()
 
-    // useState that brings in cocktails details from API Call return
-    // const [details, setDetails] = useState<Root>();
+    // Recommendation API Call - Cocktail A (Gimlet)
+    const [cocktailA, setCocktailA] = useState<Root>();
+    useEffect(() => {
+    let recommendationA = getCocktailDetails(String("17255"))
+        recommendationA.then((cocktailA) => setCocktailA(cocktailA))
+    }, []);
 
-    // let recommendation1 = useEffect(() => {
-    //     let recipeResult = getCocktailDetails(String("11007"));
+    // Recommendation API Call - Cocktail B (Caipirinha)
+    const [cocktailB, setCocktailB] = useState<Root>();
+    useEffect(() => {
+        let recommendationB = getCocktailDetails(String("11202"))
+            recommendationB.then((cocktailB) => setCocktailB(cocktailB))
+        }, []);
 
-    //     recipeResult.then((x) => setDetails(x))
-    // }, [])
+    // Recommendation API Call - Cocktail C (Paloma)
+    const [cocktailC, setCocktailC] = useState<Root>();
+    useEffect(() => {
+        let recommendationC = getCocktailDetails(String("17253"))
+            recommendationC.then((cocktailC) => setCocktailC(cocktailC))
+        }, []);
+
+    // Recommendation API Call - Cocktail D (Mint Julep)
+    const [cocktailD, setCocktailD] = useState<Root>();
+    useEffect(() => {
+        let recommendationD = getCocktailDetails(String("17206"))
+            recommendationD.then((cocktailD) => setCocktailD(cocktailD))
+        }, []);
+
+    // Recommendation API Call - Cocktail E (Aperol Spritz)
+    const [cocktailE, setCocktailE] = useState<Root>();
+    useEffect(() => {
+        let recommendationE = getCocktailDetails(String("178325"))
+            recommendationE.then((cocktailE) => setCocktailE(cocktailE))
+        }, []);
+
+    // Recommendation API Call - Cocktail F (Mai Tai)
+    const [cocktailF, setCocktailF] = useState<Root>();
+    useEffect(() => {
+        let recommendationF = getCocktailDetails(String("11690"))
+            recommendationF.then((cocktailF) => setCocktailF(cocktailF))
+        }, []);
+
+    // Recommendation API Call - Cocktail G (Pegu Club)
+    const [cocktailG, setCocktailG] = useState<Root>();
+    useEffect(() => {
+        let recommendationG = getCocktailDetails(String("17249"))
+            recommendationG.then((cocktailG) => setCocktailG(cocktailG))
+        }, []);
+
+    // Recommendation API Call - Cocktail H (Sazerac)
+    const [cocktailH, setCocktailH] = useState<Root>();
+    useEffect(() => {
+        let recommendationH = getCocktailDetails(String("12127"))
+            recommendationH.then((cocktailH) => setCocktailH(cocktailH))
+        }, []);
+
+    // Recommendation API Call - Cocktail I (Tiperary)
+    const [cocktailI, setCocktailI] = useState<Root>();
+    useEffect(() => {
+        let recommendationI = getCocktailDetails(String("17828"))
+            recommendationI.then((cocktailI) => setCocktailI(cocktailI))
+        }, []);
+
+    // Recommendation API Call - Cocktail J (Vesper Martini)
+    const [cocktailJ, setCocktailJ] = useState<Root>();
+    useEffect(() => {
+        let recommendationJ = getCocktailDetails(String("17218"))
+            recommendationJ.then((cocktailJ) => setCocktailJ(cocktailJ))
+        }, []);
+    
 
     return (
     <div className="RecommendationsCarousel">
         <h2>Checkout some seasonal recommendations we think you'll love!</h2>
         <div className="media-container">
             <div className="media-scroller">
-            {/* Currently this is done manually, but instead we would map and slice to return the results from MongoDB into groups */}
     
             {/* Group 1 */}
             <div className="media-group" id="group-1">
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1641353989082-9b15fa661805?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODcyOA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailA?.drinks[0].idDrink}`)} >
+                    <img src={cocktailA?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailA?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642190672487-22bde32965f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODcyOA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailB?.drinks[0].idDrink}`)} >
+                    <img src={cocktailB?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailB?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1641841344411-49dbd02896f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODcyOA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailC?.drinks[0].idDrink}`)} >
+                    <img src={cocktailC?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailC?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1643223723262-7ce785730cf6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODcyOA&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailD?.drinks[0].idDrink}`)} >
+                    <img src={cocktailD?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailD?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1640938776314-4d303f8a1380?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc2Mw&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailE?.drinks[0].idDrink}`)} >
+                    <img src={cocktailE?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailE?.drinks[0].strDrink}</p>
                 </div>
     
                 <a className="next" href="#group-2" aria-label="next">
@@ -53,23 +118,28 @@ export function RecommendationsCarousel(){
                 <a className="previous" href="#group-1">
                     <svg><use href="#previous"></use></svg>
                 </a>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1641259041823-e09935369105?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc2Mw&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailF?.drinks[0].idDrink}`)} >
+                    <img src={cocktailF?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailF?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc2Mw&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailG?.drinks[0].idDrink}`)} >
+                    <img src={cocktailG?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailG?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1641118961077-440391095cdc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc2Mw&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailH?.drinks[0].idDrink}`)} >
+                    <img src={cocktailH?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailH?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1640767014413-b7d27c58b058?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc5NQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailI?.drinks[0].idDrink}`)} >
+                    <img src={cocktailI?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailI?.drinks[0].strDrink}</p>
                 </div>
-                <div className="media-element">
-                    <img src="https://images.unsplash.com/photo-1640948612546-3b9e29c23e98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzM5ODc5NQ&ixlib=rb-1.2.1&q=80&w=400" alt="" />
+                <div className="media-element" onClick={() => navigate(`/details/${cocktailJ?.drinks[0].idDrink}`)} >
+                    <img src={cocktailJ?.drinks[0].strDrinkThumb} />
+                    <p>{cocktailJ?.drinks[0].strDrink}</p>
                 </div>
             
-                <a className="next" href="#group-3" aria-label="next">
+                <a className="next" href="#group-2" aria-label="next">
                     <svg><use href="#next"></use></svg>
                 </a>
 

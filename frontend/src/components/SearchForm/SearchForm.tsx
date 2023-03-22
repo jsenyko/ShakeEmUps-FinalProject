@@ -1,14 +1,11 @@
 import "./searchForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
 import { EmptySearchAlert } from "./EmptySearchAlert";
 
-export interface ISearchFormProps {
-    onSearchClick: Function
-}
 
 export function SearchForm(){
 
@@ -16,11 +13,11 @@ export function SearchForm(){
     const [cocktails, setCocktails] = useState<Root>();
 
     // Initial state of the search bar is blank
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState<string>("");
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
-      };
+    };
 
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
@@ -46,7 +43,7 @@ export function SearchForm(){
         setValue("");
     };
 
-// Value of 'searchType' variable determines which API call to make
+    // Value of 'searchType' variable determines which API call to make
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
