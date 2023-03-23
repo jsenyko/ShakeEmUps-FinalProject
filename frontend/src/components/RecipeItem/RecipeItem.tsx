@@ -1,5 +1,4 @@
 import "./recipeItem.css";
-import * as React from 'react';
 import { useContext, useState } from "react";
 import CocktailContext from "../../context/CocktailContext";
 import { Drink } from "../../models/Recipe";
@@ -39,7 +38,7 @@ export function RecipeItem(props:IRecipeItemProps){
                 </button>
                 <button
                     className={favoriteButtonClicked ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
-                    onClick={() => {favoriteButtonClicked ? addCocktail(cocktail) : removeCocktail(cocktail.idDrink); ToggleFavoriteButtonClass();} }>
+                    onClick={() => {favoriteButtonClicked ? removeCocktail(cocktail.idDrink) : addCocktail(cocktail); ToggleFavoriteButtonClass();} }>
                     <i className="fa-solid fa-heart"></i>
                 </button>
             </div>

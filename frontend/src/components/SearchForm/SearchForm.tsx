@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
-import { EmptySearchAlert } from "./EmptySearchAlert";
 
 
 export function SearchForm(){
@@ -49,43 +48,39 @@ export function SearchForm(){
             case "findByName":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("Looks like you forgot to select a search type / enter a search term")
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByFirstLetter":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    <EmptySearchAlert />
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByIngredient":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    <EmptySearchAlert />
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByIngredient(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByRandom":
                 getRandomCocktail().then((cocktails) => {
                     setCocktails(cocktails);
                 });
-                console.log(value)
                 break;
             case "":
                 // Working on adding a modal to pop up if you don't select a search type
                 if(value === ""){
-                    <EmptySearchAlert />
+                    alert("It looks like you forgot to enter a search term / select a search type")
                 }
                 break;
               default:

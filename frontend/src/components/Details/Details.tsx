@@ -62,7 +62,7 @@ export function Details(){
                                 {/* Button's current className determines whether to addCocktail or removeCocktail via Context */}
                                 <button
                                     className={favoriteButtonClicked ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
-                                    onClick={() => {favoriteButtonClicked ? addCocktail(details?.drinks[0]) : removeCocktail(details?.drinks[0].idDrink); ToggleFavoriteButtonClass();} }>
+                                    onClick={() => {favoriteButtonClicked ? removeCocktail(details?.drinks[0].idDrink) : addCocktail(details?.drinks[0]); ToggleFavoriteButtonClass();} }>
                                     <i className="fa-solid fa-heart"></i>
                                 </button>
                             </div>
