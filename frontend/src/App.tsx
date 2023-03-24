@@ -12,11 +12,13 @@ import { RecipeList } from './components/RecipeList/RecipeList';
 import CocktailContextProvider from './context/CocktailContextProvider';
 import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm';
 import { ContactUs } from './components/ContactUs/ContactUs';
+import ScrollToTop  from './components/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <ScrollToTop />
         <CocktailContextProvider>
           <Header />
           <Routes>
