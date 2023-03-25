@@ -9,7 +9,7 @@ export function ContactUs() {
         <div className="Contact" id="contactus">
             <form>
             <div className="contactName">
-                <h1>CONTACT</h1>
+                <h1>Contact Us</h1>
                 <h2>GET IN TOUCH</h2>
                 <div className="name">
                     <label htmlFor="name">Name:</label>

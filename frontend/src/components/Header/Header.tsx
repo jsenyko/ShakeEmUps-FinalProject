@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export function Header(){
 
     // Measure if the user has scrolled down on the App and change state
-    const [state, setState] = useState(false);
+    const [state, setState] = useState<Boolean>(false);
     const changeClassOnScroll = () => {
         const scrollValue = document.documentElement.scrollTop;
         if(scrollValue > 100){

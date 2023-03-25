@@ -1,23 +1,36 @@
 import "./addNewRecipeForm.css"
+import { useState } from "react";
 
 export function AddNewRecipeForm(){
 
+    const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
+    const flipCaret = () => {
+        changeCaretDirection(!caretDirection);
+    };
+
     return (
-        <div className="AddNewRecipe">
-        <h3>Let's add a new recipe!</h3>
+        <div className={caretDirection? "AddNewRecipe-Open" : "AddNewRecipe-Closed"}>
+        <h1>Find a new favorite?</h1>
+        <h3>Add it here!</h3>
+        <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
+
         <form className="AddNewRecipe-Form">
+            <h3>Let's add a new recipe!</h3>
 
             {/* User provides name of the cocktail */}
-            <label className="Form-Name">Cocktail Name: </label>
+            <div className="Form-Name">
+            <label>Cocktail Name: </label>
             <input
                 type="text"
                 name="name"
                 placeholder="What's it called?"
                 required
             />
+            </div>
 
             {/* User provides recommended glassware from drop-down list */}
-            <label className="Form-Glass">Glass Used: </label>
+            <div className="Form-Glass">
+            <label>Glass Used: </label>
 
             <input
                 type="list"
@@ -44,79 +57,77 @@ export function AddNewRecipeForm(){
                     <option value="Sour Glass" />
                     <option value="Zombie Glass" />
                 </datalist>
+            </div>
             
             {/* User provides ingredients, with options to add more onClick */}
-            <div className="Cocktail-Ingredients">
+            <div className="Form-Ingredients">
 
-            <label className="Ingredient-Name">Ingredient Name: </label>
-            <input
-                type="text"
-                name="ingredient-name"
-                placeholder="Ingredient #1"
-                required
-            />
+            <div className="Ingredient-Name">
+                <label>Ingredient Name: </label>
+                <input
+                    type="text"
+                    name="ingredient-name"
+                    placeholder="Ingredient #1"
+                    required
+                />
+                </div>
             
-            <label className="Ingredient-Volume">Ingredient Volume: </label>
-            <input
-                type="list"
-                name="ingredient-volume"
-                placeholder="How much?"
-                required
-                list="volumes"
-            />
-            <datalist id="volumes">
-                <option value="1/4" />
-                <option value="1/2" />
-                <option value="3/4" />
-                <option value="1" />
-                <option value="1 1/4" />
-                <option value="1 1/2" />
-                <option value="1 3/4" />
-                <option value="2" />
-                <option value="2 1/4" />
-                <option value="2 1/2" />
-                <option value="2 3/4" />
-                <option value="3" />
-                <option value="3 1/4" />
-                <option value="3 1/2" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-            </datalist>
-
-
-            <label className="Ingredient-Measurement">Ingredient Measurement: </label>
-            <input
-                type="list"
-                name="ingredient-measurement"
-                placeholder="What scale?"
-                required
-                list="measurements"
-            />
-                <datalist id="measurements">
-                    <option value="oz" />
-                    <option value="ml" />
-                    <option value="bar spoon" />
-                    <option value="dashes" />
+            <div className="Ingredient-Volume">
+                <label>Ingredient Volume: </label>
+                <input
+                    type="list"
+                    name="ingredient-volume"
+                    placeholder="How much?"
+                    required
+                    list="volumes"
+                />
+                <datalist id="volumes">
+                    <option value="1/4" />
+                    <option value="1/2" />
+                    <option value="3/4" />
+                    <option value="1" />
+                    <option value="1 1/4" />
+                    <option value="1 1/2" />
+                    <option value="1 3/4" />
+                    <option value="2" />
+                    <option value="2 1/4" />
+                    <option value="2 1/2" />
+                    <option value="2 3/4" />
+                    <option value="3" />
+                    <option value="3 1/4" />
+                    <option value="3 1/2" />
+                    <option value="" />
+                    <option value="" />
+                    <option value="" />
+                    <option value="" />
                     <option value="" />
                     <option value="" />
                 </datalist>
+                </div>
+
+
+            <div className="Ingredient-Measurement">
+                <label>Ingredient Measurement: </label>
+                <input
+                    type="list"
+                    name="ingredient-measurement"
+                    placeholder="What scale?"
+                    required
+                    list="measurements"
+                />
+                    <datalist id="measurements">
+                        <option value="oz" />
+                        <option value="ml" />
+                        <option value="bar spoon" />
+                        <option value="dashes" />
+                        <option value="" />
+                        <option value="" />
+                    </datalist>
+            </div>
             
-            <button className="Ingredient-Add">Add another ingredient</button>
+            <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" /></div>
             
             </div>
-
-            {/* User provides instructions, currently in paragraph format */}
-            <label>Instructions: </label>
-            <input
-                type="text"
-                name="instructions"
-                placeholder="How is it made?"
-                required
-            />
 
             {/* User provides where they found the cocktail */}
             {/* Options will be provided for Book, URL, etc. */}
@@ -137,6 +148,27 @@ export function AddNewRecipeForm(){
                     <option value="" />
                     <option value="" />
                 </datalist>
+
+            {/* User provides instructions, currently in paragraph format */}
+            <div className="Form-Instructions">
+                <label>Instructions: </label>
+                <input
+                    type="text"
+                    name="instructions"
+                    placeholder="How is it made?"
+                    required
+                />
+            </div>
+
+            <div className="Form-Additional">
+                <label>Additional Info: </label>
+                <input
+                    type="text"
+                    name="additional"
+                    placeholder="How is it made?"
+                    required
+                />
+            </div>
 
             {/* User clicks button to POST recipe to backend (yet to be built) */}
             <button>Add new cocktail!</button>
