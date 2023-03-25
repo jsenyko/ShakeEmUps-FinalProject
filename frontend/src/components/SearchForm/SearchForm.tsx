@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail, getCocktailByMultipleIngredients, getLatestCocktails, getPopularCocktails } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
-import { EmptySearchAlert } from "./EmptySearchAlert";
 
 
 export function SearchForm(){
@@ -13,10 +12,6 @@ export function SearchForm(){
 
     // Initial state of the search bar is blank
     const [value, setValue] = useState<string>("");
-
-    // const [valueMulti1, setValueMulti1] = useState<string>("");
-    // const [valueMulti2, setValueMulti2] = useState<string>("");
-    // const [valueMulti3, setValueMulti3] = useState<string>("");
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
@@ -67,6 +62,10 @@ export function SearchForm(){
                     alert("It looks like you forgot to enter a search term")
                 } else {
                     getCocktailByName(value).then((cocktails) => { setCocktails(cocktails) })};
+                } else {
+                getCocktailByName(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByFirstLetter":
@@ -74,13 +73,21 @@ export function SearchForm(){
                     alert("It looks like you forgot to enter a search term")
                 } else {
                     getCocktailByFirstLetter(value).then((cocktails) => { setCocktails(cocktails) })};
+                } else {
+                getCocktailByFirstLetter(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByIngredient":
                 if(value === ""){
-                   <EmptySearchAlert />
                 } else {
                     getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
+                getCocktailByIngredient(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByRandom":
@@ -102,6 +109,7 @@ export function SearchForm(){
 
             case "findByLatest":
                     getLatestCocktails().then((cocktails) => { setCocktails(cocktails) });
+                break;
                 break;
 
             case "findByPopular":
