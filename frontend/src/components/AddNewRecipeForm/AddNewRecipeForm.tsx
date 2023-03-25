@@ -1,21 +1,38 @@
 import "./addNewRecipeForm.css"
-import DrinkModel from "../models/DrinkModel"
+import { Drink } from "../../models/Recipe";
 import { FormEvent, useEffect, useState } from "react";
+import { addDrink } from "../../services/RecipeService";
+
 
 interface Props {
     initialTo?: string;
-    onAdd?: (drink: DrinkModel) => void
+    onAdd?: (drink: Drink) => void
 }
 
 
 
 export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
 
-    const [ strDrink, setStrDrink ] = useState(initialTo);
+
+    const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
+    const flipCaret = () => {
+        changeCaretDirection(!caretDirection);
+    };
+    
+    const [ idDrink, setIdDrink ] = useState(initialTo);
+    const [ strDrink, setStrDrink ] = useState("");
+    const [ strDrinkAlternate, setStrDrinkAlternate ] = useState("");
     const [ strGlass, setGlass ] = useState("");
+    const [ strInstructions, setStrInstructions] = useState("");
+    const [ strInstructionsES, setStrInstructionsES] = useState("");
+    const [ strInstructionsDE, setStrInstructionsDE] = useState("");
+    const [ strInstructionsFR, setStrInstructionsFR] = useState("");
+    const [ strInstructionsIT, setStrInstructionsIT] = useState("");
     const [ strTags, setTags ] = useState("");
-    const [ stVideo, setVideo ] = useState("");
+    const [ strVideo, setStrVideo ] = useState("");
+    const [ strCategory, setStrCategory ] = useState("");
     const [ strIBA, setIBA ] = useState("");
+    const [ strAlcoholic, setStrAlcoholic ] = useState("");
     const [ strDrinkThumb, setStrDrinkThumb ] = useState("");
     const [ strIngredient1, setStrIngredient1 ] = useState("");
     const [ strIngredient2, setStrIngredient2 ] = useState("");
@@ -32,71 +49,84 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     const [ strIngredient13, setStrIngredient13 ] = useState("");
     const [ strIngredient14, setStrIngredient14 ] = useState("");
     const [ strIngredient15, setStrIngredient15 ] = useState("");
-    const [ volume1, setVolume1 ] = useState("");
-    const [ volume2, setVolume2 ] = useState("");
-    const [ volume3, setVolume3 ] = useState("");
-    const [ volume4, setVolume4 ] = useState("");
-    const [ volume5, setVolume5 ] = useState("");
-    const [ volume6, setVolume6 ] = useState("");
-    const [ volume7, setVolume7 ] = useState("");
-    const [ volume8, setVolume8 ] = useState("");
-    const [ volume9, setVolume9 ] = useState("");
-    const [ volume10, setVolume10 ] = useState("");
-    const [ volume11, setVolume11 ] = useState("");
-    const [ volume12, setVolume12 ] = useState("");
-    const [ volume13, setVolume13 ] = useState("");
-    const [ volume14, setVolume14 ] = useState("");
-    const [ volume15, setVolume15 ] = useState("");
-    const [ strMeasure1, setStrmeasure1] = useState("")
-    const [ strMeasure2, setStrmeasure2] = useState("")
-    const [ strMeasure3, setStrmeasure3] = useState("")
-    const [ strMeasure4, setStrmeasure4] = useState("")
-    const [ strMeasure5, setStrmeasure5] = useState("")
-    const [ strMeasure6, setStrmeasure6] = useState("")
-    const [ strMeasure7, setStrmeasure7] = useState("")
-    const [ strMeasure8, setStrmeasure8] = useState("")
-    const [ strMeasure9, setStrmeasure9] = useState("")
-    const [ strMeasure10, setStrmeasure10] = useState("")
-    const [ strMeasure11, setStrmeasure11] = useState("")
-    const [ strMeasure12, setStrmeasure12] = useState("")
-    const [ strMeasure13, setStrmeasure13] = useState("")
-    const [ strMeasure14, setStrmeasure14] = useState("")
-    const [ strMeasure15, setStrmeasure15] = useState("")
-    const [ strInstructions, setStrInstructions] = useState("")
-    const [ addtionalInfo, setadditionalInfo] = useState("")
-   
-   
-   
+    const [ strMeasure1, setStrMeasure1] = useState("");
+    const [ strMeasure2, setStrMeasure2] = useState("");
+    const [ strMeasure3, setStrMeasure3] = useState("");
+    const [ strMeasure4, setStrMeasure4] = useState("");
+    const [ strMeasure5, setStrMeasure5] = useState("");
+    const [ strMeasure6, setStrMeasure6] = useState("");
+    const [ strMeasure7, setStrMeasure7] = useState("");
+    const [ strMeasure8, setStrMeasure8] = useState("");
+    const [ strMeasure9, setStrMeasure9] = useState("");
+    const [ strMeasure10, setStrMeasure10] = useState("");
+    const [ strMeasure11, setStrMeasure11] = useState("");
+    const [ strMeasure12, setStrMeasure12] = useState("");
+    const [ strMeasure13, setStrMeasure13] = useState("");
+    const [ strMeasure14, setStrMeasure14] = useState("");
+    const [ strMeasure15, setStrMeasure15] = useState("");
+    const [ strImageSource, setStrImageSource] = useState("");
+    const [ strImageAttribution, setStrImageAttribution] = useState("");
+    const [ strCreativeCommonsConfirmed, setStrCreativeCommonsConfirmed] = useState("");
+    const [ dateModified, setDateModified] = useState("");
+    
   
-    useEffect(() => setStrDrink(initialTo), [initialTo]);
+  
+    useEffect(() => setIdDrink(initialTo), [initialTo]);
   
     function handleSubmit(e: FormEvent) {
       e.preventDefault();
-    //   addDrink({
-    //     strDrink, strGlass, strTags
-    //   }).then(onAdd);
-    //   setStrDrink(initialTo);
-    //   setGlass("");
-    //   setTags("");
+       addDrink({
+        idDrink, strDrink,strDrinkAlternate, strTags, strVideo, strCategory, strIBA, 
+    strAlcoholic, strGlass, strInstructions, strInstructionsES, strInstructionsDE, 
+    strInstructionsFR, strInstructionsIT, 
+    strDrinkThumb, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, 
+    strIngredient6, strIngredient7, strIngredient8, strIngredient9,strIngredient10, 
+    strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, 
+    strMeasure1, strMeasure2,strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7,
+    strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
+    strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
+       }).then(onAdd);
+       setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
+       setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
+       setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR, setStrInstructionsIT, 
+       setStrDrinkThumb(""), setStrIngredient1(""), setStrIngredient2(""), setStrIngredient3(""), setStrIngredient4(""), setStrIngredient5(""), 
+       setStrIngredient6(""), setStrIngredient7(""), setStrIngredient8(""), setStrIngredient9(""), setStrIngredient10(""), 
+       setStrIngredient11(""), setStrIngredient12(""), setStrIngredient13(""), setStrIngredient14(""), setStrIngredient15(""), 
+       setStrMeasure1(""), setStrMeasure2(""), setStrMeasure3(""), setStrMeasure4(""), setStrMeasure5(""), setStrMeasure6(""), setStrMeasure7(""),
+       setStrMeasure8(""), setStrMeasure9(""), setStrMeasure10(""), setStrMeasure11(""), setStrMeasure12(""), setStrMeasure13(""), setStrMeasure14(""), 
+       setStrMeasure15(""), setStrImageSource(""), setStrImageAttribution(""), setStrCreativeCommonsConfirmed(""), setDateModified("")
+      
     }
 
 
     return (
+        
+        <div className={caretDirection? "AddNewRecipe-Open" : "AddNewRecipe-Closed"}>
+        <h1>Find a new favorite?</h1>
+        <h3>Add it here!</h3>
+        <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
+
+        
         <div className="AddNewRecipe" onSubmit={handleSubmit}>
         <h3>Let's add a new recipe!</h3>
         <form className="AddNewRecipe-Form">
 
             {/* User provides name of the cocktail */}
+            <div className="Form-Name">  
             <label className="Form-Name">Cocktail Name: </label>
             <input
                 type="text"
                 name="name"
                 placeholder="What's it called?"
-                required
+                value={strDrink} 
+                onChange={e => setStrDrink (e.target.value)} required minLength={2}
             />
+            </div>
+            
 
             {/* User provides recommended glassware from drop-down list */}
-            <label className="Form-Glass">Glass Used: </label>
+            <div className="Form-Glass"> 
+            <label>Glass Used: </label>
 
             <input
                 type="list"
@@ -123,19 +153,23 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     <option value="Sour Glass" />
                     <option value="Zombie Glass" />
                 </datalist>
-            
-            {/* User provides ingredients, with options to add more onClick */}
-            <div className="Cocktail-Ingredients">
+            </div>
 
-            <label className="Ingredient-Name">Ingredient Name: </label>
+            {/* User provides ingredients, with options to add more onClick */}
+            <div className="Form-Ingredients">
+
+            <div className="Ingredient-Name"> 
+            <label>Ingredient Name: </label>
             <input
                 type="text"
                 name="ingredient-name"
                 placeholder="Ingredient #1"
                 required
             />
-            
-            <label className="Ingredient-Volume">Ingredient Volume: </label>
+            </div>
+
+            <div className="Ingredient-Volume"> 
+            <label>Ingredient Volume: </label>
             <input
                 type="list"
                 name="ingredient-volume"
@@ -165,9 +199,10 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <option value="" />
                 <option value="" />
             </datalist>
+            </div>
 
-
-            <label className="Ingredient-Measurement">Ingredient Measurement: </label>
+            <div className="Ingredient-Measurement"> 
+            <label>Ingredient Measurement: </label>
             <input
                 type="list"
                 name="ingredient-measurement"
@@ -183,12 +218,13 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     <option value="" />
                     <option value="" />
                 </datalist>
-            
-            <button className="Ingredient-Add">Add another ingredient</button>
+            </div>
+            <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" /></div>
             
             </div>
 
             {/* User provides instructions, currently in paragraph format */}
+            <div className="Form-Instructions"> 
             <label>Instructions: </label>
             <input
                 type="text"
@@ -196,10 +232,13 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="How is it made?"
                 required
             />
+            </div>
 
             {/* User provides where they found the cocktail */}
             {/* Options will be provided for Book, URL, etc. */}
             {/* Based on selection the Book Source will change - Book Name/Page #, URL, App Name */}
+            <div className="Form-Source">
+            <div className="Source-Type">   
             <label>Source Type: </label>
             <input
                 type="list"
@@ -216,15 +255,16 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     <option value="" />
                     <option value="" />
                 </datalist>
-
+            </div>
+            </div> 
             {/* User clicks button to POST recipe to backend (yet to be built) */}
             <button>Add new cocktail!</button>
         </form>
 
         </div>
+        </div>
+
     )
 }
 
-function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
-    throw new Error("Function not implemented.");
-}
+

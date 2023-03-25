@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Form is hidden by default */
+.AddNewRecipe-Closed .AddNewRecipe-Form {
+    display: none;
+}
+.AddNewRecipe-Closed,
+.AddNewRecipe-Open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.AddNewRecipe-Closed h1,
+.AddNewRecipe-Open h1 {
+    font-size: 40px;
+}
+.AddNewRecipe-Closed h3,
+.AddNewRecipe-Open h3 {
+    font-size: 24px;
+}
+.AddNewRecipe-Closed .Caret,
+.AddNewRecipe-Open .Caret {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    font-size: 20px;
+    padding: 10px;
+}
+.AddNewRecipe-Closed .Caret p,
+.AddNewRecipe-Open .Caret p {
+    margin-bottom: 0;
+}
+.AddNewRecipe-Closed .Caret p,
+.AddNewRecipe-Open .Caret p,
+.AddNewRecipe-Closed .Caret i,
+.AddNewRecipe-Open .Caret i {
+    padding: 5px;
+}
+.AddNewRecipe-Open .AddNewRecipe-Form {
+    width: 100%;
+    height: 600px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.AddNewRecipe-Open .AddNewRecipe-Form .Form-Name,
+.AddNewRecipe-Open .AddNewRecipe-Form .Form-Glass,
+.AddNewRecipe-Open .AddNewRecipe-Form .Form-Ingredients,
+.AddNewRecipe-Open .AddNewRecipe-Form .Form-Instructions,
+.AddNewRecipe-Open .AddNewRecipe-Form .Form-Additional {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
