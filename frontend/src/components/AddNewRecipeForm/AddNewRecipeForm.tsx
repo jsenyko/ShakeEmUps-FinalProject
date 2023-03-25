@@ -1,7 +1,68 @@
 import "./addNewRecipeForm.css"
 import { useState } from "react";
+import DrinkModel from "../models/DrinkModel"
+import { FormEvent, useEffect, useState } from "react";
 
-export function AddNewRecipeForm(){
+interface Props {
+    initialTo?: string;
+    onAdd?: (drink: DrinkModel) => void
+}
+
+
+
+export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
+
+    const [ strDrink, setStrDrink ] = useState(initialTo);
+    const [ strGlass, setGlass ] = useState("");
+    const [ strTags, setTags ] = useState("");
+    const [ stVideo, setVideo ] = useState("");
+    const [ strIBA, setIBA ] = useState("");
+    const [ strDrinkThumb, setStrDrinkThumb ] = useState("");
+    const [ strIngredient1, setStrIngredient1 ] = useState("");
+    const [ strIngredient2, setStrIngredient2 ] = useState("");
+    const [ strIngredient3, setStrIngredient3 ] = useState("");
+    const [ strIngredient4, setStrIngredient4 ] = useState("");
+    const [ strIngredient5, setStrIngredient5 ] = useState("");
+    const [ strIngredient6, setStrIngredient6 ] = useState("");
+    const [ strIngredient7, setStrIngredient7 ] = useState("");
+    const [ strIngredient8, setStrIngredient8 ] = useState("");
+    const [ strIngredient9, setStrIngredient9 ] = useState("");
+    const [ strIngredient10, setStrIngredient10 ] = useState("");
+    const [ strIngredient11, setStrIngredient11 ] = useState("");
+    const [ strIngredient12, setStrIngredient12 ] = useState("");
+    const [ strIngredient13, setStrIngredient13 ] = useState("");
+    const [ strIngredient14, setStrIngredient14 ] = useState("");
+    const [ strIngredient15, setStrIngredient15 ] = useState("");
+    const [ strMeasure1, setStrmeasure1] = useState("")
+    const [ strMeasure2, setStrmeasure2] = useState("")
+    const [ strMeasure3, setStrmeasure3] = useState("")
+    const [ strMeasure4, setStrmeasure4] = useState("")
+    const [ strMeasure5, setStrmeasure5] = useState("")
+    const [ strMeasure6, setStrmeasure6] = useState("")
+    const [ strMeasure7, setStrmeasure7] = useState("")
+    const [ strMeasure8, setStrmeasure8] = useState("")
+    const [ strMeasure9, setStrmeasure9] = useState("")
+    const [ strMeasure10, setStrmeasure10] = useState("")
+    const [ strMeasure11, setStrmeasure11] = useState("")
+    const [ strMeasure12, setStrmeasure12] = useState("")
+    const [ strMeasure13, setStrmeasure13] = useState("")
+    const [ strMeasure14, setStrmeasure14] = useState("")
+    const [ strMeasure15, setStrmeasure15] = useState("")
+    const [ strInstructions, setStrInstructions] = useState("")
+    const [ addtionalInfo, setadditionalInfo] = useState("")
+   
+  
+    useEffect(() => setStrDrink(initialTo), [initialTo]);
+  
+    function handleSubmit(e: FormEvent) {
+      e.preventDefault();
+    //   addDrink({
+    //     strDrink, strGlass, strTags
+    //   }).then(onAdd);
+    //   setStrDrink(initialTo);
+    //   setGlass("");
+    //   setTags("");
+    }
 
     const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
     const flipCaret = () => {
@@ -14,6 +75,8 @@ export function AddNewRecipeForm(){
         <h3>Add it here!</h3>
         <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
 
+        <div className="AddNewRecipe" onSubmit={handleSubmit}>
+        <h3>Let's add a new recipe!</h3>
         <form className="AddNewRecipe-Form">
             <h3>Let's add a new recipe!</h3>
 
@@ -176,4 +239,8 @@ export function AddNewRecipeForm(){
 
         </div>
     )
+}
+
+function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
+    throw new Error("Function not implemented.");
 }
