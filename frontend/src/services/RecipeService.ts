@@ -65,7 +65,7 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
 // www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=Dry_Vermouth,Gin,Anis
 
 // List Popular cocktails
-// www.thecocktaildb.com/api/json/v2/9973533/popular.php
+// www.thecocktaildb.com/api/json/v2/9973533/popular.php **
 
 // List most latest cocktails
 // www.thecocktaildb.com/api/json/v2/9973533/latest.php

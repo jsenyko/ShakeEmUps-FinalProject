@@ -55,3 +55,8 @@
       transform: translateY(0px);
     }
   }
+
+  .fa-solid,.fas {
+    font-weight: 900;
+    padding: 10px;
+}

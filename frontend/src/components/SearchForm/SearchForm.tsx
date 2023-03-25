@@ -1,15 +1,19 @@
 import "./searchForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
+import CocktailContext from "../../context/CocktailContext";
 
 
 export function SearchForm(){
 
     // Initial state of cocktails returned is empty
     const [cocktails, setCocktails] = useState<Root>();
+
+    //using context to pull favorites 
+    const { favorites } = useContext(CocktailContext);
 
     // Initial state of the search bar is blank
     const [value, setValue] = useState<string>("");
