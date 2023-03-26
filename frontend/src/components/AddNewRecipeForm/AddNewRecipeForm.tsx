@@ -1,6 +1,7 @@
 import "./addNewRecipeForm.css"
 import DrinkModel from "../models/DrinkModel"
 import { FormEvent, useEffect, useState } from "react";
+import { addDrink } from "../../services/RecipeService";
 
 interface Props {
     initialTo?: string;
@@ -72,9 +73,18 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
   
     function handleSubmit(e: FormEvent) {
       e.preventDefault();
-    //   addDrink({
-    //     strDrink, strGlass, strTags
-    //   }).then(onAdd);
+      console.log(strGlass);
+      addDrink({
+        strDrink, 
+        strGlass, 
+        strIngredient1,
+        volume1: Number(volume1),
+        strMeasure1,
+        strInstructions,
+        addtionalInfo  
+      }).then(data => {
+        console.log(data);
+      });
     //   setStrDrink(initialTo);
     //   setGlass("");
     //   setTags("");
@@ -93,6 +103,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="name"
                 placeholder="What's it called?"
                 required
+                value = {strDrink}
+                onChange = {(e) => setStrDrink(e.target.value)}
             />
 
             {/* User provides recommended glassware from drop-down list */}
@@ -104,6 +116,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="Recommended glass?"
                 required
                 list="glasses"
+                value = {strGlass}
+                onChange = {(e) => setGlass(e.target.value)}
             />
                 <datalist id="glasses">
                     <option value="Martini Glass" />
@@ -133,6 +147,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="ingredient-name"
                 placeholder="Ingredient #1"
                 required
+                value = {strIngredient1}
+                onChange = {(e) => setStrIngredient1(e.target.value)}
             />
             
             <label className="Ingredient-Volume">Ingredient Volume: </label>
@@ -142,6 +158,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="How much?"
                 required
                 list="volumes"
+                value = {volume1}
+                onChange = {(e) => setVolume1(e.target.value)}
+                
             />
             <datalist id="volumes">
                 <option value="1/4" />
@@ -174,6 +193,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="What scale?"
                 required
                 list="measurements"
+                value = {strMeasure1}
+                onChange = {(e) => setStrmeasure1(e.target.value)}
             />
                 <datalist id="measurements">
                     <option value="oz" />
@@ -195,6 +216,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="instructions"
                 placeholder="How is it made?"
                 required
+                value = {strInstructions}
+                onChange = {(e) => setStrInstructions(e.target.value)}
             />
 
             {/* User provides where they found the cocktail */}
@@ -207,6 +230,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="Where's it from?"
                 required
                 list="source-types"
+                value = {addtionalInfo}
+                onChange = {(e) => setadditionalInfo(e.target.value)}
             />
                 <datalist id="source-types">
                     <option value="book" />
@@ -225,6 +250,4 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     )
 }
 
-function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
-    throw new Error("Function not implemented.");
-}
+

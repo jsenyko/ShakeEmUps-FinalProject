@@ -1,9 +1,10 @@
 // Axios is the library primarily used for React apps, versus Fetch for JavaScript
 import axios from "axios";
+import DrinkModel from "../components/models/DrinkModel";
 
 
 // The model Recipe is used because this provides the JSON and structure for the API call
-import { Root } from "../models/Recipe";
+import { Drink, Root } from "../models/Recipe";
 
 
 
@@ -52,6 +53,13 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
     // The API call to Search By ID Letter requires the drink's ID (idDrink) in the URL
     .get<Root>(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${idDrink}`, {
     })
+    .then((response) => response.data)
+};
+
+export function addDrink(drink: DrinkModel): Promise<any>{
+    return axios
+    // The API call to Search By ID Letter requires the drink's ID (idDrink) in the URL
+    .post<any>(`http://127.0.0.1:5001/shakeemup-c22e5/us-central1/api/drink`, drink)
     .then((response) => response.data)
 };
 
