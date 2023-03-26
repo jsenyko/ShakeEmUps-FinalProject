@@ -56,6 +56,30 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
 };
 
 
+import { Drink } from "../models/Recipe";
+
+
+const baseUrl = "https://www.thecocktaildb.com/api/json/v2/9973533/"
+
+export function fetchDrink():Promise<Drink[]> {
+    return axios.get<Drink[]>(`${baseUrl}/newfavorite`)
+    .then(res => res.data)
+}
+
+export function addDrink(DrinkModel:Drink):Promise<Drink> {
+    //might need to come back and put something after the "/" like on line 7 
+    return axios.post<Drink>(`${baseUrl}/`, DrinkModel)
+    .then(res => res.data);
+  }
+  
+  export function fetchDrinkTo(user: string):Promise<Drink[]> {
+    //might need to come back and put something after the "/" like on line 7 
+    return axios.get<Drink[]>(`${baseUrl}/`, {
+      params: { to: user }
+    })
+    .then(res => res.data)
+  }
+
 // Filter by Category (Shot, Cocktail, Ordinary Drink) - first line is Category List
 // www.thecocktaildb.com/api/json/v2/9973533/list.php?c=list
 // www.thecocktaildb.com/api/json/v2/9973533/filter.php?c=Ordinary_Drink

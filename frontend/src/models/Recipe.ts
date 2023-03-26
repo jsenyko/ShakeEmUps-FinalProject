@@ -25,8 +25,8 @@ export interface Root {
     strInstructionsDE: string
     strInstructionsFR: any
     strInstructionsIT: string
-    "strInstructionsZH-HANS": any
-    "strInstructionsZH-HANT": any
+   // "strInstructionsZH-HANS": any
+   // "strInstructionsZH-HANT": any
     strDrinkThumb: string
     strIngredient1: string
     strIngredient2: string
