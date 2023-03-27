@@ -178,8 +178,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="ingredient-volume"
                 placeholder="How much?"
                 list="volumes"
-                value = {volume1}
-                onChange = {(e) => setVolume1(e.target.value)}
+                value = {strMeasure1}
+                onChange = {(e) => setStrMeasure1(e.target.value)}
                 
             />
             <datalist id="volumes">
@@ -214,7 +214,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 placeholder="What scale?"
                 list="measurements"
                 value = {strMeasure1}
-                onChange = {(e) => setStrmeasure1(e.target.value)}
+                onChange = {(e) => setStrMeasure1(e.target.value)}
             />
                 <datalist id="measurements">
                     <option value="oz" />
@@ -253,8 +253,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="source-type"
                 placeholder="Where's it from?"
                 list="source-types"
-                value = {addtionalInfo}
-                onChange = {(e) => setadditionalInfo(e.target.value)}
+                value = {strVideo}
+                onChange = {(e) => setStrVideo(e.target.value)}
             />
                 <datalist id="source-types">
                     <option value="book" />
