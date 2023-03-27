@@ -3,7 +3,6 @@ import { Drink } from "../../models/Recipe";
 import { FormEvent, useEffect, useState } from "react";
 import { addDrink } from "../../services/RecipeService";
 
-
 interface Props {
     initialTo?: string;
     onAdd?: (drink: Drink) => void
@@ -118,8 +117,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 type="text"
                 name="name"
                 placeholder="What's it called?"
-                value={strDrink} 
-                onChange={e => setStrDrink (e.target.value)} required minLength={2}
+                required
+                value = {strDrink}
+                onChange = {(e) => setStrDrink(e.target.value)}
             />
             </div>
             
@@ -133,8 +133,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="glasses"
                 placeholder="Recommended glass?"
                 list="glasses"
-                value={strGlass} 
-                onChange={e => setGlass (e.target.value)} required minLength={2}
+                value = {strGlass}
+                onChange = {(e) => setGlass(e.target.value)}
             />
                 <datalist id="glasses">
                     <option value="Martini Glass" />
@@ -165,9 +165,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 type="text"
                 name="ingredient-name"
                 placeholder="Ingredient #1"
-                value={strIngredient1} 
-                onChange={e => setStrIngredient1 (e.target.value)} required minLength={2}
-
+                required
+                value = {strIngredient1}
+                onChange = {(e) => setStrIngredient1(e.target.value)}
             />
             </div>
 
@@ -178,8 +178,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="ingredient-volume"
                 placeholder="How much?"
                 list="volumes"
-                value={strMeasure1} 
-                onChange={e => setStrMeasure1 (e.target.value)} required minLength={2}
+                value = {strMeasure1}
+                onChange = {(e) => setStrMeasure1(e.target.value)}
+                
             />
             <datalist id="volumes">
                 <option value="1/4" />
@@ -212,8 +213,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="ingredient-measurement"
                 placeholder="What scale?"
                 list="measurements"
-                value={strMeasure1}
-                onChange={e => setStrMeasure1 (e.target.value)} required minLength={2}
+                value = {strMeasure1}
+                onChange = {(e) => setStrMeasure1(e.target.value)}
             />
                 <datalist id="measurements">
                     <option value="oz" />
@@ -235,8 +236,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 type="text"
                 name="instructions"
                 placeholder="How is it made?"
-                value={strInstructions}
-                onChange={e => setStrInstructions (e.target.value)} required minLength={2}
+                required
+                value = {strInstructions}
+                onChange = {(e) => setStrInstructions(e.target.value)}
             />
             </div>
 
@@ -251,8 +253,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 name="source-type"
                 placeholder="Where's it from?"
                 list="source-types"
-                value={strVideo}
-                onChange={e => setStrVideo (e.target.value)} required minLength={2}
+                value = {strVideo}
+                onChange = {(e) => setStrVideo(e.target.value)}
             />
                 <datalist id="source-types">
                     <option value="book" />
@@ -273,5 +275,6 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
 
     )
 }
+
 
 

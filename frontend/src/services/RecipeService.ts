@@ -2,8 +2,9 @@
 import axios from "axios";
 
 
+
 // The model Recipe is used because this provides the JSON and structure for the API call
-import { Root } from "../models/Recipe";
+import { Drink, Root } from "../models/Recipe";
 
 
 
@@ -54,10 +55,6 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
     })
     .then((response) => response.data)
 };
-
-
-import { Drink } from "../models/Recipe";
-
 
 const baseUrl = "https://www.thecocktaildb.com/api/json/v2/9973533/"
 
