@@ -3,10 +3,13 @@ import { Root } from "../../models/Recipe";
 import { useState, useEffect, useContext } from "react";
 import { getCocktailDetails } from "../../services/RecipeService";
 import { useNavigate } from 'react-router-dom';
+import CocktailContext from "../../context/CocktailContext";
 
 export function RecommendationsCarousel(){
 
+    const { favorites } = useContext(CocktailContext);
     const navigate = useNavigate()
+    console.log(favorites);
 
     let recommendations = ["17255", "11202", "17253", "17206", "178325", "11690", "17249", "12127", "17828", "17218"];
 
@@ -100,23 +103,23 @@ export function RecommendationsCarousel(){
             <div className="media-group" id="group-1">
                 <div className="media-element" onClick={() => navigate(`/details/${cocktailA?.drinks[0].idDrink}`)} >
                     <img src={cocktailA?.drinks[0].strDrinkThumb} />
-                    <p>{cocktailA?.drinks[0].strDrink}</p>
+                    <p>{cocktailA?.drinks[0].strDrink}{favorites.filter(fav => fav.idDrink === cocktailA?.drinks[0].idDrink).length > 0 && <i className="fa-solid fa-heart"></i>}</p>
                 </div>
                 <div className="media-element" onClick={() => navigate(`/details/${cocktailB?.drinks[0].idDrink}`)} >
                     <img src={cocktailB?.drinks[0].strDrinkThumb} />
-                    <p>{cocktailB?.drinks[0].strDrink}</p>
+                    <p>{cocktailB?.drinks[0].strDrink}{favorites.filter(fav => fav.idDrink === cocktailB?.drinks[0].idDrink).length > 0 && <i className="fa-solid fa-heart"></i>}</p>
                 </div>
                 <div className="media-element" onClick={() => navigate(`/details/${cocktailC?.drinks[0].idDrink}`)} >
                     <img src={cocktailC?.drinks[0].strDrinkThumb} />
-                    <p>{cocktailC?.drinks[0].strDrink}</p>
+                    <p>{cocktailC?.drinks[0].strDrink}{favorites.filter(fav => fav.idDrink === cocktailC?.drinks[0].idDrink).length > 0 && <i className="fa-solid fa-heart"></i>}</p>
                 </div>
                 <div className="media-element" onClick={() => navigate(`/details/${cocktailD?.drinks[0].idDrink}`)} >
                     <img src={cocktailD?.drinks[0].strDrinkThumb} />
-                    <p>{cocktailD?.drinks[0].strDrink}</p>
+                    <p>{cocktailD?.drinks[0].strDrink}{favorites.filter(fav => fav.idDrink === cocktailD?.drinks[0].idDrink).length > 0 && <i className="fa-solid fa-heart"></i>}</p>
                 </div>
                 <div className="media-element" onClick={() => navigate(`/details/${cocktailE?.drinks[0].idDrink}`)} >
                     <img src={cocktailE?.drinks[0].strDrinkThumb} />
-                    <p>{cocktailE?.drinks[0].strDrink}</p>
+                    <p>{cocktailE?.drinks[0].strDrink}{favorites.filter(fav => fav.idDrink === cocktailE?.drinks[0].idDrink).length > 0 && <i className="fa-solid fa-heart"></i>}</p>
                 </div>
     
                 <a className="next" href="#group-2" aria-label="next">

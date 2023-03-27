@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail, getCocktailByMultipleIngredients, getLatestCocktails, getPopularCocktails } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
-import { EmptySearchAlert } from "./EmptySearchAlert";
 
 
 export function SearchForm(){
@@ -63,6 +62,10 @@ export function SearchForm(){
                     alert("It looks like you forgot to enter a search term")
                 } else {
                     getCocktailByName(value).then((cocktails) => { setCocktails(cocktails) })};
+                } else {
+                getCocktailByName(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByFirstLetter":
@@ -70,13 +73,21 @@ export function SearchForm(){
                     alert("It looks like you forgot to enter a search term")
                 } else {
                     getCocktailByFirstLetter(value).then((cocktails) => { setCocktails(cocktails) })};
+                } else {
+                getCocktailByFirstLetter(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByIngredient":
                 if(value === ""){
-                   <EmptySearchAlert />
                 } else {
                     getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
+                getCocktailByIngredient(value).then((cocktails) => {
+                    setCocktails(cocktails);
+                })};
                 break;
 
             case "findByRandom":
@@ -98,6 +109,7 @@ export function SearchForm(){
 
             case "findByLatest":
                     getLatestCocktails().then((cocktails) => { setCocktails(cocktails) });
+                break;
                 break;
 
             case "findByPopular":
