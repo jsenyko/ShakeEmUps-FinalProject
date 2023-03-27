@@ -294,9 +294,7 @@
         opacity: 0;
         transition: 250ms;
     }
-}
 
-@media screen and (max-width: 1000px) {
     .Header .Header-Hamburger {
         right: 45px;
     }

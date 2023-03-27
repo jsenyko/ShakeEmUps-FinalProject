@@ -1,5 +1,4 @@
 import "./addNewRecipeForm.css"
-import { useState } from "react";
 import DrinkModel from "../models/DrinkModel"
 import { FormEvent, useEffect, useState } from "react";
 
@@ -7,8 +6,6 @@ interface Props {
     initialTo?: string;
     onAdd?: (drink: DrinkModel) => void
 }
-
-
 
 export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
 
@@ -238,9 +235,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
         </form>
 
         </div>
+    </div>
     )
-}
+    
 
-function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
-    throw new Error("Function not implemented.");
+    function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
+        throw new Error("Function not implemented.");
+    }
 }

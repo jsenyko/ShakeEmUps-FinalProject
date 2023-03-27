@@ -61,8 +61,6 @@ export function SearchForm(){
                 if(value === ""){
                     alert("It looks like you forgot to enter a search term")
                 } else {
-                    getCocktailByName(value).then((cocktails) => { setCocktails(cocktails) })};
-                } else {
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
                 })};
@@ -72,8 +70,6 @@ export function SearchForm(){
                 if(value === ""){
                     alert("It looks like you forgot to enter a search term")
                 } else {
-                    getCocktailByFirstLetter(value).then((cocktails) => { setCocktails(cocktails) })};
-                } else {
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
                 })};
@@ -81,13 +77,9 @@ export function SearchForm(){
 
             case "findByIngredient":
                 if(value === ""){
-                } else {
-                    getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
                     alert("It looks like you forgot to enter a search term / select a search type")
                 } else {
-                getCocktailByIngredient(value).then((cocktails) => {
-                    setCocktails(cocktails);
-                })};
+                    getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
                 break;
 
             case "findByRandom":
