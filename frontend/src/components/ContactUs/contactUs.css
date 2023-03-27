@@ -1,5 +1,5 @@
 .Contact {
-    margin-top: 500px;
+    margin-top: 250px;
     margin-bottom: 250px;
     border-radius: 5px;
     padding: 20px;
@@ -58,3 +58,41 @@ input[type=text], select, textarea {
     border-radius: 15px;
     box-shadow: 0 4px #999;
   }
+
+
+  @media screen and (max-width: 600px) {
+   .contact {
+    height: 100vh;
+   }
+
+   h1 {
+    font-size: 60px;
+   }
+  }
+
+ @media only screen and (max-width: 768px) {
+    /* Tablet View */
+
+    h1 {
+        font-size: 55px;
+        text-align: center;
+    }
+
+    .Contact {
+        margin-top: 200px;
+       display: flex;
+       justify-content: center;
+       
+        
+    }
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 30px;
+        margin-bottom: 16px;
+      }
+ }
