@@ -138,6 +138,9 @@
     color: #000;
 }
 
+
+
+
 /* -------------- HAMBURGER-OPEN STYLING ------------ */
 .Hamburger-Container.visible {
     position: absolute;
@@ -271,5 +274,12 @@
     .Header .NavBar ul li a {
         opacity: 0;
         transition: 250ms;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Header-Hamburger {
+        margin: 0px;
+        padding: 0px;
     }
 }

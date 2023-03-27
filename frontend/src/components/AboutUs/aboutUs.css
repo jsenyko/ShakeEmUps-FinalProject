@@ -148,3 +148,39 @@
     background: #d83133;
     color: #fff;
 }
+
+ /* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    .AboutUs .AboutUs-Header h1 {
+        color: #000;
+        font-size: 50px;
+        padding-bottom: 30px;
+        text-align: center;
+        margin-top: 700px;
+    }
+
+}
+
+        /* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    .AboutUs .AboutUs-Header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .AboutUs .AboutUs-Header h1 {
+        color: #000;
+        font-size: 50px;
+        padding-bottom: 10px;
+        text-align: center;
+        margin-top: 800px;
+    }
+    
+    .AboutUs .AboutUs-Header p {
+        width: 90%;
+    }
+
+
+}
