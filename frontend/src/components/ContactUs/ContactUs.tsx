@@ -2,18 +2,13 @@ import "./contactUs.css";
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-
 export const ContactUs = () => {
-  const [result, showResult] = useState(false);
 
-  const [value, setValue] = useState("");
-
-  const [email, setEmail] = useState("");
-
-  const [message, setMessage] = useState("");
-
-  
-
+const [result, showResult] = useState(false);
+const [value, setValue] = useState("");
+const [email, setEmail] = useState("");
+const [message, setMessage] = useState("");
+ 
   const sendEmail = (e:React.FormEvent<HTMLElement>) => {
     e.preventDefault();
     setValue("");
@@ -50,7 +45,6 @@ export const ContactUs = () => {
 
                     <input type="submit" value="Submit"  />
                 </div>
-
             </div>
         </form>
         </div>

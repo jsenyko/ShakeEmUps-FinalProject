@@ -106,9 +106,19 @@
 
 .Header .Header-Hamburger .Hamburger-Closed i {
     color: #fff;
+    transition: 350ms;
 }
 
 .Header .Header-Hamburger .Hamburger-Closed i:hover {
+    color: #3586ff;
+}
+
+.Header.sticky .Header-Hamburger .Hamburger-Closed i {
+    color: #000;
+    transition: 350ms;
+}
+
+.Header.sticky .Header-Hamburger .Hamburger-Closed i:hover {
     color: #3586ff;
 }
 

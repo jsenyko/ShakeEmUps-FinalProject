@@ -1,14 +1,10 @@
 import "./searchForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
-import { EmptySearchAlert } from "./EmptySearchAlert";
 
-export interface ISearchFormProps {
-    onSearchClick: Function
-}
 
 export function SearchForm(){
 
@@ -16,11 +12,11 @@ export function SearchForm(){
     const [cocktails, setCocktails] = useState<Root>();
 
     // Initial state of the search bar is blank
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState<string>("");
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
-      };
+    };
 
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
@@ -46,49 +42,45 @@ export function SearchForm(){
         setValue("");
     };
 
-// Value of 'searchType' variable determines which API call to make
+    // Value of 'searchType' variable determines which API call to make
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("Looks like you forgot to select a search type / enter a search term")
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByFirstLetter":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    <EmptySearchAlert />
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByIngredient":
                 // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    <EmptySearchAlert />
-                }
+                    alert("It looks like you forgot to enter a search term / select a search type")
+                } else {
                 getCocktailByIngredient(value).then((cocktails) => {
                     setCocktails(cocktails);
-                });
-                console.log(value)
+                })};
                 break;
             case "findByRandom":
                 getRandomCocktail().then((cocktails) => {
                     setCocktails(cocktails);
                 });
-                console.log(value)
                 break;
             case "":
                 // Working on adding a modal to pop up if you don't select a search type
                 if(value === ""){
-                    <EmptySearchAlert />
+                    alert("It looks like you forgot to enter a search term / select a search type")
                 }
                 break;
               default:

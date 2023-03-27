@@ -8,13 +8,14 @@
     background: #111;
     position: relative;
     padding: 30px 0;
-    height: 300px;
+    height: 450px;
 }
 
 .RecommendationsCarousel h2 {
     color: #fff;
     text-align: center;
     margin-bottom: 15px;
+    font-size: 30px;
 }
 
 /* media scroller */
@@ -46,23 +47,27 @@
     border-radius: 0.25rem;
     overflow: hidden;
     transition: 0.3s;
+    height: 350px;
 }
 
 .RecommendationsCarousel .media-element:hover {
-    transform: scale(150%);
+    transform: scale(125%);
 }
   
 .RecommendationsCarousel .media-element > img {
     width: 100%;
-    aspect-ratio: 16 / 9;
     object-fit: cover;
-    height: 175px;
+    height: 275px;
+    cursor: pointer;
 }
 
-/* .media-element > img:hover {
-    transform: scale(150%);
-    transition: 0.3s;
-} */
+.RecommendationsCarousel .media-group .media-element > p {
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    z-index: 20;
+    cursor: pointer;
+}
   
 .RecommendationsCarousel .next,
 .RecommendationsCarousel .previous {

@@ -36,9 +36,9 @@ export function Header(){
             <div className="NavBar">
                 <ul>
                     {/* These make use of Routes to direct user to that page */}
-                   <li><a href="/">Home</a></li>
-                    <li><a href="/aboutus">About</a></li>
-                    <li><a href="/favorites">Favorites</a></li>
+                   <li><Link to="/">Home</Link></li>
+                    <li><Link to="/aboutus">About</Link></li>
+                    <li><Link to="/favorites">Favorites</Link></li>
                     <li><Link to="/contactus">Contact</Link></li>
                 </ul>
             </div>
@@ -51,10 +51,10 @@ export function Header(){
                     <div className="Icon" onClick={changeStyle}><i className="fa-solid fa-x"></i></div>
 
                     <ul className="Links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/aboutus">About</a></li>
-                        <li><a href="/favorites">Favorites</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/aboutus">About</Link></li>
+                        <li><Link to="/favorites">Favorites</Link></li>
+                        <li><Link to="/contactus">Contact</Link></li>
                     </ul>
 
                     <p>Follow us:</p>

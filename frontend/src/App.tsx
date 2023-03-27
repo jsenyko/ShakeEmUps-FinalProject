@@ -12,15 +12,17 @@ import { RecipeList } from './components/RecipeList/RecipeList';
 import CocktailContextProvider from './context/CocktailContextProvider';
 import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm';
 import { ContactUs } from './components/ContactUs/ContactUs';
+import ScrollToTop  from './components/ScrollToTop';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <ScrollToTop />
         <CocktailContextProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<div><Hero /> <RecommendationsCarousel /> <SearchForm /></div>} />
+            <Route path="/" element={<div><Hero /> <RecommendationsCarousel /> <AddNewRecipeForm /> <SearchForm /></div>} />
             <Route path="/details/:idDrink" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
