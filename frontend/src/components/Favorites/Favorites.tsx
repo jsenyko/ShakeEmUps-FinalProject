@@ -21,7 +21,7 @@ export function Favorites(){
                 <p className="Favorites_Header-Count">Total Recipes: {favorites.length}</p>
             </div>
 
-            <div>
+            {/* <div>
             <ul>
                 <li className="list active" data-filter="all" onClick={() => changeActive}>All</li>
                 <li className="list" data-filter="gin" onClick={() => changeActive}>Gin</li>
@@ -30,7 +30,7 @@ export function Favorites(){
                 <li className="list" data-filter="whiskey" onClick={() => changeActive}>Whiskey</li>
                 <li className="list" data-filter="" onClick={() => changeActive}></li>
             </ul>
-            </div>
+            </div> */}
 
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 
@@ -47,7 +47,7 @@ export function Favorites(){
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>
-                                Remove from Favorites
+                                Remove
                             </button>
                         </div>
                         </div>

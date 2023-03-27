@@ -11,6 +11,15 @@
     margin-bottom: 20px;
     font-size: 40px;
 }
+
+.SearchForm .SearchTypes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
   
 .SearchForm .radio {
     padding-right: 5px;
@@ -38,7 +47,7 @@
     border-radius: 5px;
     margin-bottom: 15px;
     margin-top: 15px;
-    width: 65%;
+    width: 50%;
     padding: 2px 7px;
     font-size: 18px;
     text-align: center;
@@ -61,4 +70,71 @@
     border-color: #E3E3E3;
     color: #3586ff;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1600px) {
+    .SearchForm .bar {
+        width: 70%;
+    }
+
+    .SearchForm .SearchTypes {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .SearchForm .SearchTypes {
+        justify-content: space-evenly;
+    }
+
+    .SearchForm .bar {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SearchForm h1 {
+        margin-bottom: 20px;
+        font-size: 30px;
+    }
+
+    .SearchForm .SearchTypes {
+        justify-content: space-between;
+    }
+
+    .SearchForm .radio {
+        font-size: 14px;
+    }
+
+    .SearchForm .bar {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .SearchForm .SearchTypes {
+        justify-content: center;
+    }
+
+    .SearchForm .bar {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .SearchForm .SearchTypes {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .SearchForm {
+        padding-top: 100px;
+    }
+
+    .SearchForm .SearchTypes {
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
 }

@@ -271,6 +271,18 @@
 }
 
 /* Mobile Responsiveness */
+@media screen and (max-width: 1300px) {
+    .Header .NavBar {
+        transform: translateX(-50px);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .Header .NavBar {
+        transform: translateX(-30px);
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .Header .Header-Hamburger {
         right: 0;
@@ -281,5 +293,31 @@
     .Header .NavBar ul li a {
         opacity: 0;
         transition: 250ms;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .Header .Header-Hamburger {
+        right: 45px;
+    }
+
+    .Header .Logo {
+        transform: translateX(100px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Header .Header-Hamburger {
+        right: 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .Header .Logo {
+        display: none;
+    }
+
+    .Header .Header-Hamburger {
+        right: 30px;
     }
 }

@@ -8,6 +8,17 @@ export function RecommendationsCarousel(){
 
     const navigate = useNavigate()
 
+    let recommendations = ["17255", "11202", "17253", "17206", "178325", "11690", "17249", "12127", "17828", "17218"];
+
+    // Trying to take the recommendations array above and map it over this useState and useEffect so I can avoid
+    // repeating the code for every API call and result
+    const [reco, setReco] = useState<Root>();
+    useEffect(() => {
+    let recoA = getCocktailDetails(String(recommendations[0]))
+        recoA.then((reco) => setReco(reco))
+    }, []);
+
+
     // Recommendation API Call - Cocktail A (Gimlet)
     const [cocktailA, setCocktailA] = useState<Root>();
     useEffect(() => {

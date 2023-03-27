@@ -20,13 +20,12 @@ function App() {
         <CocktailContextProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<div><Hero /> <RecommendationsCarousel /> <SearchForm /></div>} />
+            <Route path="/" element={<div><Hero /> <RecommendationsCarousel />  <SearchForm /> <AddNewRecipeForm /></div>} />
             <Route path="/details/:idDrink" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />
           </Routes>
-          <AddNewRecipeForm />
           <Footer />
         </CocktailContextProvider>
       </div>

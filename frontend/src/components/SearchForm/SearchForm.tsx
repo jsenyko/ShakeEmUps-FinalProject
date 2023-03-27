@@ -13,10 +13,6 @@ export function SearchForm(){
 
     // Initial state of the search bar is blank
     const [value, setValue] = useState<string>("");
-
-    // const [valueMulti1, setValueMulti1] = useState<string>("");
-    // const [valueMulti2, setValueMulti2] = useState<string>("");
-    // const [valueMulti3, setValueMulti3] = useState<string>("");
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
