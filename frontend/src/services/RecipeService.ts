@@ -2,8 +2,9 @@
 import axios from "axios";
 
 
+
 // The model Recipe is used because this provides the JSON and structure for the API call
-import { Root } from "../models/Recipe";
+import { Drink, Root } from "../models/Recipe";
 
 // Axios used with the HTTP verb 'get' and we expect a Recipe to be returned
 
@@ -80,6 +81,26 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
     .then((response) => response.data)
 };
 
+const baseUrl = "https://www.thecocktaildb.com/api/json/v2/9973533/"
+
+export function fetchDrink():Promise<Drink[]> {
+    return axios.get<Drink[]>(`${baseUrl}/newfavorite`)
+    .then(res => res.data)
+}
+
+export function addDrink(DrinkModel:Drink):Promise<Drink> {
+    //might need to come back and put something after the "/" like on line 7 
+    return axios.post<Drink>(`${baseUrl}/`, DrinkModel)
+    .then(res => res.data);
+  }
+  
+  export function fetchDrinkTo(user: string):Promise<Drink[]> {
+    //might need to come back and put something after the "/" like on line 7 
+    return axios.get<Drink[]>(`${baseUrl}/`, {
+      params: { to: user }
+    })
+    .then(res => res.data)
+  }
 
 // Give the user the option to filter the results by Category (i.e. - only return cocktails, not shots)
 // Would likely make the API call and return all results then use .filter if Category matches this value
