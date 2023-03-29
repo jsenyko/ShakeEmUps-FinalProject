@@ -21,10 +21,6 @@ export function RecommendationsCarousel(){
         recoA.then((reco) => setReco(reco))
     }, []);
 
-    const recoList = ["17255", "11202", "17253", "17206", "178325", "11690", "17249", "12127", "17828", "17218"];
-
-    const recoList = ["17255", "11202", "17253", "17206", "178325", "11690", "17249", "12127", "17828", "17218"];
-
     // Recommendation API Call - Cocktail A (Gimlet)
     const [cocktailA, setCocktailA] = useState<Root>();
     useEffect(() => {
