@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Basic page and card styling */
 .AboutUs {
     position: relative;
@@ -7,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 220px;
+    margin-top: 250px;
 }
 
 .AboutUs .AboutUs-Header {
@@ -15,6 +21,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .AboutUs .AboutUs-Header h1 {
@@ -35,8 +42,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding-top: 30px;
-    width: 80%;
+    padding: 30px 0 100px;
+    width: 100%;
 }
 
 .AboutUs .AboutUs-Cards .AboutUs-Card {
@@ -49,6 +56,10 @@
     align-items: center;
     transition: 500ms;
     margin: 20px 0 50px 0;
+}
+
+.AboutUs .AboutUs-Cards .AboutUs-Card:hover {
+    width: 600px;
 }
 
 /* Creating the box that will hold our pictures */
@@ -149,6 +160,7 @@
     color: #fff;
 }
 
+<<<<<<< Updated upstream
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 1300px) {
@@ -265,5 +277,92 @@
     .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content p,
     .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content a {
         width: 250px;
+=======
+@media screen and (max-width: 1215px) {
+    .AboutUs {
+        height: 1500px;
+        margin-top: 220px;
+    }
+
+    .AboutUs .AboutUs-Cards {
+        padding-top: 0px;
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(1){
+        transform: translate(-150px, 0);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(2){
+        transform: translate(150px, -50px);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(3){
+        transform: translate(-150px, -50px);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(4){
+        transform: translate(150px, -50px);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .AboutUs {
+        height: 1500px;
+        margin-top: -70px;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    .AboutUs {
+        height: 1500px;
+        margin-top: 240px;
+    }
+}
+
+@media screen and (max-width: 940px) {
+    .AboutUs {
+        height: 1600px;
+        margin-top: 220px;
+    }
+
+    .AboutUs .AboutUs-Cards {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0px;
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(1){
+        transform: translate(0, 0);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(2){
+        transform: translate(0, 0);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(3){
+        transform: translate(0, 0);
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:nth-child(4){
+        transform: translate(0, 0);
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .AboutUs {
+        margin-top: 220px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .AboutUs {
+        margin-top: 250px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .AboutUs {
+        margin-top: 300px;
+>>>>>>> Stashed changes
     }
 }
