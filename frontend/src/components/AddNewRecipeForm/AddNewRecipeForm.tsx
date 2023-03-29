@@ -3,6 +3,8 @@ import { Drink } from "../../models/Recipe";
 import { FormEvent, useEffect, useState } from "react";
 import { addDrink } from "../../services/RecipeService";
 
+
+
 interface Props {
     initialTo?: string;
     onAdd?: (drink: Drink) => void
@@ -267,7 +269,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
             </div>
             </div> 
             {/* User clicks button to POST recipe to backend (yet to be built) */}
-            <button>Add new cocktail!</button>
+            {/* <button onClick={() => addDrink("/favorites")}> 
+            
+            Add new cocktail!</button> */}
         </form>
 
         </div>
