@@ -3,6 +3,8 @@ import { Drink } from "../../models/Recipe";
 import { FormEvent, useEffect, useState } from "react";
 import { addDrink } from "../../services/RecipeService";
 
+
+
 interface Props {
     initialTo?: string;
     onAdd?: (drink: Drink) => void
@@ -75,6 +77,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
        }).then(onAdd);
+       console.log(onAdd);
        setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
        setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
        setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR, setStrInstructionsIT, 
@@ -269,7 +272,9 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
             </div>
 
             {/* User clicks button to POST recipe to backend (yet to be built) */}
-            <button>Add new cocktail!</button>
+            {/* <button onClick={() => addDrink("/favorites")}> 
+            
+            Add new cocktail!</button> */}
         </form>
 
         </div>
