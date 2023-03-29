@@ -87,6 +87,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
        }).then(onAdd);
+       console.log(onAdd);
        setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
        setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
        setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR, setStrInstructionsIT, 

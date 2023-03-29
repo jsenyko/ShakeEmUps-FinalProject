@@ -1,12 +1,15 @@
 import "./searchForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Root } from "../../models/Recipe";
 import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
+import CocktailContext from "../../context/CocktailContext";
 
 
 export function SearchForm(){
+
+    const { favorites } = useContext(CocktailContext);
 
     // Initial state of cocktails returned is empty
     const [cocktails, setCocktails] = useState<Root>();
@@ -210,7 +213,7 @@ export function SearchForm(){
         {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
         <button id="Button-Search" onClick={onSearchClick}>Search</button>
 
-        {cocktails && <RecipeList cocktails={cocktails}/>}
+        {cocktails && <RecipeList cocktails={cocktails} favorites={favorites}/>}
     </div>
     )
 }
