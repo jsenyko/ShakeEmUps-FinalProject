@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 interface IRecipeItemProps {
     cocktail: Drink
+    isFavorite: boolean;
 };
 
 export function RecipeItem(props:IRecipeItemProps){
@@ -16,12 +17,6 @@ export function RecipeItem(props:IRecipeItemProps){
     // Context used so you can call the function addCocktail that adds
     // the cocktail selected to the Favorites array / page
     const { addCocktail, removeCocktail } = useContext(CocktailContext);
-
-    // Toggles the Button-Favorite styling when it is clicked
-    const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)
-    const ToggleFavoriteButtonClass = () => {
-        setFavoriteButtonClicked(!favoriteButtonClicked);
-    };
 
     return (
         <div className="RecipeCard">
@@ -37,8 +32,8 @@ export function RecipeItem(props:IRecipeItemProps){
                     Details
                 </button>
                 <button
-                    className={favoriteButtonClicked ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
-                    onClick={() => {favoriteButtonClicked ? removeCocktail(cocktail.idDrink) : addCocktail(cocktail); ToggleFavoriteButtonClass();} }>
+                    className={props.isFavorite ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
+                    onClick={() => {props.isFavorite ? removeCocktail(cocktail.idDrink) : addCocktail(cocktail)} }>
                     <i className="fa-solid fa-heart"></i>
                 </button>
             </div>
