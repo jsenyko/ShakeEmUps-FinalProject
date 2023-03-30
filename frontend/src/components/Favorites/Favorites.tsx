@@ -1,12 +1,18 @@
 import "./favorites.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CocktailContext from "../../context/CocktailContext";
 import { useNavigate } from "react-router-dom";
 
 export function Favorites(){
 
+    const [active, setActive] = useState<Boolean>(true)
+
     const { favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
+
+    function changeActive(){
+
+    }
 
     return (
         <div className="Favorites" id="favorites">
@@ -15,9 +21,20 @@ export function Favorites(){
                 <p className="Favorites_Header-Count">Total Recipes: {favorites.length}</p>
             </div>
 
+            {/* <div>
+            <ul>
+                <li className="list active" data-filter="all" onClick={() => changeActive}>All</li>
+                <li className="list" data-filter="gin" onClick={() => changeActive}>Gin</li>
+                <li className="list" data-filter="vodka" onClick={() => changeActive}>Vodka</li>
+                <li className="list" data-filter="rum" onClick={() => changeActive}>Rum</li>
+                <li className="list" data-filter="whiskey" onClick={() => changeActive}>Whiskey</li>
+                <li className="list" data-filter="" onClick={() => changeActive}></li>
+            </ul>
+            </div> */}
+
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 
-                    <div className="RecipeCard" key={cocktail.idDrink}>
+                    <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
                             <img src={cocktail.strDrinkThumb} alt="" />
@@ -30,7 +47,7 @@ export function Favorites(){
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>
-                                Remove from Favorites
+                                Remove
                             </button>
                         </div>
                         </div>

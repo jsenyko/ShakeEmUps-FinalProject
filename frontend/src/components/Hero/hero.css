@@ -45,3 +45,34 @@
     font-weight: 400;
     max-width: 700px;
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 600px) {
+    .Hero .text h2 {
+        font-size: 3.5em;
+    }
+
+    .Hero .text p {
+        margin: 20px 35px 0 0;
+    }
+
+    .Hero video {
+        opacity: 0.6;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .Hero {
+        background: #fff;
+        margin-bottom: -175px;
+    }
+    
+    .Hero video {
+        display: none;
+    }
+
+    .Hero .text h2,
+    .Hero .text p {
+        color: #000;
+    }
+}

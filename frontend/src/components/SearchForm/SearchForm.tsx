@@ -2,7 +2,7 @@ import "./searchForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useContext, useState } from "react";
 import { Root } from "../../models/Recipe";
-import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail } from "../../services/RecipeService";
+import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail, getCocktailByMultipleIngredients, getLatestCocktails, getPopularCocktails } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
 import CocktailContext from "../../context/CocktailContext";
 
@@ -24,7 +24,7 @@ export function SearchForm(){
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
     // Default value selected is 'findByName'
-    const [searchType, setSearchType] = useState("");
+    const [searchType, setSearchType] = useState<String>("");
 
     // When user clicks a different option the searchType changes
     // and the text in the Search Bar resets to blank so you can see the placeholder
@@ -44,48 +44,81 @@ export function SearchForm(){
         setSearchType("findByRandom");
         setValue("");
     };
+    const handleMultiChange = () => {
+        setSearchType("findByMulti");
+        setValue("");
+    };
+    const handleLatestChange = () => {
+        setSearchType("findByLatest");
+        setValue("");
+    };
+    const handlePopularChange = () => {
+        setSearchType("findByPopular");
+        setValue("");
+    };
 
     // Value of 'searchType' variable determines which API call to make
     const onSearchClick = () => {
         switch (searchType) {
             case "findByName":
-                // Working on adding a modal to pop up if you don't enter a search term
+                // If the search value is blank (""), then alert the user they need to enter something (repeated in other searchTypes below)
                 if(value === ""){
-                    alert("It looks like you forgot to enter a search term / select a search type")
+                    alert("It looks like you forgot to enter a search term")
                 } else {
                 getCocktailByName(value).then((cocktails) => {
                     setCocktails(cocktails);
                 })};
                 break;
+
             case "findByFirstLetter":
-                // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
-                    alert("It looks like you forgot to enter a search term / select a search type")
+                    alert("It looks like you forgot to enter a search term")
                 } else {
                 getCocktailByFirstLetter(value).then((cocktails) => {
                     setCocktails(cocktails);
                 })};
                 break;
+
             case "findByIngredient":
-                // Working on adding a modal to pop up if you don't enter a search term
                 if(value === ""){
                     alert("It looks like you forgot to enter a search term / select a search type")
                 } else {
-                getCocktailByIngredient(value).then((cocktails) => {
-                    setCocktails(cocktails);
-                })};
+                    getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
                 break;
+
             case "findByRandom":
-                getRandomCocktail().then((cocktails) => {
-                    setCocktails(cocktails);
-                });
+                    getRandomCocktail().then((cocktails) => { setCocktails(cocktails) });
                 break;
+
+            case "findByMulti":
+                if(value === ""){
+                    alert("It looks like you forgot to enter a search term")
+                // If the values entered don't return a result, then alert the user
+                // The API call requires ingredients be entered without spaces, so .split and .join have to be used to remove any spaces entered
+                // The concern here is things like Dry_Vermouth or Light_Rum - how to account for those?
+                } else if (getCocktailByMultipleIngredients(value.split(" ").join("")).then((cocktails) => {setCocktails(cocktails)}) === undefined){
+                    alert("Sorry, no results found")
+                    console.log(cocktails);
+                } else {
+                    getCocktailByMultipleIngredients(value.split(" ").join("")).then((cocktails) => { setCocktails(cocktails) })};
+                break;
+
+            case "findByLatest":
+                    getLatestCocktails().then((cocktails) => { setCocktails(cocktails) });
+                break;
+                break;
+
+            case "findByPopular":
+                    getPopularCocktails().then((cocktails) => { setCocktails(cocktails) });
+                break;
+
             case "":
                 // Working on adding a modal to pop up if you don't select a search type
                 if(value === ""){
-                    alert("It looks like you forgot to enter a search term / select a search type")
+                    alert("It looks like you forgot to select a search type")
                 }
                 break;
+
               default:
                 break;
         };
@@ -103,6 +136,7 @@ export function SearchForm(){
                     id="input"
                     value="findByName"
                     checked={searchType === "findByName"}
+                    // This calls the function above to set the searchType state and reset the search bar text to a blank string (so you can see the placeholder text)
                     onChange={handleNameChange}
                 />Find by Name
             </label>
@@ -124,9 +158,10 @@ export function SearchForm(){
                     value="findByIngredient"
                     checked={searchType === "findByIngredient"}
                     onChange={handleIngredientChange}
-                />Find by Ingredient
+                />Find by Ingredient (1)
             </label>
-            <label className={searchType === "findByRandom" ? "radio active" : "radio"}>
+            {/* This searchType (along with Popular and Latest) allow you to call the onSearchClick by double clicking the label */}
+            <label className={searchType === "findByRandom" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
                 <input
                     type="radio"
                     name="searchType"
@@ -134,7 +169,37 @@ export function SearchForm(){
                     value="findByRandom"
                     checked={searchType === "findByRandom"}
                     onChange={handleRandomChange}
-                />Find by Random
+                />I'm Feeling Lucky
+            </label>
+            <label className={searchType === "findByMulti" ? "radio active" : "radio"}>
+                <input
+                    type="radio"
+                    name="searchType"
+                    id="input"
+                    value="findByMulti"
+                    checked={searchType === "findByMulti"}
+                    onChange={handleMultiChange}
+                />Find by Ingredients (3)
+            </label>
+            <label className={searchType === "findByLatest" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
+                <input
+                    type="radio"
+                    name="searchType"
+                    id="input"
+                    value="findByLatest"
+                    checked={searchType === "findByLatest"}
+                    onChange={handleLatestChange}
+                />Show Recently Added
+            </label>
+            <label className={searchType === "findByPopular" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
+                <input
+                    type="radio"
+                    name="searchType"
+                    id="input"
+                    value="findByPopular"
+                    checked={searchType === "findByPopular"}
+                    onChange={handlePopularChange}
+                />Show Most Popular
             </label>
             </div>
 
@@ -202,6 +267,48 @@ export function SearchForm(){
                     value={value}
                     onChange={onChange}
                     placeholder="Not sure what you want?"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
+                />
+            )}
+            {searchType === "findByMulti" && (
+                <input
+                    className="bar"
+                    type="search"
+                    value={value}
+                    onChange={onChange}
+                    placeholder="What ingredients does it include (up to 3, separated by commas)"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
+                />
+            )}
+            {searchType === "findByLatest" && (
+                <input
+                    className="bar"
+                    type="search"
+                    value={value}
+                    onChange={onChange}
+                    placeholder="Not sure what you want? Here are the newest cocktails added!"
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter"){
+                            onSearchClick()
+                        }
+                    }}
+                />
+            )}
+            {searchType === "findByPopular" && (
+                <input
+                    className="bar"
+                    type="search"
+                    value={value}
+                    onChange={onChange}
+                    placeholder="Not sure what you want? Check out our most popular cocktails currently!"
                     onKeyDown={(e) => {
                         if(e.key === "Enter"){
                             onSearchClick()

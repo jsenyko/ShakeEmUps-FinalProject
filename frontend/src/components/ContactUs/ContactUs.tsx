@@ -23,14 +23,16 @@ const [message, setMessage] = useState("");
       });
     //   e.currentTarget.reset();
       showResult(true);
-      
   };
     
     return (
         <div className="Contact" id="contactus" >
             <form id="contactForm" action=""  onSubmit={sendEmail}>
             <div className="contactName">
-                <h1>CONTACT</h1>
+            
+                <h1>Contact Us</h1>
+                <h2>GET IN TOUCH</h2>
+                
                 <div className="name">
                     <label htmlFor="name">Name:</label>
                     <input type="text" name="user_name" value={value} onChange={(e) => setValue(e.target.value)}  placeholder="Enter your name" />

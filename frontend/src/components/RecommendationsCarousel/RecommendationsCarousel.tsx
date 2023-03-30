@@ -11,6 +11,11 @@ export function RecommendationsCarousel(){
     const navigate = useNavigate()
     console.log(favorites);
 
+    let recommendations = ["17255", "11202", "17253", "17206", "178325", "11690", "17249", "12127", "17828", "17218"];
+
+    // Trying to take the recommendations array above and map it over this useState and useEffect so I can avoid
+    // repeating the code for every API call and result
+
     // Recommendation API Call - Cocktail A (Gimlet)
     const [cocktailA, setCocktailA] = useState<Root>();
     useEffect(() => {
@@ -85,6 +90,7 @@ export function RecommendationsCarousel(){
     return (
     <div className="RecommendationsCarousel">
         <h2>Checkout some seasonal recommendations we think you'll love!</h2>
+
         <div className="media-container">
             <div className="media-scroller">
     

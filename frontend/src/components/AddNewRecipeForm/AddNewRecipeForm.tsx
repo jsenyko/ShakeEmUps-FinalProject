@@ -1,24 +1,18 @@
 import "./addNewRecipeForm.css"
-import { Drink } from "../../models/Recipe";
-import { FormEvent, useEffect, useState } from "react";
+import { Drink, Root } from "../../models/Recipe";
+import { Ingredient } from "./Ingredient";
+import { FormEvent, useEffect, useState, useContext } from "react";
 import { addDrink } from "../../services/RecipeService";
-
-
+import CocktailContext from "../../context/CocktailContext";
+import { getCocktailDetails } from "../../services/RecipeService";
+import { FaStar } from "react-icons/fa";
 
 interface Props {
     initialTo?: string;
     onAdd?: (drink: Drink) => void
 }
 
-
-
 export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
-
-
-    const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
-    const flipCaret = () => {
-        changeCaretDirection(!caretDirection);
-    };
     
     const [ idDrink, setIdDrink ] = useState(initialTo);
     const [ strDrink, setStrDrink ] = useState("");
@@ -69,8 +63,6 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     const [ strImageAttribution, setStrImageAttribution] = useState("");
     const [ strCreativeCommonsConfirmed, setStrCreativeCommonsConfirmed] = useState("");
     const [ dateModified, setDateModified] = useState("");
-    
-  
   
     useEffect(() => setIdDrink(initialTo), [initialTo]);
   
@@ -86,8 +78,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     strMeasure1, strMeasure2,strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7,
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
-       }).then(onAdd);
-       console.log(onAdd);
+       }).then(onAdd); /* eslint-disable-next-line */
        setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
        setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
        setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR, setStrInstructionsIT, 
@@ -100,186 +91,519 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
       
     }
 
+    const [caretDirection, changeCaretDirection] = useState<Boolean>(true)
+    const flipCaret = () => {
+        changeCaretDirection(!caretDirection);
+    };
+
+    // Context used so you can call the function addCocktail that adds
+    // the cocktail selected to the Favorites array / page
+    const { addCocktail, removeCocktail } = useContext(CocktailContext);
+
+    // Toggles the Button-Favorite styling when it is clicked
+    const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)
+    const ToggleFavoriteButtonClass = () => {
+        setFavoriteButtonClicked(!favoriteButtonClicked);
+    };
+
+    // useState related to Cocktail Rating element
+    const [rating, setRating] = useState<Number>(0);
+    const [hover, setHover] = useState<Number>(0);
+
+    // useState that brings in cocktails details from API Call return
+    const [details, setDetails] = useState<Root>();
+
+    // Makes the API Call using the idDrink param and returns a result
+    useEffect(() => {
+        let recipeResult = getCocktailDetails(String(idDrink));
+            recipeResult.then((x) => setDetails(x))
+        }, []);
+
+    
+    // Toggles the Add New Cocktail button styling when clicked
+    const [addNewButtonClicked, setAddNewButtonClicked] = useState<Boolean>(true)
+    const ToggleAddNewButtonClass = () => {
+        setAddNewButtonClicked(!addNewButtonClicked);
+    };
+
+    const [activeIngredient2, setActiveIngredient2] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient2 = () => {
+        setActiveIngredient2("Form-Ingredient active")
+    }
+    const [activeIngredient3, setActiveIngredient3] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient3 = () => {
+        setActiveIngredient3("Form-Ingredient active")
+    }    
+    const [activeIngredient4, setActiveIngredient4] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient4 = () => {
+        setActiveIngredient4("Form-Ingredient active")
+    }
+    const [activeIngredient5, setActiveIngredient5] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient5 = () => {
+        setActiveIngredient5("Form-Ingredient active")
+    }   
+    const [activeIngredient6, setActiveIngredient6] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient6 = () => {
+        setActiveIngredient6("Form-Ingredient active")
+    }
+    const [activeIngredient7, setActiveIngredient7] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient7 = () => {
+        setActiveIngredient7("Form-Ingredient active")
+    }    
+    const [activeIngredient8, setActiveIngredient8] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient8 = () => {
+        setActiveIngredient8("Form-Ingredient active")
+    }
+    const [activeIngredient9, setActiveIngredient9] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient9 = () => {
+        setActiveIngredient9("Form-Ingredient active")
+    }   
+    const [activeIngredient10, setActiveIngredient10] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient10 = () => {
+        setActiveIngredient10("Form-Ingredient active")
+    }
+    const [activeIngredient11, setActiveIngredient11] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient11 = () => {
+        setActiveIngredient11("Form-Ingredient active")
+    }   
+    const [activeIngredient12, setActiveIngredient12] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient12 = () => {
+        setActiveIngredient12("Form-Ingredient active")
+    }
+    const [activeIngredient13, setActiveIngredient13] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient13 = () => {
+        setActiveIngredient13("Form-Ingredient active")
+    }    
+    const [activeIngredient14, setActiveIngredient14] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient14 = () => {
+        setActiveIngredient14("Form-Ingredient active")
+    }
+    const [activeIngredient15, setActiveIngredient15] = useState<string>("Form-Ingredient hidden")
+    const ShowNextIngredient15 = () => {
+        setActiveIngredient15("Form-Ingredient active")
+    }  
+
 
     return (
-        
-        <div className={caretDirection? "AddNewRecipe-Open" : "AddNewRecipe-Closed"}>
-        <h1>Find a new favorite?</h1>
-        <h3>Add it here!</h3>
-        <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
 
-        
+        <div className={caretDirection? "AddNewRecipe-Open" : "AddNewRecipe-Closed"}>
+        <div className="AddNewRecipe-Header">
+            <h1>Want to submit a new cocktail?</h1>
+            <h3>Add it here!</h3>
+            <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
+        </div>
+
         <div className="AddNewRecipe" onSubmit={handleSubmit}>
-        <h3>Let's add a new recipe!</h3>
         <form className="AddNewRecipe-Form">
 
-            {/* User provides name of the cocktail */}
-            <div className="Form-Name">  
-            <label className="Form-Name">Cocktail Name: </label>
-            <input
-                type="text"
-                name="name"
-                placeholder="What's it called?"
-                required
-                value = {strDrink}
-                onChange = {(e) => setStrDrink(e.target.value)}
-            />
+            {/* This includes the Form-Left and Form-Right sections for CSS styling */}
+            <div className="Form-Top">
+
+            {/* This section holds the Cocktail Name, Glass Type, and Source info */}
+            <div className="Form-Left">
+
+                {/* User provides name of the cocktail */}
+                <div className="Form-Name">
+                <label>Cocktail Name: </label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="What's it called?"
+                    required
+                    value = {strDrink}
+                    onChange = {(e) => setStrDrink(e.target.value)}
+                />
+                </div>
+
+                {/* User provides recommended glassware from drop-down list */}
+                <div className="Form-Glass">
+                <label>Glass Used: </label>
+                <input
+                    type="list"
+                    name="glasses"
+                    placeholder="Recommended glass?"
+                    list="glasses"
+                    value = {strGlass}
+                    onChange = {(e) => setGlass(e.target.value)}
+                />
+                    <datalist id="glasses">
+                        <option value="Martini Glass" />
+                        <option value="Highball Glass" />
+                        <option value="Collins Glass" />
+                        <option value="Rocks Glass" />
+                        <option value="Coupe Glass" />
+                        <option value="Copper Mug" />
+                        <option value="Margarita Glass" />
+                        <option value="Nick & Nora" />
+                        <option value="Hurricane Glass" />
+                        <option value="Pint Glass" />
+                        <option value="Shot Glass" />
+                        <option value="Lowball Glass" />
+                        <option value="Sniftter Glass" />
+                        <option value="Julep Cup" />
+                        <option value="Sour Glass" />
+                        <option value="Zombie Glass" />
+                    </datalist>
+                </div>
+
+                {/* User provides where they found the cocktail */}
+                {/* Options will be provided for Book, URL, etc. */}
+                {/* Based on selection the Book Source will change - Book Name/Page #, URL, App Name */}
+                <div className="Form-Source">
+
+                    <div className="Source-Type">   
+                        <label>Source Type: </label>
+                        <input type="list" name="source-type" placeholder="Where did you find it?" list="source-types" value = {strVideo} onChange = {(e) => setStrVideo(e.target.value)} />
+                            <datalist id="source-types">
+                                <option value="Book" /><option value="Website" /><option value="App" />
+                            </datalist>
+                    </div>
+
+                    <div className="Source-Name">
+                        <label>Source Type: </label>
+                        <input type="text" name="source-name" placeholder="Book Name, Website, Youtube, etc." />
+                    </div>
+
+                    <div className="Source-Addl">
+                        <label>Source Addl: </label>
+                        <input type="text" name="source-addl" placeholder="Book Page(s), URL, etc." />
+                    </div>
+                </div>
+
+                <div className="Form-Left-Addl">
+
+                {/* Button that when clicked uses context to add this cocktail to Favorites array */}
+                <div className="Form-Favorite">
+                    <p>Add to Favorites</p>
+                    {/* Button's current className determines whether to addCocktail or removeCocktail via Context */}
+                    <button
+                        className={favoriteButtonClicked ? "Button-Favorites clicked" : "Button-Favorites unclicked"}
+                        onClick={() => {ToggleFavoriteButtonClass();} }>
+                        <i className="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+
+                <div className="Form-Rating">
+                    <p>Rate this Cocktail</p>
+                        <div className="Rating-Container">
+                            <div className="Rating">
+                                {/* Import the FaStar icon and map it into an empty array
+                                Using "i" gives each star a number when iterating with .map
+                                Note it is zero indexed */}
+                                {[...Array(5)].map((star, i) => {
+                                    const ratingValue = i + 1
+
+                                    return <label>
+                                    {/* The star clicked changes the rate and sets it to that star's ratingValue (i+1) */}
+                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />
+                                    
+                                    {/* Star's color is based on the current ratingValue and rating, red or gray, but the hover state overrides this */}
+                                    <FaStar className="star" size={25} color={ratingValue <= (hover || rating) ? "#d83133" : "#e4e5e9"}  onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
+                                    </label>
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            
 
-            {/* User provides recommended glassware from drop-down list */}
-            <div className="Form-Glass"> 
-            <label>Glass Used: </label>
-
-            <input
-                type="list"
-                name="glasses"
-                placeholder="Recommended glass?"
-                list="glasses"
-                value = {strGlass}
-                onChange = {(e) => setGlass(e.target.value)}
-            />
-                <datalist id="glasses">
-                    <option value="Martini Glass" />
-                    <option value="Highball Glass" />
-                    <option value="Collins Glass" />
-                    <option value="Rocks Glass" />
-                    <option value="Coupe Glass" />
-                    <option value="Copper Mug" />
-                    <option value="Margarita Glass" />
-                    <option value="Nick & Nora" />
-                    <option value="Hurricane Glass" />
-                    <option value="Pint Glass" />
-                    <option value="Shot Glass" />
-                    <option value="Lowball Glass" />
-                    <option value="Sniftter Glass" />
-                    <option value="Julep Cup" />
-                    <option value="Sour Glass" />
-                    <option value="Zombie Glass" />
-                </datalist>
+            {/* This section holds the Cocktail Image + button to add to the form */}
+            <div className="Form-Right">
+                <div className="Image-Container">
+                    <img src="#" alt="" />
+                </div>
+                <button>Add Cocktail Image</button>
             </div>
 
-            {/* User provides ingredients, with options to add more onClick */}
-            <div className="Form-Ingredients">
-
-            <div className="Ingredient-Name"> 
-            <label>Ingredient Name: </label>
-            <input
-                type="text"
-                name="ingredient-name"
-                placeholder="Ingredient #1"
-                required
-                value = {strIngredient1}
-                onChange = {(e) => setStrIngredient1(e.target.value)}
-            />
             </div>
 
-            <div className="Ingredient-Volume"> 
-            <label>Ingredient Volume: </label>
-            <input
-                type="list"
-                name="ingredient-volume"
-                placeholder="How much?"
-                list="volumes"
-                value = {strMeasure1}
-                onChange = {(e) => setStrMeasure1(e.target.value)}
+            {/* This section holds the Ingredients, Instructions, Add to Favorites, and Cocktail Rating along with the Button to POST in backend */}
+            <div className="Form-Bottom">
+
+                <p className="Bottom-Header">Add the Ingredients</p>
+
+                {/* User provides ingredients, with options to add more onClick */}
+                <div className="Form-Ingredients">
                 
-            />
-            <datalist id="volumes">
-                <option value="1/4" />
-                <option value="1/2" />
-                <option value="3/4" />
-                <option value="1" />
-                <option value="1 1/4" />
-                <option value="1 1/2" />
-                <option value="1 3/4" />
-                <option value="2" />
-                <option value="2 1/4" />
-                <option value="2 1/2" />
-                <option value="2 3/4" />
-                <option value="3" />
-                <option value="3 1/4" />
-                <option value="3 1/2" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-                <option value="" />
-            </datalist>
+                {/* Ingredient #1 */}
+                <div className="Form-Ingredient active">
+                <div className="Ingredient-Name" id="strIngredient1"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #1" required value = {strIngredient1} onChange = {(e) => setStrIngredient1(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure1"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure1} onChange = {(e) => setStrMeasure1(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient2}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #2 */}
+                <div className={activeIngredient2}>
+                <div className="Ingredient-Name" id="strIngredient2"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #2" required value = {strIngredient2} onChange = {(e) => setStrIngredient2(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure2"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure2} onChange = {(e) => setStrMeasure2(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient3}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #3 */}
+                <div className={activeIngredient3}>
+                <div className="Ingredient-Name" id="strIngredient3"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #3" required value = {strIngredient3} onChange = {(e) => setStrIngredient3(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure3"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure3} onChange = {(e) => setStrMeasure3(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient4}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #4 */}
+                <div className={activeIngredient4}>
+                <div className="Ingredient-Name" id="strIngredient4"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #4" required value = {strIngredient4} onChange = {(e) => setStrIngredient4(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure4"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure4} onChange = {(e) => setStrMeasure4(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient5}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #5 */}
+                <div className={activeIngredient5}>
+                <div className="Ingredient-Name" id="strIngredient5"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #5" required value = {strIngredient5} onChange = {(e) => setStrIngredient5(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure5"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure5} onChange = {(e) => setStrMeasure1(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient6}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #6 */}
+                <div className={activeIngredient6}>
+                <div className="Ingredient-Name" id="strIngredient6"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #6" required value = {strIngredient6} onChange = {(e) => setStrIngredient6(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure6"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure6} onChange = {(e) => setStrMeasure6(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient7}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #7 */}
+                <div className={activeIngredient7}>
+                <div className="Ingredient-Name" id="strIngredient7"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #7" required value = {strIngredient7} onChange = {(e) => setStrIngredient7(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure7"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure7} onChange = {(e) => setStrMeasure7(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient8}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #8 */}
+                <div className={activeIngredient8}>
+                <div className="Ingredient-Name" id="strIngredient8"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #8" required value = {strIngredient8} onChange = {(e) => setStrIngredient8(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure8"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure8} onChange = {(e) => setStrMeasure8(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient9}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #9 */}
+                <div className={activeIngredient9}>
+                <div className="Ingredient-Name" id="strIngredient9"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #9" required value = {strIngredient9} onChange = {(e) => setStrIngredient9(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure9"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure9} onChange = {(e) => setStrMeasure9(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient10}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #10 */}
+                <div className={activeIngredient10}>
+                <div className="Ingredient-Name" id="strIngredient10"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #10" required value = {strIngredient10} onChange = {(e) => setStrIngredient10(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure10"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure10} onChange = {(e) => setStrMeasure10(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient11}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #11 */}
+                <div className={activeIngredient11}>
+                <div className="Ingredient-Name" id="strIngredient11"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #11" required value = {strIngredient11} onChange = {(e) => setStrIngredient11(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure11"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure11} onChange = {(e) => setStrMeasure11(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient12}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #12 */}
+                <div className={activeIngredient12}>
+                <div className="Ingredient-Name" id="strIngredient12"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #12" required value = {strIngredient12} onChange = {(e) => setStrIngredient12(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure12"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure12} onChange = {(e) => setStrMeasure12(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient13}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #13 */}
+                <div className={activeIngredient13}>
+                <div className="Ingredient-Name" id="strIngredient13"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #13" required value = {strIngredient13} onChange = {(e) => setStrIngredient13(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure13"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure13} onChange = {(e) => setStrMeasure13(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient14}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #14 */}
+                <div className={activeIngredient14}>
+                <div className="Ingredient-Name" id="strIngredient14"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #14" required value = {strIngredient14} onChange = {(e) => setStrIngredient14(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure14"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure14} onChange = {(e) => setStrMeasure14(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" onClick={ShowNextIngredient15}><span className="tooltiptext">Click to add another</span></i></div>
+                </div>
+
+                {/* Ingredient #15 */}
+                <div className={activeIngredient15}>
+                <div className="Ingredient-Name" id="strIngredient15"> 
+                    <label>Ingredient Name: </label>
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #15" required value = {strIngredient15} onChange = {(e) => setStrIngredient15(e.target.value)} />
+                </div>
+                <div className="Ingredient-Volume oz" id="strMeasure15"> 
+                    <label>Ingredient Volume: </label>
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure15} onChange = {(e) => setStrMeasure15(e.target.value)} />
+                    <datalist id="volumes">
+                        <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
+                    </datalist>
+                </div>
+                <div className="Ingredient-Add"></div>
+                </div>
+
+                </div>
+
+                {/* User provides instructions, currently in paragraph format */}
+                <div className="Form-Instructions">
+                    <label>Instructions: </label>
+                    <input
+                        type="text"
+                        name="instructions"
+                        placeholder="How is it made? Please be descriptive and specific."
+                        required
+                    />
+                </div>
+
+                <div className="Form-Additional">
+                    <label>Additional Info: </label>
+                    <input
+                        type="text"
+                        name="additional"
+                        placeholder="Any other details you want to share? Recommended spirit brand, flavor notes, etc.?"
+                        required
+                    />
+                </div>
+
+                {/* User clicks button to POST recipe to backend (yet to be built) */}
+                <div onClick={ToggleAddNewButtonClass} className={addNewButtonClicked? "AddNew-Button" : "AddNew-Button clicked"}>
+                    <button><p>{addNewButtonClicked? "Add new cocktail!" : "Success!"}</p></button>
+                </div>
+
             </div>
 
-            <div className="Ingredient-Measurement"> 
-            <label>Ingredient Measurement: </label>
-            <input
-                type="list"
-                name="ingredient-measurement"
-                placeholder="What scale?"
-                list="measurements"
-                value = {strMeasure1}
-                onChange = {(e) => setStrMeasure1(e.target.value)}
-            />
-                <datalist id="measurements">
-                    <option value="oz" />
-                    <option value="ml" />
-                    <option value="bar spoon" />
-                    <option value="dashes" />
-                    <option value="" />
-                    <option value="" />
-                </datalist>
-            </div>
-            <div className="Ingredient-Add"><i className="fa-regular fa-square-plus" /></div>
-            
-            </div>
-
-            {/* User provides instructions, currently in paragraph format */}
-            <div className="Form-Instructions"> 
-            <label>Instructions: </label>
-            <input
-                type="text"
-                name="instructions"
-                placeholder="How is it made?"
-                required
-                value = {strInstructions}
-                onChange = {(e) => setStrInstructions(e.target.value)}
-            />
-            </div>
-
-            {/* User provides where they found the cocktail */}
-            {/* Options will be provided for Book, URL, etc. */}
-            {/* Based on selection the Book Source will change - Book Name/Page #, URL, App Name */}
-            <div className="Form-Source">
-            <div className="Source-Type">   
-            <label>Source Type: </label>
-            <input
-                type="list"
-                name="source-type"
-                placeholder="Where's it from?"
-                list="source-types"
-                value = {strVideo}
-                onChange = {(e) => setStrVideo(e.target.value)}
-            />
-                <datalist id="source-types">
-                    <option value="book" />
-                    <option value="website" />
-                    <option value="app" />
-                    <option value="" />
-                    <option value="" />
-                    <option value="" />
-                </datalist>
-            </div>
-            </div> 
-            {/* User clicks button to POST recipe to backend (yet to be built) */}
-            {/* <button onClick={() => addDrink("/favorites")}> 
-            
-            Add new cocktail!</button> */}
         </form>
 
-        </div>
-        </div>
+    </div>
 
+    {/* function addDrink(arg0: { strDrink: string; strGlass: string; strTags: string; }) {
+    throw new Error("Function not implemented.");
+    } */}
+    </div>
     )
+
 }
-
-
-
