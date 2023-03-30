@@ -272,15 +272,25 @@
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Bottom-Header {
     font-size: 24px;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
 }
 
 /* Styling the Ingredient(s) labels, inputs, and icon to add another ingredient with Text Tip on hover */
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients {
     display: flex;
+    flex-direction: column;
+    margin-bottom: 35px;
+}
+
+.AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient {
+    display: flex;
     justify-content: space-between;
     width: 1000px;
-    margin-bottom: 35px;
+    margin-bottom: 10px;
+}
+
+.AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient.hidden {
+    display: none;
 }
 
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Ingredient-Name,
@@ -301,16 +311,16 @@
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Ingredient-Name input {
     width: 350px;
     height: 30px;
-    border:1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    padding-left: 10px;
     margin-top: 0px;
+    text-align: center;
 }
 
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Ingredient-Volume input {
     width: 150px;
     height: 30px;
-    border:1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding-left: 10px;
 }
@@ -389,6 +399,6 @@
     cursor: pointer;
 }
 
-.AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .AddNew-Button button.clicked {
+.AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .AddNew-Button.clicked button {
     background: #d83133;
 }

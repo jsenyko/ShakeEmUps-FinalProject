@@ -15,7 +15,7 @@ export function Ingredient(props: IIngredientProps){
     return (
         <div className="Form-Ingredient">
 
-                <div className="Ingredient-Name" id="strIngredient1"> 
+                <div className="Ingredient-Name" id="strIngredient"> 
                 <label>Ingredient Name: </label>
                 <input
                     type="text"
