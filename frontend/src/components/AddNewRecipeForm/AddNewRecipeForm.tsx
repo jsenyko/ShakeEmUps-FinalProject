@@ -6,13 +6,14 @@ import { addDrink } from "../../services/RecipeService";
 import CocktailContext from "../../context/CocktailContext";
 import { getCocktailDetails } from "../../services/RecipeService";
 import { FaStar } from "react-icons/fa";
+import { UserDrink } from "../../models/UserDrinkModel";
 
 interface Props {
     initialTo?: string;
-    onAdd?: (drink: Drink) => void
+    
 }
 
-export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
+export function AddNewRecipeForm( {initialTo = ""}: Props){
     
     const [ idDrink, setIdDrink ] = useState(initialTo);
     const [ strDrink, setStrDrink ] = useState("");
@@ -78,17 +79,18 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     strMeasure1, strMeasure2,strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7,
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
-       }).then(onAdd); /* eslint-disable-next-line */
-       setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
-       setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
-       setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR, setStrInstructionsIT, 
-       setStrDrinkThumb(""), setStrIngredient1(""), setStrIngredient2(""), setStrIngredient3(""), setStrIngredient4(""), setStrIngredient5(""), 
-       setStrIngredient6(""), setStrIngredient7(""), setStrIngredient8(""), setStrIngredient9(""), setStrIngredient10(""), 
-       setStrIngredient11(""), setStrIngredient12(""), setStrIngredient13(""), setStrIngredient14(""), setStrIngredient15(""), 
-       setStrMeasure1(""), setStrMeasure2(""), setStrMeasure3(""), setStrMeasure4(""), setStrMeasure5(""), setStrMeasure6(""), setStrMeasure7(""),
-       setStrMeasure8(""), setStrMeasure9(""), setStrMeasure10(""), setStrMeasure11(""), setStrMeasure12(""), setStrMeasure13(""), setStrMeasure14(""), 
-       setStrMeasure15(""), setStrImageSource(""), setStrImageAttribution(""), setStrCreativeCommonsConfirmed(""), setDateModified("")
-      
+       }).then(() => {
+        setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
+        setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
+        setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR(""), setStrInstructionsIT(""), 
+        setStrDrinkThumb(""), setStrIngredient1(""), setStrIngredient2(""), setStrIngredient3(""), setStrIngredient4(""), setStrIngredient5(""), 
+        setStrIngredient6(""), setStrIngredient7(""), setStrIngredient8(""), setStrIngredient9(""), setStrIngredient10(""), 
+        setStrIngredient11(""), setStrIngredient12(""), setStrIngredient13(""), setStrIngredient14(""), setStrIngredient15(""), 
+        setStrMeasure1(""), setStrMeasure2(""), setStrMeasure3(""), setStrMeasure4(""), setStrMeasure5(""), setStrMeasure6(""), setStrMeasure7(""),
+        setStrMeasure8(""), setStrMeasure9(""), setStrMeasure10(""), setStrMeasure11(""), setStrMeasure12(""), setStrMeasure13(""), setStrMeasure14(""), 
+        setStrMeasure15(""), setStrImageSource(""), setStrImageAttribution(""), setStrCreativeCommonsConfirmed(""), setDateModified("")
+     
+       }) 
     }
 
     const [caretDirection, changeCaretDirection] = useState<Boolean>(true)
@@ -193,8 +195,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
             <div className="Caret" onClick={flipCaret}><i className={caretDirection? "fa-regular fa-square-caret-up" : "fa-solid fa-square-caret-down"}></i><p>{caretDirection? "Close Form" : "Open Form"}</p></div>
         </div>
 
-        <div className="AddNewRecipe" onSubmit={handleSubmit}>
-        <form className="AddNewRecipe-Form">
+        <div className="AddNewRecipe">
+        <form className="AddNewRecipe-Form" onSubmit={handleSubmit}>
 
             {/* This includes the Form-Left and Form-Right sections for CSS styling */}
             <div className="Form-Top">
@@ -209,7 +211,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     type="text"
                     name="name"
                     placeholder="What's it called?"
-                    required
+                     
                     value = {strDrink}
                     onChange = {(e) => setStrDrink(e.target.value)}
                 />
@@ -330,7 +332,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className="Form-Ingredient active">
                 <div className="Ingredient-Name" id="strIngredient1"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #1" required value = {strIngredient1} onChange = {(e) => setStrIngredient1(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #1"   value = {strIngredient1} onChange = {(e) => setStrIngredient1(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure1"> 
                     <label>Ingredient Volume: </label>
@@ -346,7 +348,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient2}>
                 <div className="Ingredient-Name" id="strIngredient2"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #2" required value = {strIngredient2} onChange = {(e) => setStrIngredient2(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #2"   value = {strIngredient2} onChange = {(e) => setStrIngredient2(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure2"> 
                     <label>Ingredient Volume: </label>
@@ -362,7 +364,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient3}>
                 <div className="Ingredient-Name" id="strIngredient3"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #3" required value = {strIngredient3} onChange = {(e) => setStrIngredient3(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #3"   value = {strIngredient3} onChange = {(e) => setStrIngredient3(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure3"> 
                     <label>Ingredient Volume: </label>
@@ -378,7 +380,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient4}>
                 <div className="Ingredient-Name" id="strIngredient4"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #4" required value = {strIngredient4} onChange = {(e) => setStrIngredient4(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #4"   value = {strIngredient4} onChange = {(e) => setStrIngredient4(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure4"> 
                     <label>Ingredient Volume: </label>
@@ -394,7 +396,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient5}>
                 <div className="Ingredient-Name" id="strIngredient5"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #5" required value = {strIngredient5} onChange = {(e) => setStrIngredient5(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #5"   value = {strIngredient5} onChange = {(e) => setStrIngredient5(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure5"> 
                     <label>Ingredient Volume: </label>
@@ -410,7 +412,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient6}>
                 <div className="Ingredient-Name" id="strIngredient6"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #6" required value = {strIngredient6} onChange = {(e) => setStrIngredient6(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #6"   value = {strIngredient6} onChange = {(e) => setStrIngredient6(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure6"> 
                     <label>Ingredient Volume: </label>
@@ -426,7 +428,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient7}>
                 <div className="Ingredient-Name" id="strIngredient7"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #7" required value = {strIngredient7} onChange = {(e) => setStrIngredient7(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #7"   value = {strIngredient7} onChange = {(e) => setStrIngredient7(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure7"> 
                     <label>Ingredient Volume: </label>
@@ -442,7 +444,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient8}>
                 <div className="Ingredient-Name" id="strIngredient8"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #8" required value = {strIngredient8} onChange = {(e) => setStrIngredient8(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #8"   value = {strIngredient8} onChange = {(e) => setStrIngredient8(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure8"> 
                     <label>Ingredient Volume: </label>
@@ -458,7 +460,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient9}>
                 <div className="Ingredient-Name" id="strIngredient9"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #9" required value = {strIngredient9} onChange = {(e) => setStrIngredient9(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #9"   value = {strIngredient9} onChange = {(e) => setStrIngredient9(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure9"> 
                     <label>Ingredient Volume: </label>
@@ -474,7 +476,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient10}>
                 <div className="Ingredient-Name" id="strIngredient10"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #10" required value = {strIngredient10} onChange = {(e) => setStrIngredient10(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #10"   value = {strIngredient10} onChange = {(e) => setStrIngredient10(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure10"> 
                     <label>Ingredient Volume: </label>
@@ -490,7 +492,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient11}>
                 <div className="Ingredient-Name" id="strIngredient11"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #11" required value = {strIngredient11} onChange = {(e) => setStrIngredient11(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #11"   value = {strIngredient11} onChange = {(e) => setStrIngredient11(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure11"> 
                     <label>Ingredient Volume: </label>
@@ -506,7 +508,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient12}>
                 <div className="Ingredient-Name" id="strIngredient12"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #12" required value = {strIngredient12} onChange = {(e) => setStrIngredient12(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #12"   value = {strIngredient12} onChange = {(e) => setStrIngredient12(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure12"> 
                     <label>Ingredient Volume: </label>
@@ -522,7 +524,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient13}>
                 <div className="Ingredient-Name" id="strIngredient13"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #13" required value = {strIngredient13} onChange = {(e) => setStrIngredient13(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #13"   value = {strIngredient13} onChange = {(e) => setStrIngredient13(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure13"> 
                     <label>Ingredient Volume: </label>
@@ -538,7 +540,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient14}>
                 <div className="Ingredient-Name" id="strIngredient14"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #14" required value = {strIngredient14} onChange = {(e) => setStrIngredient14(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #14"   value = {strIngredient14} onChange = {(e) => setStrIngredient14(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure14"> 
                     <label>Ingredient Volume: </label>
@@ -554,7 +556,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient15}>
                 <div className="Ingredient-Name" id="strIngredient15"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #15" required value = {strIngredient15} onChange = {(e) => setStrIngredient15(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #15"   value = {strIngredient15} onChange = {(e) => setStrIngredient15(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure15"> 
                     <label>Ingredient Volume: </label>
@@ -575,7 +577,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                         type="text"
                         name="instructions"
                         placeholder="How is it made? Please be descriptive and specific."
-                        required
+                         
                     />
                 </div>
 
@@ -585,7 +587,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                         type="text"
                         name="additional"
                         placeholder="Any other details you want to share? Recommended spirit brand, flavor notes, etc.?"
-                        required
+                         
                     />
                 </div>
 
