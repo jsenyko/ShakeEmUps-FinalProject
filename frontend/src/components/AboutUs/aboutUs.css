@@ -13,8 +13,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 250px;
-}
+    margin: 250px 0;
+
 
 .AboutUs .AboutUs-Header {
     display: flex;

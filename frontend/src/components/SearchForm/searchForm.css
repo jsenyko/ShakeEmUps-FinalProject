@@ -5,6 +5,7 @@
     flex-direction: column;
     padding: 50px;
     width: 100%;
+    margin-top: 50px;
 }
 
 .SearchForm h1 {
@@ -19,28 +20,45 @@
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
-}
-  
-.SearchForm .radio {
-    padding-right: 5px;
-    color: #000;
-    margin-right: 30px;
-    font-size: 18px;
-    padding: 10px;
     cursor: pointer;
 }
   
-.SearchForm .radio:hover {
+.SearchForm .SearchTypes .radio {
+    padding-right: 15px;
+    color: #000;
+    margin-right: 35px;
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.SearchForm .SearchTypes .radio:hover {
     color: #3586ff;
 }
 
-.SearchForm .radio.active {
+.SearchForm .SearchTypes .radio.active {
     color: #d83133;
     transition: 250ms;
 }
   
-.SearchForm .radio #input {
+.SearchForm .SearchTypes .radio #input {
     opacity: 0;
+    cursor: pointer;
+}
+
+.SearchForm .SearchTypes .radio .tooltiptext {
+    display: none;
+}
+
+.SearchForm .SearchTypes .radio:hover .tooltiptext {
+    display: flex;
+    position: absolute;
+    transform: translateY(20px);
+    font-size: 12px;
+    color: #3586ff;
 }
 
 .SearchForm .bar {

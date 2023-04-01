@@ -12,9 +12,14 @@ export function Favorites(){
     const { favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
-    function changeActive(){
+    // Initial state of the search bar is blank
+    const [value, setValue] = useState<string>("All");
 
-    }
+    const spirits = ["all", "whiskey", "gin", "rum", "vodka", "tequila", "bourbon"];
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
+    };
+
 
     useEffect(() => {
         getUserDrinks().then((data) =>{
@@ -31,16 +36,29 @@ export function Favorites(){
                 <p className="Favorites_Header-Count">Total Recipes: {favorites.length}</p>
             </div>
 
-            {/* <div>
-            <ul>
-                <li className="list active" data-filter="all" onClick={() => changeActive}>All</li>
-                <li className="list" data-filter="gin" onClick={() => changeActive}>Gin</li>
-                <li className="list" data-filter="vodka" onClick={() => changeActive}>Vodka</li>
-                <li className="list" data-filter="rum" onClick={() => changeActive}>Rum</li>
-                <li className="list" data-filter="whiskey" onClick={() => changeActive}>Whiskey</li>
-                <li className="list" data-filter="" onClick={() => changeActive}></li>
-            </ul>
-            </div> */}
+            <div className="SpiritTypes">
+            {spirits.map((spirit) => {
+                return(
+                <div className="SpiritType">
+                    <label className={value === spirit ? "radio active" : "radio"}>
+                        <input
+                            type="radio"
+                            name="searchType"
+                            id="input"
+                            value={spirit}
+                            checked={value === spirit}
+                            // This calls the function above to set the searchType state and reset the search bar text to a blank string (so you can see the placeholder text)
+                            onChange={onChange}
+                        />{spirit}
+                    </label>
+                </div>
+                )
+            })}
+            </div>
+
+            <div className="Favorites_Recipe-Container">
+                {favorites.map((cocktail) => 
+                    <div className={value === "All" || cocktail.strIngredient1.includes(value)? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
 
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 

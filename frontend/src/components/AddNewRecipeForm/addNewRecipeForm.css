@@ -15,10 +15,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 250px;
 }
 
 /* Form Header text */
-
 .AddNewRecipe-Closed .AddNewRecipe-Header,
 .AddNewRecipe-Open .AddNewRecipe-Header {
     display: flex;

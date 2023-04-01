@@ -1,6 +1,5 @@
 import "./addNewRecipeForm.css"
 import { Drink, Root } from "../../models/Recipe";
-import { Ingredient } from "./Ingredient";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { addDrink } from "../../services/RecipeService";
 import CocktailContext from "../../context/CocktailContext";
@@ -93,7 +92,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
        }) 
     }
 
-    const [caretDirection, changeCaretDirection] = useState<Boolean>(true)
+    const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
     const flipCaret = () => {
         changeCaretDirection(!caretDirection);
     };
@@ -119,7 +118,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     useEffect(() => {
         let recipeResult = getCocktailDetails(String(idDrink));
             recipeResult.then((x) => setDetails(x))
-        }, []);
+        }, []); 
 
     
     // Toggles the Add New Cocktail button styling when clicked
@@ -183,7 +182,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     const [activeIngredient15, setActiveIngredient15] = useState<string>("Form-Ingredient hidden")
     const ShowNextIngredient15 = () => {
         setActiveIngredient15("Form-Ingredient active")
-    }  
+    }
 
 
     return (
@@ -221,7 +220,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
                 <div className="Form-Glass">
                 <label>Glass Used: </label>
                 <input
-                    type="list"
+                    type="select"
                     name="glasses"
                     placeholder="Recommended glass?"
                     list="glasses"
@@ -255,7 +254,8 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
 
                     <div className="Source-Type">   
                         <label>Source Type: </label>
-                        <input type="list" name="source-type" placeholder="Where did you find it?" list="source-types" value = {strVideo} onChange = {(e) => setStrVideo(e.target.value)} />
+                        {/* Value currently set to strVideo, this needs to get changed when backend is setup */}
+                        <input type="select" name="source-type" placeholder="Where did you find it?" list="source-types" value={strVideo} onChange = {(e) => setStrVideo(e.target.value)} />
                             <datalist id="source-types">
                                 <option value="Book" /><option value="Website" /><option value="App" />
                             </datalist>

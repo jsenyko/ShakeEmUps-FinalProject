@@ -8,7 +8,6 @@ import { Footer } from './components/Footer/Footer';
 import { Favorites } from './components/Favorites/Favorites';
 import { Details } from "./components/Details/Details";
 import { SearchForm } from './components/SearchForm/SearchForm';
-import { RecipeList } from './components/RecipeList/RecipeList';
 import CocktailContextProvider from './context/CocktailContextProvider';
 import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm';
 import { ContactUs } from './components/ContactUs/ContactUs';
@@ -22,7 +21,7 @@ function App() {
         <CocktailContextProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<div><Hero /> <RecommendationsCarousel /> <SearchForm /> <AddNewRecipeForm /></div>} />
+            <Route path="/" element={<div className="HomePage"><Hero /> <RecommendationsCarousel /> <SearchForm /> <AddNewRecipeForm /></div>} />
             <Route path="/details/:idDrink" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
