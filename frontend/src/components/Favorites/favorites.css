@@ -1,3 +1,7 @@
+.Favorites {
+    margin-bottom: 250px;
+}
+
 .Favorites_Header {
     display: flex;
     justify-content: center;
@@ -37,6 +41,10 @@
     -webkit-box-shadow: var(--shadow);
     -moz-box-shadow: var(--shadow);
     box-shadow: var(--shadow);
+}
+
+.Favorites_Recipe-Container .RecipeCard.hidden {
+    display: none;
 }
 
 .Favorites_Recipe-Container .Recipe_Card .Recipe_Card-Image {
@@ -86,4 +94,41 @@
     padding: 0.375rem 0.75rem;
     width: 135px;
     line-height: 20px;
+}
+
+.Favorites .SpiritTypes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    cursor: pointer;
+}
+  
+.Favorites .SpiritTypes .radio {
+    padding-right: 15px;
+    color: #000;
+    margin-right: 35px;
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+  
+.Favorites .SpiritTypes .radio:hover {
+    color: #3586ff;
+}
+
+.Favorites .SpiritTypes .radio.active {
+    color: #d83133;
+    transition: 250ms;
+}
+  
+.Favorites .SpiritTypes .radio #input {
+    opacity: 0;
+    cursor: pointer;
 }

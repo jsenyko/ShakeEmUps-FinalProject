@@ -1,6 +1,5 @@
 import "./addNewRecipeForm.css"
 import { Drink, Root } from "../../models/Recipe";
-import { Ingredient } from "./Ingredient";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { addDrink } from "../../services/RecipeService";
 import CocktailContext from "../../context/CocktailContext";
@@ -91,7 +90,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
       
     }
 
-    const [caretDirection, changeCaretDirection] = useState<Boolean>(true)
+    const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
     const flipCaret = () => {
         changeCaretDirection(!caretDirection);
     };
@@ -117,8 +116,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     useEffect(() => {
         let recipeResult = getCocktailDetails(String(idDrink));
             recipeResult.then((x) => setDetails(x))
-        }, []);
-
+        }, []); 
     
     // Toggles the Add New Cocktail button styling when clicked
     const [addNewButtonClicked, setAddNewButtonClicked] = useState<Boolean>(true)
@@ -181,8 +179,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     const [activeIngredient15, setActiveIngredient15] = useState<string>("Form-Ingredient hidden")
     const ShowNextIngredient15 = () => {
         setActiveIngredient15("Form-Ingredient active")
-    }  
-
+    }
 
     return (
 
@@ -209,7 +206,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     type="text"
                     name="name"
                     placeholder="What's it called?"
-                    required
+                     
                     value = {strDrink}
                     onChange = {(e) => setStrDrink(e.target.value)}
                 />
@@ -219,7 +216,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className="Form-Glass">
                 <label>Glass Used: </label>
                 <input
-                    type="list"
+                    type="select"
                     name="glasses"
                     placeholder="Recommended glass?"
                     list="glasses"
@@ -253,7 +250,8 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
 
                     <div className="Source-Type">   
                         <label>Source Type: </label>
-                        <input type="list" name="source-type" placeholder="Where did you find it?" list="source-types" value = {strVideo} onChange = {(e) => setStrVideo(e.target.value)} />
+                        {/* Value currently set to strVideo, this needs to get changed when backend is setup */}
+                        <input type="select" name="source-type" placeholder="Where did you find it?" list="source-types" value={strVideo} onChange = {(e) => setStrVideo(e.target.value)} />
                             <datalist id="source-types">
                                 <option value="Book" /><option value="Website" /><option value="App" />
                             </datalist>
@@ -330,11 +328,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className="Form-Ingredient active">
                 <div className="Ingredient-Name" id="strIngredient1"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #1" required value = {strIngredient1} onChange = {(e) => setStrIngredient1(e.target.value)} />
+                    <input type="text" name="name" placeholder="Ingredient #1" required value={strIngredient1} onChange={(e) => setStrIngredient1(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure1"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure1} onChange = {(e) => setStrMeasure1(e.target.value)} />
+                    <input type="select" name="volume" placeholder="How much?" required list="volumes" value={strMeasure1} onChange={(e) => setStrMeasure1(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -346,11 +344,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient2}>
                 <div className="Ingredient-Name" id="strIngredient2"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #2" required value = {strIngredient2} onChange = {(e) => setStrIngredient2(e.target.value)} />
+                    <input type="select" name="name" placeholder="Ingredient #2" value={strIngredient2} onChange={(e) => setStrIngredient2(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure2"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure2} onChange = {(e) => setStrMeasure2(e.target.value)} />
+                    <input type="select" name="volume" placeholder="How much?" list="volumes" value={strMeasure2} onChange={(e) => setStrMeasure2(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -362,11 +360,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient3}>
                 <div className="Ingredient-Name" id="strIngredient3"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #3" required value = {strIngredient3} onChange = {(e) => setStrIngredient3(e.target.value)} />
+                    <input type="text" name="name" placeholder="Ingredient #3" value={strIngredient3} onChange={(e) => setStrIngredient3(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure3"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure3} onChange = {(e) => setStrMeasure3(e.target.value)} />
+                    <input type="select" name="volume" placeholder="How much?" list="volumes" value = {strMeasure3} onChange={(e) => setStrMeasure3(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -378,11 +376,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient4}>
                 <div className="Ingredient-Name" id="strIngredient4"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #4" required value = {strIngredient4} onChange = {(e) => setStrIngredient4(e.target.value)} />
+                    <input type="select" name="ingredientName" placeholder="Ingredient #4" value={strIngredient4} onChange={(e) => setStrIngredient4(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure4"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure4} onChange = {(e) => setStrMeasure4(e.target.value)} />
+                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure4} onChange={(e) => setStrMeasure4(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -394,11 +392,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient5}>
                 <div className="Ingredient-Name" id="strIngredient5"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #5" required value = {strIngredient5} onChange = {(e) => setStrIngredient5(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #5"  value={strIngredient5} onChange={(e) => setStrIngredient5(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure5"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure5} onChange = {(e) => setStrMeasure1(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure5} onChange={(e) => setStrMeasure1(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -410,11 +408,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient6}>
                 <div className="Ingredient-Name" id="strIngredient6"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #6" required value = {strIngredient6} onChange = {(e) => setStrIngredient6(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #6"  value={strIngredient6} onChange={(e) => setStrIngredient6(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure6"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure6} onChange = {(e) => setStrMeasure6(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure6} onChange={(e) => setStrMeasure6(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -426,11 +424,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient7}>
                 <div className="Ingredient-Name" id="strIngredient7"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #7" required value = {strIngredient7} onChange = {(e) => setStrIngredient7(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #7"   value={strIngredient7} onChange={(e) => setStrIngredient7(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure7"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure7} onChange = {(e) => setStrMeasure7(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure7} onChange={(e) => setStrMeasure7(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -442,11 +440,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient8}>
                 <div className="Ingredient-Name" id="strIngredient8"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #8" required value = {strIngredient8} onChange = {(e) => setStrIngredient8(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #8"   value={strIngredient8} onChange={(e) => setStrIngredient8(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure8"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure8} onChange = {(e) => setStrMeasure8(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure8} onChange={(e) => setStrMeasure8(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -458,11 +456,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient9}>
                 <div className="Ingredient-Name" id="strIngredient9"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #9" required value = {strIngredient9} onChange = {(e) => setStrIngredient9(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #9"   value={strIngredient9} onChange={(e) => setStrIngredient9(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure9"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure9} onChange = {(e) => setStrMeasure9(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure9} onChange={(e) => setStrMeasure9(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -474,11 +472,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient10}>
                 <div className="Ingredient-Name" id="strIngredient10"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #10" required value = {strIngredient10} onChange = {(e) => setStrIngredient10(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #10"   value={strIngredient10} onChange={(e) => setStrIngredient10(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure10"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure10} onChange = {(e) => setStrMeasure10(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure10} onChange={(e) => setStrMeasure10(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -490,11 +488,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient11}>
                 <div className="Ingredient-Name" id="strIngredient11"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #11" required value = {strIngredient11} onChange = {(e) => setStrIngredient11(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #11"   value={strIngredient11} onChange={(e) => setStrIngredient11(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure11"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure11} onChange = {(e) => setStrMeasure11(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure11} onChange={(e) => setStrMeasure11(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -506,11 +504,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient12}>
                 <div className="Ingredient-Name" id="strIngredient12"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #12" required value = {strIngredient12} onChange = {(e) => setStrIngredient12(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #12"   value={strIngredient12} onChange={(e) => setStrIngredient12(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure12"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure12} onChange = {(e) => setStrMeasure12(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure12} onChange={(e) => setStrMeasure12(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -522,11 +520,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient13}>
                 <div className="Ingredient-Name" id="strIngredient13"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #13" required value = {strIngredient13} onChange = {(e) => setStrIngredient13(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #13"   value={strIngredient13} onChange={(e) => setStrIngredient13(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure13"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure13} onChange = {(e) => setStrMeasure13(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure13} onChange={(e) => setStrMeasure13(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -538,11 +536,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient14}>
                 <div className="Ingredient-Name" id="strIngredient14"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #14" required value = {strIngredient14} onChange = {(e) => setStrIngredient14(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #14"   value={strIngredient14} onChange={(e) => setStrIngredient14(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure14"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure14} onChange = {(e) => setStrMeasure14(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure14} onChange={(e) => setStrMeasure14(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -554,11 +552,11 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                 <div className={activeIngredient15}>
                 <div className="Ingredient-Name" id="strIngredient15"> 
                     <label>Ingredient Name: </label>
-                    <input type="text" name="ingredient-name" placeholder="Ingredient #15" required value = {strIngredient15} onChange = {(e) => setStrIngredient15(e.target.value)} />
+                    <input type="text" name="ingredient-name" placeholder="Ingredient #15"   value={strIngredient15} onChange={(e) => setStrIngredient15(e.target.value)} />
                 </div>
                 <div className="Ingredient-Volume oz" id="strMeasure15"> 
                     <label>Ingredient Volume: </label>
-                    <input type="list" name="ingredient-volume" placeholder="How much?" list="volumes" value = {strMeasure15} onChange = {(e) => setStrMeasure15(e.target.value)} />
+                    <input type="select" name="ingredient-volume" placeholder="How much?" list="volumes" value={strMeasure15} onChange={(e) => setStrMeasure15(e.target.value)} />
                     <datalist id="volumes">
                         <option value="1/4 oz"/><option value="1/2 oz" /><option value="3/4 oz" /><option value="1 oz" /><option value="1 1/4 oz" /><option value="1 1/2 oz" /><option value="1 3/4 oz" /><option value="2 oz" /><option value="2 1/4 oz" /><option value="2 1/2 oz" /><option value="2 3/4 oz" /><option value="3 oz" /><option value="3 1/4 oz" /><option value="3 1/2 oz" />
                     </datalist>
@@ -575,7 +573,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                         type="text"
                         name="instructions"
                         placeholder="How is it made? Please be descriptive and specific."
-                        required
+                         
                     />
                 </div>
 
@@ -585,7 +583,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                         type="text"
                         name="additional"
                         placeholder="Any other details you want to share? Recommended spirit brand, flavor notes, etc.?"
-                        required
+                         
                     />
                 </div>
 

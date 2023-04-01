@@ -101,11 +101,3 @@ export function addDrink(userDrink: Drink):Promise<Drink> {
     })
     .then(res => res.data)
   }
-
-// Give the user the option to filter the results by Category (i.e. - only return cocktails, not shots)
-// Would likely make the API call and return all results then use .filter if Category matches this value
-
-// Filter by Category (Shot, Cocktail, Ordinary Drink) - first line is Category List
-// www.thecocktaildb.com/api/json/v2/9973533/list.php?c=list
-// www.thecocktaildb.com/api/json/v2/9973533/filter.php?c=Ordinary_Drink
-// www.thecocktaildb.com/api/json/v2/9973533/filter.php?c=Cocktail

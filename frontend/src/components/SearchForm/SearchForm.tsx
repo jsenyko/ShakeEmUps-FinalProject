@@ -1,14 +1,15 @@
 import "./searchForm.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useContext, useState } from "react";
 import { Root } from "../../models/Recipe";
-import { getCocktailByFirstLetter, getCocktailByIngredient, getCocktailByName, getRandomCocktail, getCocktailByMultipleIngredients, getLatestCocktails, getPopularCocktails } from "../../services/RecipeService";
+import { getCocktailByFirstLetter, getCocktailByName, getRandomCocktail, getCocktailByMultipleIngredients, getLatestCocktails, getPopularCocktails } from "../../services/RecipeService";
 import { RecipeList } from "../RecipeList/RecipeList";
 import CocktailContext from "../../context/CocktailContext";
 
 
 export function SearchForm(){
 
+    // Uses context to determine if a cocktail in the search results already appears in the
+    // user's Favorites array and updates the styling of the heart icon to reflect that
     const { favorites } = useContext(CocktailContext);
 
     // Initial state of cocktails returned is empty
@@ -23,8 +24,7 @@ export function SearchForm(){
 
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
-    // Default value selected is 'findByName'
-    const [searchType, setSearchType] = useState<String>("");
+    const [searchType, setSearchType] = useState("");
 
     // When user clicks a different option the searchType changes
     // and the text in the Search Bar resets to blank so you can see the placeholder
@@ -34,10 +34,6 @@ export function SearchForm(){
     };
     const handleFirstLetterChange = () => {
         setSearchType("findByFirstLetter");
-        setValue("");
-    };
-    const handleIngredientChange = () => {
-        setSearchType("findByIngredient");
         setValue("");
     };
     const handleRandomChange = () => {
@@ -79,13 +75,6 @@ export function SearchForm(){
                 })};
                 break;
 
-            case "findByIngredient":
-                if(value === ""){
-                    alert("It looks like you forgot to enter a search term / select a search type")
-                } else {
-                    getCocktailByIngredient(value).then((cocktails) => { setCocktails(cocktails) })};
-                break;
-
             case "findByRandom":
                     getRandomCocktail().then((cocktails) => { setCocktails(cocktails) });
                 break;
@@ -93,19 +82,15 @@ export function SearchForm(){
             case "findByMulti":
                 if(value === ""){
                     alert("It looks like you forgot to enter a search term")
-                // If the values entered don't return a result, then alert the user
-                // The API call requires ingredients be entered without spaces, so .split and .join have to be used to remove any spaces entered
-                // The concern here is things like Dry_Vermouth or Light_Rum - how to account for those?
-                } else if (getCocktailByMultipleIngredients(value.split(" ").join("")).then((cocktails) => {setCocktails(cocktails)}) === undefined){
+                // The API call requires ingredients be entered without spaces, so .split was used first to remove the space after the comma, then replace any spaces with underscores
+                } else if (getCocktailByMultipleIngredients(value.replaceAll(", ", ",").replaceAll(" ", "_")).then((cocktails) => {setCocktails(cocktails)}) === undefined){
                     alert("Sorry, no results found")
-                    console.log(cocktails);
                 } else {
-                    getCocktailByMultipleIngredients(value.split(" ").join("")).then((cocktails) => { setCocktails(cocktails) })};
+                    getCocktailByMultipleIngredients(value.replaceAll(", ", ",").replaceAll(" ", "_")).then((cocktails) => { setCocktails(cocktails) })};
                 break;
 
             case "findByLatest":
                     getLatestCocktails().then((cocktails) => { setCocktails(cocktails) });
-                break;
                 break;
 
             case "findByPopular":
@@ -128,6 +113,7 @@ export function SearchForm(){
         <div className="SearchForm">
             <h1>Find something new today!</h1>
             <div className="SearchTypes">
+
             {/* Label's className changes dynamically based on which one is selected, which impacts styling */}
             <label className={searchType === "findByName" ? "radio active" : "radio"}>
                 <input
@@ -140,6 +126,7 @@ export function SearchForm(){
                     onChange={handleNameChange}
                 />Find by Name
             </label>
+
             <label className={searchType === "findByFirstLetter" ? "radio active" : "radio"}>
                 <input
                     type="radio"
@@ -150,16 +137,7 @@ export function SearchForm(){
                     onChange={handleFirstLetterChange}
                 />Find by First Letter
             </label>
-            <label className={searchType === "findByIngredient" ? "radio active" : "radio"}>
-                <input
-                    type="radio"
-                    name="searchType"
-                    id="input"
-                    value="findByIngredient"
-                    checked={searchType === "findByIngredient"}
-                    onChange={handleIngredientChange}
-                />Find by Ingredient (1)
-            </label>
+
             {/* This searchType (along with Popular and Latest) allow you to call the onSearchClick by double clicking the label */}
             <label className={searchType === "findByRandom" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
                 <input
@@ -170,7 +148,9 @@ export function SearchForm(){
                     checked={searchType === "findByRandom"}
                     onChange={handleRandomChange}
                 />I'm Feeling Lucky
+                <span className="tooltiptext">Double Click to Search!</span>
             </label>
+
             <label className={searchType === "findByMulti" ? "radio active" : "radio"}>
                 <input
                     type="radio"
@@ -181,6 +161,7 @@ export function SearchForm(){
                     onChange={handleMultiChange}
                 />Find by Ingredients (3)
             </label>
+
             <label className={searchType === "findByLatest" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
                 <input
                     type="radio"
@@ -190,7 +171,9 @@ export function SearchForm(){
                     checked={searchType === "findByLatest"}
                     onChange={handleLatestChange}
                 />Show Recently Added
+                <span className="tooltiptext">Double Click to Search!</span>
             </label>
+
             <label className={searchType === "findByPopular" ? "radio active" : "radio"} onDoubleClickCapture={onSearchClick}>
                 <input
                     type="radio"
@@ -200,6 +183,7 @@ export function SearchForm(){
                     checked={searchType === "findByPopular"}
                     onChange={handlePopularChange}
                 />Show Most Popular
+                <span className="tooltiptext">Double Click to Search!</span>
             </label>
             </div>
 
@@ -239,20 +223,6 @@ export function SearchForm(){
                     value={value}
                     onChange={onChange}
                     placeholder="What does it start with?"
-                    onKeyDown={(e) => {
-                        if(e.key === "Enter"){
-                            onSearchClick()
-                        }
-                    }}
-                />
-            )}
-            {searchType === "findByIngredient" && (
-                <input
-                    className="bar"
-                    type="search"
-                    value={value}
-                    onChange={onChange}
-                    placeholder="What's your spirit of choice?"
                     onKeyDown={(e) => {
                         if(e.key === "Enter"){
                             onSearchClick()
@@ -321,6 +291,7 @@ export function SearchForm(){
         <button id="Button-Search" onClick={onSearchClick}>Search</button>
 
         {cocktails && <RecipeList cocktails={cocktails} favorites={favorites}/>}
+
     </div>
     )
 }

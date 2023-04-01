@@ -1,5 +1,5 @@
 import "./recipeItem.css";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import CocktailContext from "../../context/CocktailContext";
 import { Drink } from "../../models/Recipe";
 import { useNavigate } from 'react-router-dom';

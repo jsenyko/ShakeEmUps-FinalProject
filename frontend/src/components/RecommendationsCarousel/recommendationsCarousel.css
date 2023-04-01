@@ -21,6 +21,12 @@
 /* media scroller */
 .RecommendationsCarousel .media-container {
     position: relative;
+    height: 300px;
+}
+
+.RecommendationsCarousel .media-container svg {
+    position: relative;
+    transform: translateY(-200px);
 }
   
 .RecommendationsCarousel .media-scroller,
@@ -61,12 +67,24 @@
     cursor: pointer;
 }
 
-.RecommendationsCarousel .media-group .media-element > p {
+.RecommendationsCarousel .media-group .media-element .content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.RecommendationsCarousel .media-group .media-element .content > p {
     position: relative;
     font-size: 20px;
     color: #fff;
     z-index: 20;
     cursor: pointer;
+}
+
+.RecommendationsCarousel .media-group .media-element .content i {
+    color: #d83133;
+    margin: auto 0;
+    font-size: 20px;
+    padding: 5px 15px 0 0;
 }
   
 .RecommendationsCarousel .next,
@@ -85,12 +103,14 @@
     left: 0;
     top: 0;
     bottom: 0;
+    height: 300px;
 }
   
 .RecommendationsCarousel .next {
     right: 0;
     top: 0;
     bottom: 0;
+    height: 300px;
 }
 
 .RecommendationsCarousel #group-1 {
