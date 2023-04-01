@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export function Favorites(){
 
+    const [active, setActive] = useState<Boolean>(true)
+
     const { favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
@@ -15,6 +17,7 @@ export function Favorites(){
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
+
 
     return (
         <div className="Favorites" id="favorites">
@@ -46,6 +49,10 @@ export function Favorites(){
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 
                     <div className={value === "All" || cocktail.strIngredient1.includes(value)? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
+
+            <div className="Favorites_Recipe-Container">
+                {favorites.map((cocktail) => 
+                    <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
                             <img src={cocktail.strDrinkThumb} alt="" />

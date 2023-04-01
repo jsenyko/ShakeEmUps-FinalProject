@@ -100,4 +100,3 @@ export function addDrink(userDrink: Drink):Promise<Drink> {
       params: { to: user }
     })
     .then(res => res.data)
-  }
