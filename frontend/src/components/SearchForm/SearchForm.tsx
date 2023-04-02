@@ -109,7 +109,7 @@ export function SearchForm(){
         };
     };
     
-    return (
+return (
         <div className="SearchForm">
             <h1>Find something new today!</h1>
             <div className="SearchTypes">

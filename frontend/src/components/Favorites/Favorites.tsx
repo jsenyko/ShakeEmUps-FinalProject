@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 export function Favorites(){
 
+    const [active, setActive] = useState<Boolean>(true)
+
     const { favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ export function Favorites(){
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
+
 
     return (
         <div className="Favorites" id="favorites">
