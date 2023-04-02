@@ -112,5 +112,4 @@ export function addDrink(userDrink: Drink):Promise<Drink[]> {
     return axios.get<Drink[]>(`${baseUrl}/`, {
       params: { to: user }
     })
-    .then(res => res.data)
-}
+    .then(res => res.data)}

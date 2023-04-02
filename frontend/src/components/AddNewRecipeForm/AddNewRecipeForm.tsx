@@ -124,7 +124,6 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
       }
 
 
-
     const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
     const flipCaret = () => {
         changeCaretDirection(!caretDirection);
@@ -243,7 +242,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
                     type="text"
                     name="name"
                     placeholder="What's it called?"
-                     
+                    required
                     value = {strDrink}
                     onChange = {(e) => setStrDrink(e.target.value)}
                 />
