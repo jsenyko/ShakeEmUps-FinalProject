@@ -5,7 +5,7 @@ import { addDrink } from "../../services/RecipeService";
 import CocktailContext from "../../context/CocktailContext";
 import { getCocktailDetails } from "../../services/RecipeService";
 import { FaStar } from "react-icons/fa";
-import { UserDrink } from "../../models/UserDrinkModel";
+
 
 interface Props {
     initialTo?: string;
@@ -78,6 +78,8 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     strMeasure1, strMeasure2,strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7,
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
+    /* eslint-disable-next-line */
+    /* eslint-disable-next-line */
        }).then(() => {
         setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
         setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
@@ -90,7 +92,38 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
         setStrMeasure15(""), setStrImageSource(""), setStrImageAttribution(""), setStrCreativeCommonsConfirmed(""), setDateModified("")
      
        }) 
+
+
     }
+    ///////
+    //////function that handles the image upload from the form./////////
+    ///// 
+    const [photoBase,setPhotoBase] = useState<string>("")
+    
+    function formSubmit(e: any) {
+        e.preventDefault();
+        // Submit your form with the photoBase as 
+        // one of your fields
+        console.log({photoBase})
+        alert("here you'd submit the form using\n the photoBase like any other field")
+      }
+    
+      // The Magic all happens here.
+      function convertFile(files: FileList|null) {
+        if (files) {
+          const fileRef = files[0] || ""
+          const fileType: string= fileRef.type || ""
+          console.log("This file upload is of type:",fileType)
+          const reader = new FileReader()
+          reader.readAsBinaryString(fileRef)
+          reader.onload=(ev: any) => {
+            // convert it to base64
+            setPhotoBase(`data:${fileType};base64,${btoa(ev.target.result)}`)
+          }
+        }
+      }
+
+
 
     const [caretDirection, changeCaretDirection] = useState<Boolean>(false)
     const flipCaret = () => {
@@ -108,8 +141,8 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     };
 
     // useState related to Cocktail Rating element
-    const [rating, setRating] = useState<Number>(0);
-    const [hover, setHover] = useState<Number>(0);
+    const [rating, setRating] = useState<number>(0);
+    const [hover, setHover] = useState<number>(0);
 
     // useState that brings in cocktails details from API Call return
     const [details, setDetails] = useState<Root>();
@@ -313,12 +346,51 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
             {/* This section holds the Cocktail Image + button to add to the form */}
             <div className="Form-Right">
                 <div className="Image-Container">
-                    <img src="#" alt="" />
-                </div>
-                <button>Add Cocktail Image</button>
+                <input type="file" onChange={(e)=> convertFile(e.target.files)} value = {strDrinkThumb}/>
+
+            <hr />
+            { photoBase &&
+            <>
+            {/* <p> */}
+              {/* It's ready to be submitted!<br />
+              Simply include the 'photoBase' variable<br /> 
+              as one of the things you submit</p> */}
+            
+
+            {(photoBase.indexOf("image/") > -1) && 
+            <img src={photoBase} width={300} />
+            }
+
+
+
+
+
+            {/* if it's a PDF */}
+            {/* if it's a PDF */}
+            {/* if it's a PDF */}
+            {(photoBase.indexOf("application/pdf") > -1)  && 
+             <embed src={photoBase} width="800px" height="2100px" />
+             }
+            {/* if it's a PDF */}
+            {/* if it's a PDF */}
+            {/* if it's a PDF */} 
+
+
+              
+              
+              
+            <hr />
+            <button> Submit and check the console</button>
+            
+            </>
+            }
+                {/* <button>Add Cocktail Image</button> */}
             </div>
 
             </div>
+
+            </div>
+
 
             {/* This section holds the Ingredients, Instructions, Add to Favorites, and Cocktail Rating along with the Button to POST in backend */}
             <div className="Form-Bottom">
@@ -577,7 +649,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
                         type="text"
                         name="instructions"
                         placeholder="How is it made? Please be descriptive and specific."
-                         
+                        value = {strInstructions} onChange = {(e) => setStrInstructions(e.target.value)}
                     />
                 </div>
 

@@ -9,7 +9,7 @@ export function Favorites(){
 
     const [active, setActive] = useState<Boolean>(true)
     const [userDrinks, setUserDrinks] = useState<any>([])
-    const { favorites, removeCocktail } = useContext(CocktailContext);
+    const {favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
     // Initial state of the search bar is blank
@@ -26,7 +26,6 @@ export function Favorites(){
             setUserDrinks(data);
             console.log(userDrinks)
         })
-    //
     },[])
 
     return (
@@ -58,11 +57,7 @@ export function Favorites(){
 
             <div className="Favorites_Recipe-Container">
                 {favorites.map((cocktail) => 
-                    <div className={value === "All" || cocktail.strIngredient1.includes(value)? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
-
-            <div className="Favorites_Recipe-Container">
-                {favorites.map((cocktail) => 
-                    <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
+                    <div className={value === "All" || (cocktail.strIngredient1.toLowerCase()).includes(value.toLowerCase())? "RecipeCard active" : "RecipeCard hidden"} key={cocktail.idDrink} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
                             <img src={cocktail.strDrinkThumb} alt="" />
@@ -83,12 +78,16 @@ export function Favorites(){
                 )}
             </div>
 
+
+                {/* user submitted drinks from the form */}
+            <div><h1>The Drinks You Created!</h1></div>
+
             <div className="Favorites_Recipe-Container">
                 {userDrinks.map((cocktail:any) => 
                     <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail._id} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
-                            <img src='#' alt="user created drink" />
+                            <img src={cocktail.strDrinkThumb} alt="user created drink" />
                         </div>
                         <div className="RecipeCard-Content">
                             <h2>{cocktail.strDrink}</h2>
@@ -105,7 +104,6 @@ export function Favorites(){
                     </div>
                 )}
             </div>
-
         </div>
     );
 };
