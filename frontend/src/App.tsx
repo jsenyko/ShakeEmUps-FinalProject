@@ -13,6 +13,9 @@ import { AddNewRecipeForm } from './components/AddNewRecipeForm/AddNewRecipeForm
 import { ContactUs } from './components/ContactUs/ContactUs';
 import ScrollToTop  from './components/ScrollToTop';
 
+//Routes : different levels of app and how it's structured. Routing is used so when you're on the homepage you can click on links taking you to different components
+//Context : put in here components you want to use in various places. Always 3 different files associated with context
+
 function App() {
   return (
     <BrowserRouter>

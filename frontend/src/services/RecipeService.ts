@@ -1,6 +1,9 @@
 // Axios is the library primarily used for React apps, versus Fetch for JavaScript
 import axios from "axios";
 
+//HTTP methods used here are get and post (CRUD methods)
+//This component allows us to connect with API
+//API calls done here through links to API shown below
 
 
 // The model Recipe is used because this provides the JSON and structure for the API call

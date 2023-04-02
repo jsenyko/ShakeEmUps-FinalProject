@@ -2,6 +2,8 @@ import { ReactNode, useState } from "react";
 import { Drink } from "../models/Recipe";
 import CocktailContext from "./CocktailContext";
 
+// instead of passing upstate, components can make use of these functions ex. directly from child to child 
+
 interface ICocktailContextProviderProps{
     children: ReactNode
 };

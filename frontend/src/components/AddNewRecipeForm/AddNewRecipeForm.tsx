@@ -12,6 +12,8 @@ interface Props {
     
 }
 
+//how we collect data from this form: input within forms and within those inputs onChange function along with e.target.value parameters
+
 export function AddNewRecipeForm( {initialTo = ""}: Props){
     
     const [ idDrink, setIdDrink ] = useState(initialTo);

@@ -8,14 +8,18 @@ import CocktailContext from "../../context/CocktailContext";
 
 export function SearchForm(){
 
+    
+
     // Uses context to determine if a cocktail in the search results already appears in the
     // user's Favorites array and updates the styling of the heart icon to reflect that
     const { favorites } = useContext(CocktailContext);
 
-    // Initial state of cocktails returned is empty
+    // Initial state of cocktails returned is empty as shown through empty parenthesis
+  
     const [cocktails, setCocktails] = useState<Root>();
 
     // Initial state of the search bar is blank
+      // set value by entering it in search bar
     const [value, setValue] = useState<string>("");
     
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
