@@ -96,14 +96,26 @@
     line-height: 20px;
 }
 
+.Favorites .SpiritTypes-Header {
+    width: 60%;
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px auto 0;
+    font-size: 20px;
+}
+
 .Favorites .SpiritTypes {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 100%;
+    width: 60%;
     cursor: pointer;
+    margin: 0 auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
   
 .Favorites .SpiritTypes .radio {

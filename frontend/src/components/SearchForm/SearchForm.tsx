@@ -24,7 +24,7 @@ export function SearchForm(){
 
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
-    const [searchType, setSearchType] = useState("");
+    const [searchType, setSearchType] = useState<string>("");
 
     // When user clicks a different option the searchType changes
     // and the text in the Search Bar resets to blank so you can see the placeholder

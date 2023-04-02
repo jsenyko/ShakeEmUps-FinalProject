@@ -19,7 +19,6 @@
 }
 
 /* Form Header text */
-
 .AddNewRecipe-Closed .AddNewRecipe-Header,
 .AddNewRecipe-Open .AddNewRecipe-Header {
     display: flex;
@@ -402,22 +401,4 @@
 
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .AddNew-Button.clicked button {
     background: #d83133;
-}
-
-.services {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 500px;
-    margin: auto 0;
-}
-
-.services .first-division {
-    display: flex;
-    flex-direction: column;
-}
-
-.services .first-division input {
-    width: 200px;
-    text-align: center;
 }

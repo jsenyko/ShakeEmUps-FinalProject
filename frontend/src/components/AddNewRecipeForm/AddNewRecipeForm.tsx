@@ -206,7 +206,6 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     type="text"
                     name="name"
                     placeholder="What's it called?"
-                     
                     value = {strDrink}
                     onChange = {(e) => setStrDrink(e.target.value)}
                 />
