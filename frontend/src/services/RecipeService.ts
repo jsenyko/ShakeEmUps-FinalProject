@@ -6,6 +6,7 @@ import axios from "axios";
 // The model Recipe is used because this provides the JSON and structure for the API call
 import { Drink, Root } from "../models/Recipe";
 
+
 // Axios used with the HTTP verb 'get' and we expect a Recipe to be returned
 
 // The API call to Search By Name uses the cocktail's name (strDrink)
@@ -80,17 +81,29 @@ export function getCocktailDetails(idDrink: string): Promise<Root>{
     })
     .then((response) => response.data)
 };
+//
+//
+//the deployed URL
+// const baseUrl = "https://us-central1-shakeemup-c22e5.cloudfunctions.net/api"
+//
+//
+//local backend URL//
+const baseUrl = "http://127.0.0.1:5001/shakeemup-c22e5/us-central1/api"
 
-const baseUrl = "https://us-central1-shakeemup-c22e5.cloudfunctions.net/api"
 
-export function fetchDrink():Promise<Drink[]> {
-    return axios.get<Drink[]>(`${baseUrl}/newfavorite`)
+export function getUserDrinks():Promise<Drink[]> {
+    return axios.get<Drink[]>(`${baseUrl}/userDrinks`)
     .then(res => res.data)
 }
 
-export function addDrink(userDrink: Drink):Promise<Drink> {
+export function getCertainUserDrink(_id: string):Promise<Drink[]> {
+    return axios.get<Drink[]>(`${baseUrl}/userDrinks/${_id}`)
+    .then(res => res.data)
+}
+
+export function addDrink(userDrink: Drink):Promise<Drink[]> {
  
-    return axios.post<Drink>(`${baseUrl}/favorites`, userDrink)
+    return axios.post<Drink[]>(`${baseUrl}/userDrinks`, userDrink)
     .then(res => res.data);
   }
   

@@ -1,13 +1,15 @@
 import "./favorites.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CocktailContext from "../../context/CocktailContext";
 import { useNavigate } from "react-router-dom";
+import { Drink } from "../../models/Recipe";
+import { getUserDrinks } from "../../services/RecipeService";
 
 export function Favorites(){
 
     const [active, setActive] = useState<Boolean>(true)
-
-    const { favorites, removeCocktail } = useContext(CocktailContext);
+    const [userDrinks, setUserDrinks] = useState<any>([])
+    const {favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
     // Holds the value of the 'spirit' selected with the radio buttons below; default is 'All'
@@ -19,6 +21,12 @@ export function Favorites(){
         setValue(event.target.value);
     };
 
+    useEffect(() => {
+        getUserDrinks().then((data) =>{
+            setUserDrinks(data);
+            console.log(userDrinks)
+        })
+    },[])
 
     return (
         <div className="Favorites" id="favorites">
@@ -89,6 +97,33 @@ export function Favorites(){
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>
+                                Remove
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+
+                {/* user submitted drinks from the form */}
+            <div><h1>The Drinks You Created!</h1></div>
+
+            <div className="Favorites_Recipe-Container">
+                {userDrinks.map((cocktail:any) => 
+                    <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail._id} data-item={cocktail.strIngredient1}>
+                        <div className="card">
+                        <div className="RecipeCard-Image">
+                            <img src={cocktail.strDrinkThumb} alt="user created drink" />
+                        </div>
+                        <div className="RecipeCard-Content">
+                            <h2>{cocktail.strDrink}</h2>
+                        </div>
+                        <div className="RecipeCard-Buttons">
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail._id}`)}>
+                                Details
+                            </button>
+                            <button className="Button-Remove" onClick={() => {removeCocktail(cocktail._id)}}>
                                 Remove
                             </button>
                         </div>
