@@ -11,7 +11,8 @@ export interface Root {
     drinks: Drink[]
   }
   export interface Drink {
-    
+    _id: string,
+    isUserGen: boolean,
     idDrink: string
     strDrink: string
     strDrinkAlternate?: any

@@ -8,7 +8,7 @@ import { getUserDrinks } from "../../services/RecipeService";
 export function Favorites(){
 
     const [active, setActive] = useState<Boolean>(true)
-    const [userDrinks, setUserDrinks] = useState<any>([])
+    const [userDrinks, setUserDrinks] = useState<Drink[]>([])
     const {favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
@@ -93,7 +93,7 @@ export function Favorites(){
                             <h2>{cocktail.strDrink}</h2>
                         </div>
                         <div className="RecipeCard-Buttons">
-                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}/0`)}>
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>
@@ -110,7 +110,7 @@ export function Favorites(){
             <div><h1>The Drinks You Created!</h1></div>
 
             <div className="Favorites_Recipe-Container">
-                {userDrinks.map((cocktail:any) => 
+                {userDrinks.map((cocktail:Drink) => 
                     <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail._id} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
@@ -120,7 +120,7 @@ export function Favorites(){
                             <h2>{cocktail.strDrink}</h2>
                         </div>
                         <div className="RecipeCard-Buttons">
-                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail._id}`)}>
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail._id}/1`)}>
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail._id)}}>

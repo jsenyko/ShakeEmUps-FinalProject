@@ -96,8 +96,8 @@ export function getUserDrinks():Promise<Drink[]> {
     .then(res => res.data)
 }
 
-export function getCertainUserDrink(_id: string):Promise<Drink[]> {
-    return axios.get<Drink[]>(`${baseUrl}/userDrinks/${_id}`)
+export function getCertainUserDrink(_id: string):Promise<Drink> {
+    return axios.get<Drink>(`${baseUrl}/userDrinks/${_id}`)
     .then(res => res.data)
 }
 
