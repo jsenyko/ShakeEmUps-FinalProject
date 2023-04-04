@@ -1,9 +1,9 @@
 import "./details.css";
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getCocktailDetails } from "../../services/RecipeService";
+import { getCertainUserDrink, getCocktailDetails } from "../../services/RecipeService";
 import CocktailContext from "../../context/CocktailContext";
-import { Root } from "../../models/Recipe";
+import { Drink, Root } from "../../models/Recipe";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
@@ -11,6 +11,7 @@ export function Details(){
 
     // useState that brings in cocktails details from API Call return
     const [details, setDetails] = useState<Root>();
+    const [userDetails, setUserDetails] = useState<Drink[]>();
 
     // useState related to Cocktail Rating element
     const [rating, setRating] = useState(0);
@@ -19,12 +20,20 @@ export function Details(){
     // Gets the idDrink from the URL provided when you route here
 
     const idDrink = useParams().idDrink;
+    const _id = useParams()._id;
+    console.log(_id);
 
     // Makes the API Call using the idDrink param and returns a result
     useEffect(() => {
         let recipeResult = getCocktailDetails(String(idDrink));
 
         recipeResult.then((x) => setDetails(x))
+    }, [])
+    ///
+    useEffect(() => {
+        let recipeResult = getCertainUserDrink(String(_id));
+
+        recipeResult.then((x) => setUserDetails(x))
     }, [])
 
     // Context used so you can call the function addCocktail that adds
@@ -149,6 +158,12 @@ export function Details(){
                 </div>
             </div>
             }
+
+            <div className="User-Drink-Details">
+                {/* <p>{userDetails?.idDrink}</p> */}
+            </div>
+
         </div>
+        
     )
 };
