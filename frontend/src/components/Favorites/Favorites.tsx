@@ -12,9 +12,7 @@ export function Favorites(){
     const {favorites, removeCocktail } = useContext(CocktailContext);
     const navigate = useNavigate();
 
-
     const sortAscending = [...favorites].sort((a, b) => a.strDrink > b.strDrink ? 1 : -1)
-
 
     // Holds the value of the 'spirit' selected with the radio buttons below; default is 'All'
     const [value, setValue] = useState<string>("All");
@@ -24,7 +22,6 @@ export function Favorites(){
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
-
 
     // Initial state of the Filter by Category option is blank
     const [category, setCategory] = useState<string>("")
@@ -39,6 +36,14 @@ export function Favorites(){
     };
 
 
+    useEffect(() => {
+        getUserDrinks().then((data) =>{
+            setUserDrinks(data);
+            console.log(userDrinks)
+        })
+    },[])
+
+
     return (
         <div className="Favorites" id="favorites">
             <div className="Favorites_Header">
@@ -47,6 +52,7 @@ export function Favorites(){
             </div>
 
             <section className="Favorites_Filter">
+
             <p className="SpiritTypes-Header">Filter by Base Spirit</p>
             <div className="SpiritTypes">
                 {/* Takes the array of string above and maps them out to individual radio buttons */}
