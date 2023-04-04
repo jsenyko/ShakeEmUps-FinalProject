@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     margin: 250px 0;
-
+}
 
 .AboutUs .AboutUs-Header {
     display: flex;
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 30px 0 100px;
+    padding: 30px 50px 100px;
     width: 100%;
 }
 
@@ -163,7 +163,7 @@
 @media screen and (max-width: 1215px) {
     .AboutUs {
         height: 1500px;
-        margin-top: 220px;
+        margin-top: 250px;
     }
 
     .AboutUs .AboutUs-Cards {
@@ -187,13 +187,6 @@
     }
 }
 
-@media screen and (max-width: 1280px) {
-    .AboutUs {
-        height: 1500px;
-        margin-top: -70px;
-    }
-}
-
 @media screen and (max-width: 1025px) {
     .AboutUs {
         height: 1500px;
@@ -205,6 +198,7 @@
     .AboutUs {
         height: 1600px;
         margin-top: 220px;
+        margin-bottom: 400px;
     }
 
     .AboutUs .AboutUs-Cards {
@@ -236,9 +230,32 @@
     }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
     .AboutUs {
-        margin-top: 250px;
+        margin-top: 775px;
+        margin-bottom: 700px;
+    }
+
+    .AboutUs .AboutUs-Cards {
+        padding-top: 50px;
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card {
+        margin-bottom: 300px;
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:hover {
+        transform: translateX(-135px);
+        padding-top: 25px;
+    }
+
+    .AboutUs .AboutUs-Cards .AboutUs-Card:hover .AboutUs-Circle,
+    .AboutUs .AboutUs-Cards .AboutUs-Card .AboutUs-Content {
+        transform: translate(230px, 275px);
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 

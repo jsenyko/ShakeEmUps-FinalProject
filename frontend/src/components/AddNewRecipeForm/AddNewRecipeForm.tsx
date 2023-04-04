@@ -6,10 +6,12 @@ import CocktailContext from "../../context/CocktailContext";
 import { getCocktailDetails } from "../../services/RecipeService";
 import { FaStar } from "react-icons/fa";
 
+
 interface Props {
     initialTo?: string;
     onAdd?: (drink: Drink) => void
 }
+
 
 export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     
@@ -94,10 +96,6 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
     const flipCaret = () => {
         changeCaretDirection(!caretDirection);
     };
-
-    // Context used so you can call the function addCocktail that adds
-    // the cocktail selected to the Favorites array / page
-    const { addCocktail, removeCocktail } = useContext(CocktailContext);
 
     // Toggles the Button-Favorite styling when it is clicked
     const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)
@@ -208,10 +206,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
                     type="text"
                     name="name"
                     placeholder="What's it called?"
-<<<<<<< HEAD
-=======
                     required
->>>>>>> 2cd849835149edadf9303d2f9f8cd811c5648ef0
                     value = {strDrink}
                     onChange = {(e) => setStrDrink(e.target.value)}
                 />
@@ -298,7 +293,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
 
                                     return <label>
                                     {/* The star clicked changes the rate and sets it to that star's ratingValue (i+1) */}
-                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />
+                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} key={i}/>
                                     
                                     {/* Star's color is based on the current ratingValue and rating, red or gray, but the hover state overrides this */}
                                     <FaStar className="star" size={25} color={ratingValue <= (hover || rating) ? "#d83133" : "#e4e5e9"}  onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />
@@ -314,7 +309,7 @@ export function AddNewRecipeForm( {initialTo = "", onAdd}: Props){
             {/* This section holds the Cocktail Image + button to add to the form */}
             <div className="Form-Right">
                 <div className="Image-Container">
-                    <img src="#" alt="" />
+                    {/* <img src="" alt="" /> */}
                 </div>
                 <button>Add Cocktail Image</button>
             </div>

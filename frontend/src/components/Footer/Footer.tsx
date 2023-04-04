@@ -12,19 +12,19 @@ export function Footer(){
             <div className="wave" id="wave4"></div>
         </div>
         <div className="SocialMedia">
-          <a href="https://www.facebook.com" target="_blank"><i className="fa-brands fa-facebook"></i></a><br />
+          <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><i className="fa-brands fa-facebook"></i></a><br />
           <span> | </span>
-          <a href="https://www.instagram.com" target="_blank"><i className="fa-brands fa-instagram"></i></a><br />
+          <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><i className="fa-brands fa-instagram"></i></a><br />
           <span> | </span>
-          <a href="https://www.twitter.com" target="_blank"><i className="fa-brands fa-twitter"></i></a><br />
+          <a href="https://www.twitter.com" target="_blank" rel="noreferrer"><i className="fa-brands fa-twitter"></i></a><br />
           <span> | </span>
-          <a href="https://www.pinterest.com" target="_blank"><i className="fa-brands fa-pinterest"></i></a><br />
+          <a href="https://www.pinterest.com" target="_blank" rel="noreferrer"><i className="fa-brands fa-pinterest"></i></a><br />
        </div>
         <ul className="menu">
             <li><a href="/">Home</a></li>
             <li><a href="/aboutus">About</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="/contactus">Contact</a></li>
         </ul>
         <p>© Group 3 Final Project | JavaScript AHBC September 2022</p>
         </div>

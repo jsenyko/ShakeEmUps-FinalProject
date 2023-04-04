@@ -27,15 +27,6 @@ export function getCocktailByFirstLetter(letter: string): Promise<Root>{
 };
 
 
-// The API call to Search By Ingredient filters the strIngredients to find the value provided
-export function getCocktailByIngredient(value: string): Promise<Root>{
-    return axios
-    .get<Root>(`https://www.thecocktaildb.com/api/json/v2/9973533/filter.php?i=${value}`, {
-    })
-    .then((response) => response.data)
-};
-
-
 // The API call for a Random Cocktail uses no inputs and returns 10 cocktails (without selection only returns 1)
 export function getRandomCocktail(): Promise<Root>{
     return axios

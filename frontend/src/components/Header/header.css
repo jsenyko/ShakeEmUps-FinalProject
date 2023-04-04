@@ -65,25 +65,73 @@
     height: 100px;
 }
 
-.Header .NavBar ul {
+.Header .NavBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Header .NavBar .NavLinks {
     display: flex;
     flex-direction: row;
 }
 
-.Header .NavBar ul li {
+.Header .NavBar .NavLinks li {
     margin: 0 10px;
     font-size: 20px;
     list-style-type: none;
 }
 
-.Header .NavBar ul li a {
+.Header .NavBar .NavLinks li a {
     text-decoration: none;
     color: #fff;
     transition: 500ms;
 }
 
-.Header .NavBar ul li a:hover {
+.Header .NavBar .NavLinks li a:hover {
     color: #3586ff;
+}
+
+.Header .NavBar .User {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.Header .NavBar .User button {
+    background: #fff;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    transition: 500ms;
+    margin-right: 10px;
+}
+
+.Header .NavBar .User button:first-child {
+    margin-right: 20px;
+}
+
+.Header .NavBar .User button:hover {
+    background: #3586ff;
+    color: #fff;
+}
+
+.Header.sticky .NavBar .NavLinks a {
+    color: #000;
+}
+
+.Header.sticky .NavBar .User {
+    margin-top: -10px;
+}
+
+.Header.sticky .NavBar .User button {
+    background: #000;
+    color: #fff;
+}
+
+.Header.sticky .NavBar .User button:hover {
+    background: #3586ff;
 }
 
 /* Hamburger Menu */
@@ -95,11 +143,11 @@
     align-items: center;
     padding: 5px;
     margin: 0px;
-    right: -60px;
+    right: -50px;
 }
 
 .Header .Header-Hamburger .Hamburger-Closed {
-    margin: 0 20px 0 10px;
+    /* margin: 0 10px 0 10px; */
     font-size: 36px;
     cursor: pointer;
 }
@@ -155,7 +203,7 @@
 .Hamburger-Container.visible {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -50px;
     min-height: 500px;
 }
 
@@ -293,7 +341,8 @@
         height: 100%;
     }
 
-    .Header .NavBar ul li a {
+    .Header .NavBar .NavLinks li a,
+    .Header .NavBar .User {
         opacity: 0;
         transition: 250ms;
     }
@@ -309,7 +358,7 @@
 
 @media screen and (max-width: 600px) {
     .Header .Header-Hamburger {
-        right: 25px;
+        right: 50px;
     }
 }
 
