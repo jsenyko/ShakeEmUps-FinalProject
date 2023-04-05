@@ -21,7 +21,7 @@ export function AboutUs(){
 
             <div className="AboutUs-Cards">
                 {groupMembers.map((groupMember) =>
-                    <div className="AboutUs-Card">
+                    <div className="AboutUs-Card" key={groupMember.name}>
                         <div className="AboutUs-Circle"></div>
                         <div className="AboutUs-Content">
                             <h2>{groupMember.name}</h2>

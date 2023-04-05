@@ -23,6 +23,94 @@
     top: 250px;
 }
 
+.Favorites .Favorites_Filter .SpiritTypes-Header {
+    width: 40%;
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px auto 0;
+    font-size: 20px;
+}
+
+.Favorites .Favorites_Filter .SpiritTypes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    cursor: pointer;
+    margin: 0 auto;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.Favorites .Favorites_Filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.Favorites .Favorites_Filter .SpiritTypes .radio {
+    padding-right: 15px;
+    color: #000;
+    margin-right: 35px;
+    font-size: 18px;
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+}
+  
+.Favorites .Favorites_Filter .SpiritTypes .radio:hover {
+    color: #3586ff;
+}
+
+.Favorites .Favorites_Filter .SpiritTypes .radio.active {
+    color: #d83133;
+    transition: 250ms;
+}
+  
+.Favorites .Favorites_Filter .SpiritTypes .radio #input {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-Category {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    width: 75%;
+    font-size: 18px;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-Category input {
+    border-radius: 5px;
+    text-align: center;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortAscending button {
+    background: #3586ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 10px;
+    border: none;
+    transition: 0.5s;
+}
+
 .Favorites_Recipe-Container {
     display: flex;
     flex-wrap: wrap;
@@ -72,17 +160,22 @@
 }
 
 .Favorites_Recipe-Container .Recipe_Card .Recipe_Card-Buttons button {
-    border-radius: 5px;
-    background-color: var(--color-secondary);
-    border-color: var(--color-secondary);
-    color: var(--text-primary);
-    transition: 0.3s;
+    background: #3586ff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 10px;
+    border: none;
+    transition: 0.5s;
 }
 
 .Favorites_Recipe-Container .Recipe_Card .Recipe_Card-Buttons button:hover {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--text-primary);
+    background: #111;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .Favorites_Recipe-Container .Recipe_Card .Recipe_Card-Buttons .Button-Details {

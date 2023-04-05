@@ -34,13 +34,17 @@ export function Header(){
                 <Link to="/"><img src="https://cdn1.iconfinder.com/data/icons/food-and-drinks-2-15/24/cocktail-shaker-512.png" alt="" /></Link>
             </div>
             <div className="NavBar">
-                <ul>
+                <ul className="NavLinks">
                     {/* These make use of Routes to direct user to that page */}
                    <li><Link to="/">Home</Link></li>
                     <li><Link to="/aboutus">About</Link></li>
                     <li><Link to="/favorites">Favorites</Link></li>
                     <li><Link to="/contactus">Contact</Link></li>
                 </ul>
+                <div className="User">
+                    <button className="Login-Hamburger">Login</button>
+                    <button className="Sign_Up-Hamburger">Sign Up</button>
+                </div>
             </div>
             
             <div className="Header-Hamburger">

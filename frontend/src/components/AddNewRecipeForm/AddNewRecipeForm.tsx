@@ -7,10 +7,13 @@ import { getCocktailDetails } from "../../services/RecipeService";
 import { FaStar } from "react-icons/fa";
 
 
+
 interface Props {
     initialTo?: string;
     
 }
+
+
 
 export function AddNewRecipeForm( {initialTo = ""}: Props){
     
@@ -128,10 +131,6 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     const flipCaret = () => {
         changeCaretDirection(!caretDirection);
     };
-
-    // Context used so you can call the function addCocktail that adds
-    // the cocktail selected to the Favorites array / page
-    const { addCocktail, removeCocktail } = useContext(CocktailContext);
 
     // Toggles the Button-Favorite styling when it is clicked
     const [favoriteButtonClicked, setFavoriteButtonClicked] = useState<Boolean>(false)
@@ -329,7 +328,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
 
                                     return <label>
                                     {/* The star clicked changes the rate and sets it to that star's ratingValue (i+1) */}
-                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} />
+                                    <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)} key={i}/>
                                     
                                     {/* Star's color is based on the current ratingValue and rating, red or gray, but the hover state overrides this */}
                                     <FaStar className="star" size={25} color={ratingValue <= (hover || rating) ? "#d83133" : "#e4e5e9"}  onMouseEnter={() => setHover(ratingValue)} onMouseLeave={() => setHover(0)} />

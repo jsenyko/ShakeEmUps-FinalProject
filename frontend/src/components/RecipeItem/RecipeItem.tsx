@@ -5,8 +5,9 @@ import { Drink } from "../../models/Recipe";
 import { useNavigate } from 'react-router-dom';
 
 interface IRecipeItemProps {
-    cocktail: Drink
+    cocktail: Drink;
     isFavorite: boolean;
+    isCategory: boolean;
 };
 
 export function RecipeItem(props:IRecipeItemProps){
@@ -19,10 +20,10 @@ export function RecipeItem(props:IRecipeItemProps){
     const { addCocktail, removeCocktail } = useContext(CocktailContext);
 
     return (
-        <div className="RecipeCard">
+        <div className={props.isCategory? "RecipeCard hidden" : "RecipeCard active"} data-item={cocktail.strCategory}>
             <div className="card">
             <div className="RecipeCard-Image">
-                <img src={cocktail.strDrinkThumb} alt="" />
+                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
             </div>
             <div className="RecipeCard-Content">
                 <h2>{cocktail.strDrink}</h2>

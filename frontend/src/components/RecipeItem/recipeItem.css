@@ -149,3 +149,11 @@
 .RecipeCard .card .RecipeCard-Buttons .Button-Favorites.clicked i {
     color: #d83133;
 }
+
+.RecipeCard.hidden {
+    display: none;
+}
+
+.RecipeCards .NoResultsFound {
+    padding: 25px;
+}

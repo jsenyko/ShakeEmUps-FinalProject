@@ -12,15 +12,31 @@ export function SearchForm(){
     // user's Favorites array and updates the styling of the heart icon to reflect that
     const { favorites } = useContext(CocktailContext);
 
-    // Initial state of cocktails returned is empty
+    // Initial state of cocktails returned is empty.  Root is an array of drinks, which contains type Drink, which is an object that contains the props.
     const [cocktails, setCocktails] = useState<Root>();
+
 
     // Initial state of the search bar is blank
     const [value, setValue] = useState<string>("");
-    
+  
+    // When onChange is called, use the target's value as the value passed into useState
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
     };
+
+
+    // Initial state of the Filter by Category option is blank
+    const [category, setCategory] = useState<string>("")
+    const categories = [{name: "All"},{name: "Cocktail"}, {name: "Shot"}, {name: "Ordinary Drink"}, {name: "Homemade Liqueur"}, {name: "Beer"}, {name: "Shake"}, {name: "Coffee / Tea"}, {name: "Punch / Party Drink"}, {name: "Cocoa"}, {name: "Soft Drink"}]
+    const clear = (event:any) => {
+        event.target.value = ""
+    };
+
+    // When a user selects a category from the dropdown list, then set that as the useState variable
+    const onCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCategory(event.target.value);
+    };
+
 
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
@@ -85,12 +101,14 @@ export function SearchForm(){
                 // The API call requires ingredients be entered without spaces, so .split was used first to remove the space after the comma, then replace any spaces with underscores
                 } else if (getCocktailByMultipleIngredients(value.replaceAll(", ", ",").replaceAll(" ", "_")).then((cocktails) => {setCocktails(cocktails)}) === undefined){
                     alert("Sorry, no results found")
+                    console.log(cocktails);
                 } else {
                     getCocktailByMultipleIngredients(value.replaceAll(", ", ",").replaceAll(" ", "_")).then((cocktails) => { setCocktails(cocktails) })};
                 break;
 
             case "findByLatest":
                     getLatestCocktails().then((cocktails) => { setCocktails(cocktails) });
+                    console.log(cocktails);
                 break;
 
             case "findByPopular":
@@ -187,6 +205,7 @@ return (
             </label>
             </div>
 
+            <div className="SearchBar">
             {/* Search Bar text changes based on searchType selected, which impacts API call made */}
             {searchType === "" && (
                 <input
@@ -287,10 +306,28 @@ return (
                 />
             )}
 
-        {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
-        <button id="Button-Search" onClick={onSearchClick}>Search</button>
+            {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
+            <button id="Button-Search" onClick={onSearchClick}>Search</button>
+        
+        </div>
 
-        {cocktails && <RecipeList cocktails={cocktails} favorites={favorites}/>}
+        <div className="FilterResults">
+        <label>Filter by Category</label>
+        <input
+            type="select"
+            name="categories"
+            placeholder="Cocktail, Shot, etc.?"
+            list="categories"
+            value={category}
+            onChange={onCategoryChange}
+            onClick={clear}
+        />
+            <datalist id="categories">
+                {categories.map((category) => <option value={category.name} key={category.name}/>)}
+            </datalist>
+        </div>
+
+        {cocktails && <RecipeList cocktails={cocktails} favorites={favorites} category={category} />}
 
     </div>
     )
