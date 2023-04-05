@@ -22,7 +22,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<div className="HomePage"><Hero /> <RecommendationsCarousel /> <SearchForm /> <AddNewRecipeForm /></div>} />
-            <Route path="/details/:idDrink" element={<Details />} />
+            <Route path="/details/:idDrink/:isUserGen" element={<Details />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/contactus" element={<ContactUs />} />

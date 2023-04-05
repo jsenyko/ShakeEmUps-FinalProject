@@ -72,7 +72,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     function handleSubmit(e: FormEvent) {
       e.preventDefault();
        addDrink({
-        idDrink, strDrink,strDrinkAlternate, strTags, strVideo, strCategory, strIBA, 
+        _id:"", isUserGen:true, idDrink, strDrink,strDrinkAlternate, strTags, strVideo, strCategory, strIBA, 
     strAlcoholic, strGlass, strInstructions, strInstructionsES, strInstructionsDE, 
     strInstructionsFR, strInstructionsIT, 
     strDrinkThumb, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, 
