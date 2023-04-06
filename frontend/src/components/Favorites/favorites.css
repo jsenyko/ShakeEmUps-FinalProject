@@ -86,29 +86,59 @@
     width: 40%;
 }
 
-.Favorites .Favorites_Filter .Filter-Misc .Filter-Category {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 15px;
-    width: 75%;
-    font-size: 18px;
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortAlpha button.SortAZ {
+    background: #d83133;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 15px 0 0 0;
+    border: none;
+    transition: 0.5s;
 }
 
-.Favorites .Favorites_Filter .Filter-Misc .Filter-Category input {
-    border-radius: 5px;
-    text-align: center;
-}
-
-.Favorites .Favorites_Filter .Filter-Misc .Filter-SortAscending button {
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortAlpha button.SortZA,
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortRandom button {
+    position: relative;
     background: #3586ff;
     color: #fff;
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 16px;
     font-weight: 600;
-    margin: 0 10px;
+    margin: 15px 0 0 0;
     border: none;
     transition: 0.5s;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortRandom button:after {
+    content: "";
+    position: absolute;
+    display: block;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 750ms;
+    box-shadow: 0 0 10px 20px white;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortRandom button:active:after{
+    box-shadow: 0 0 0 0 rgba(53, 134, 255, 0.9);
+    position: absolute;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: 0s;
+}
+
+.Favorites .Favorites_Filter .Filter-Misc .Filter-SortRandom button:active {
+    top: 1px;
 }
 
 .Favorites_Recipe-Container {

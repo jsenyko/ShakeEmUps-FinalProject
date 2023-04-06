@@ -8,8 +8,9 @@ import { getUserDrinks } from "../../services/RecipeService";
 export function Favorites(){
 
     const [active, setActive] = useState<Boolean>(true)
-    const [userDrinks, setUserDrinks] = useState<Drink[]>([])
-    const {favorites, removeCocktail } = useContext(CocktailContext);
+    const [userDrinks, setUserDrinks] = useState<any>([])
+    const {favorites, removeCocktail, sortFavoritesAZ, sortFavoritesZA, sortFavoritesRandom } = useContext(CocktailContext);
+
     const navigate = useNavigate();
 
     const sortAscending = [...favorites].sort((a, b) => a.strDrink > b.strDrink ? 1 : -1)
@@ -43,6 +44,11 @@ export function Favorites(){
         })
     },[])
 
+    // Allows users to sort results A->Z or Z->A
+    const [sortAlpha, setSortAlpha] = useState<boolean>(true)
+    const changeSortAlpha = () => {
+        setSortAlpha(!sortAlpha)
+    }
 
     return (
         <div className="Favorites" id="favorites">
@@ -79,24 +85,12 @@ export function Favorites(){
 
             <div className="Filter-Misc">
 
-                <div className="Filter-Category">
-                    <label>Filter by Category</label>
-                    <input
-                        type="select"
-                        name="categories"
-                        placeholder="Cocktail, Shot, etc.?"
-                        list="categories"
-                        value={category}
-                        onChange={onCategoryChange}
-                        onClick={clear}
-                    />
-                    <datalist id="categories">
-                        {categories.map((category) => <option value={category.name} key={category.name}/>)}
-                    </datalist>
+                <div className="Filter-SortAlpha" onClick={changeSortAlpha}>
+                    <button className={sortAlpha? "SortAZ" : "SortZA"} onClick={sortAlpha? sortFavoritesAZ : sortFavoritesZA}>{sortAlpha? "Sort A-Z" : "Sort Z-A"}</button>
                 </div>
 
-                <div className="Filter-SortAscending">
-                    <button>Sort A-Z</button>
+                <div className="Filter-SortRandom">
+                    <button className="SortRandom" onClick={sortFavoritesRandom}>Sort Random</button>
                 </div>
 
             </div>

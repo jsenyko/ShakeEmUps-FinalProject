@@ -191,3 +191,18 @@
 .RecommendationsCarousel .media-scroller:hover .navigation-indicators {
     opacity: 1;
 }
+
+@media screen and (max-width: 1000px) {
+    .RecommendationsCarousel .media-group .media-element .content > p,
+    .RecommendationsCarousel .media-group .media-element .content i {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    .RecommendationsCarousel .media-group .media-element .content > p,
+    .RecommendationsCarousel .media-group .media-element .content i {
+        font-size: 14px;
+    }
+}
