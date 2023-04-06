@@ -51,7 +51,6 @@ export function SearchForm(){
         setCount(Number(event.target.value));
     };
 
-
     // Sets default value of radio button selection and
     // useState updates the value of that based on selection
     const [searchType, setSearchType] = useState<string>("");
@@ -359,7 +358,6 @@ return (
                         {resultCount.map((count) => <option value={count} key={count}/>)}
                     </datalist>
                 </div>
-
 
             </div>
 

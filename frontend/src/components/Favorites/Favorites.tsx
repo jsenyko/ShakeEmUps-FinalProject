@@ -10,7 +10,10 @@ export function Favorites(){
     const [active, setActive] = useState<Boolean>(true)
     const [userDrinks, setUserDrinks] = useState<any>([])
     const {favorites, removeCocktail, sortFavoritesAZ, sortFavoritesZA, sortFavoritesRandom } = useContext(CocktailContext);
+
     const navigate = useNavigate();
+
+    const sortAscending = [...favorites].sort((a, b) => a.strDrink > b.strDrink ? 1 : -1)
 
     // Holds the value of the 'spirit' selected with the radio buttons below; default is 'All'
     const [value, setValue] = useState<string>("All");
@@ -40,8 +43,6 @@ export function Favorites(){
             console.log(userDrinks)
         })
     },[])
-
-
 
     // Allows users to sort results A->Z or Z->A
     const [sortAlpha, setSortAlpha] = useState<boolean>(true)
@@ -104,7 +105,7 @@ export function Favorites(){
                     // To make sure the case matches and it is comparing whole word to whole word, then .toLowerCase and .split was used with .includes
                     <div key={cocktail.idDrink} data-item={cocktail.strIngredient1}
                             className={
-                                (value === "All")
+                                (value === "All" && category === "" || category === "All")
                                 || ((cocktail.strIngredient1.toLowerCase().split(" ")).includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
                                 && ((cocktail.strIngredient2?.toLowerCase().split(" "))?.includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
                                 && ((cocktail.strIngredient3?.toLowerCase().split(" "))?.includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
@@ -120,6 +121,7 @@ export function Favorites(){
                                 && ((cocktail.strIngredient13?.toLowerCase().split(" "))?.includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
                                 && ((cocktail.strIngredient14?.toLowerCase().split(" "))?.includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
                                 && ((cocktail.strIngredient15?.toLowerCase().split(" "))?.includes(value.toLowerCase()))? "RecipeCard active" : "RecipeCard hidden"
+                                && (category===cocktail.strCategory)? "RecipeCard active" : "RecipeCard hidden"
                             }
                     >
                         <div className="card">
@@ -130,7 +132,7 @@ export function Favorites(){
                             <h2>{cocktail.strDrink}</h2>
                         </div>
                         <div className="RecipeCard-Buttons">
-                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}/0`)}>
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail.idDrink)}}>
@@ -147,7 +149,7 @@ export function Favorites(){
             <div><h1>The Drinks You Created!</h1></div>
 
             <div className="Favorites_Recipe-Container">
-                {userDrinks.map((cocktail:any) => 
+                {userDrinks.map((cocktail:Drink) => 
                     <div className={active? "RecipeCard active" : "RecipeCard hidden"} key={cocktail._id} data-item={cocktail.strIngredient1}>
                         <div className="card">
                         <div className="RecipeCard-Image">
@@ -157,7 +159,7 @@ export function Favorites(){
                             <h2>{cocktail.strDrink}</h2>
                         </div>
                         <div className="RecipeCard-Buttons">
-                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail._id}`)}>
+                            <button className="Button-Details" onClick={() => navigate(`/details/${cocktail._id}/1`)}>
                                 Details
                             </button>
                             <button className="Button-Remove" onClick={() => {removeCocktail(cocktail._id)}}>

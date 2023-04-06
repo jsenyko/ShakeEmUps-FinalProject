@@ -94,6 +94,7 @@
     cursor: pointer;
 }
   
+
 .SearchForm .SearchBar .Search-Button button:hover {
     background: #E3E3E3;
     border-color: #E3E3E3;
@@ -118,8 +119,12 @@
 
 .SearchForm .Search-Filter .Filter-Category input,
 .SearchForm .Search-Filter .Filter-Count input {
-    border-radius: 5px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: auto 0;
+    padding-top: 10px;
 }
 
 .SearchForm .Search-Filter .Filter-Count {
@@ -184,6 +189,11 @@
 
     .SearchForm .SearchTypes {
         justify-content: space-between;
+    }
+    
+    .SearchForm .SearchBar {
+        display: flex;
+        flex-direction: column;
     }
 
     .SearchForm .SearchBar .bar {
