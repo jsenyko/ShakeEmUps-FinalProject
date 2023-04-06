@@ -6,14 +6,9 @@ import CocktailContext from "../../context/CocktailContext";
 import { getCocktailDetails } from "../../services/RecipeService";
 import { FaStar } from "react-icons/fa";
 
-
-
 interface Props {
     initialTo?: string;
-    
 }
-
-
 
 export function AddNewRecipeForm( {initialTo = ""}: Props){
     
@@ -81,9 +76,7 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
     strMeasure1, strMeasure2,strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7,
     strMeasure8, strMeasure9, strMeasure10, strMeasure11,strMeasure12,strMeasure13,strMeasure14, strMeasure15,
     strImageSource, strImageAttribution, strCreativeCommonsConfirmed, dateModified
-    /* eslint-disable-next-line */
-    /* eslint-disable-next-line */
-       }).then(() => {
+       }).then(() => { /* eslint-disable-next-line */
         setIdDrink(initialTo), setStrDrink(""), setStrDrinkAlternate(""), setTags(""), setStrVideo(""), 
         setStrCategory(""), setIBA(""), setStrAlcoholic(""), setGlass(""), setStrInstructions(""), 
         setStrInstructionsES(""), setStrInstructionsDE(""), setStrInstructionsFR(""), setStrInstructionsIT(""), 

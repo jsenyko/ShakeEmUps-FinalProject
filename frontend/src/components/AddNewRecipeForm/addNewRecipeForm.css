@@ -402,3 +402,63 @@
 .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .AddNew-Button.clicked button {
     background: #d83133;
 }
+
+@media screen and (max-width: 1100px) {
+    .AddNewRecipe-Closed .AddNewRecipe-Header,
+    .AddNewRecipe-Open .AddNewRecipe-Header {
+        width: 80%;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe {
+        width: 80%;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .Form-Top {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom {
+        width: 80%;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Name,
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Volume {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Name input,
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Volume input {
+        text-align: center;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Instructions,
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Additional {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient {
+        width: 180%;
+    }
+
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Name,
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Volume {
+        width: 55%;
+    }
+
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Name input,
+    .AddNewRecipe-Open .AddNewRecipe .AddNewRecipe-Form .Form-Bottom .Form-Ingredients .Form-Ingredient .Ingredient-Volume input {
+        width: 45%;
+    }
+}

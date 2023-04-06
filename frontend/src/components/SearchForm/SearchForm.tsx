@@ -27,14 +27,28 @@ export function SearchForm(){
 
     // Initial state of the Filter by Category option is blank
     const [category, setCategory] = useState<string>("")
-    const categories = [{name: "All"},{name: "Cocktail"}, {name: "Shot"}, {name: "Ordinary Drink"}, {name: "Homemade Liqueur"}, {name: "Beer"}, {name: "Shake"}, {name: "Coffee / Tea"}, {name: "Punch / Party Drink"}, {name: "Cocoa"}, {name: "Soft Drink"}]
-    const clear = (event:any) => {
+    const categories = [{name: "All"}, {name: "Cocktail"}, {name: "Shot"}, {name: "Ordinary Drink"}, {name: "Homemade Liqueur"}, {name: "Beer"}, {name: "Shake"}, {name: "Coffee / Tea"}, {name: "Punch / Party Drink"}, {name: "Cocoa"}, {name: "Soft Drink"}]
+    const clearCategory = (event:any) => {
         event.target.value = ""
     };
 
     // When a user selects a category from the dropdown list, then set that as the useState variable
     const onCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCategory(event.target.value);
+    };
+
+
+    // User has the option to select how many results they want displayed
+    const [count, setCount] = useState<number>(10)
+    const resultCount = [5, 10, 20, 30, 40, 50]
+    const clearCount = (event:any) => {
+        setCount(event.target.value = 0)
+    };
+      
+    // When a user selects a category from the dropdown list, then set that as the useState variable
+    // These come back as strings despite the type being number, so have to use Number to ensure it is a number when passed to .slice on RecipeList
+    const onCountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCount(Number(event.target.value));
     };
 
 
@@ -306,28 +320,50 @@ return (
                 />
             )}
 
-            {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
-            <button id="Button-Search" onClick={onSearchClick}>Search</button>
-        
-        </div>
+                {/* When Search button is clicked it makes the appropriate API call based on current searchType */}
+                <div className="Search-Button">
+                    <button onClick={onSearchClick}>Search</button>
+                </div>
+            </div>    
+                
+            <div className="Search-Filter">
 
-        <div className="FilterResults">
-        <label>Filter by Category</label>
-        <input
-            type="select"
-            name="categories"
-            placeholder="Cocktail, Shot, etc.?"
-            list="categories"
-            value={category}
-            onChange={onCategoryChange}
-            onClick={clear}
-        />
-            <datalist id="categories">
-                {categories.map((category) => <option value={category.name} key={category.name}/>)}
-            </datalist>
-        </div>
+                <div className="Filter-Category">
+                    <label>Category</label>
+                    <input
+                        type="select"
+                        name="categories"
+                        placeholder="Cocktail, Shot, etc.?"
+                        list="categories"
+                        value={category}
+                        onChange={onCategoryChange}
+                        onClick={clearCategory}
+                    />
+                    <datalist id="categories">
+                        {categories.map((category) => <option value={category.name} key={category.name}/>)}
+                    </datalist>
+                </div>
 
-        {cocktails && <RecipeList cocktails={cocktails} favorites={favorites} category={category} />}
+                <div className="Filter-Count">
+                    <label># Results</label>
+                    <input
+                        type="select"
+                        name="count"
+                        placeholder="10"
+                        list="count"
+                        value={count}
+                        onChange={onCountChange}
+                        onClick={clearCount}
+                    />
+                    <datalist id="count">
+                        {resultCount.map((count) => <option value={count} key={count}/>)}
+                    </datalist>
+                </div>
+
+
+            </div>
+
+        {cocktails && <RecipeList cocktails={cocktails} favorites={favorites} category={category} count={count} />}
 
     </div>
     )

@@ -1,98 +1,121 @@
-.Contact {
-    margin-top: 250px;
-    margin-bottom: 250px;
-    border-radius: 5px;
+.ContactUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 150px auto 250px;
     padding: 20px;
-    height: 500px;
     width: 50%;
-    align-self: center;
 }
 
-h1 {
+.ContactUs .Contact-Container .Contact-Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    font-size: 100px;
 }
 
-h2 {
+.ContactUs .Contact-Container .Contact-Header h1 {
     text-align: center;
     font-size: 50px;
-    color: black;
+    margin-bottom: 15px;
 }
 
-#subject {
-    height: 100px;
+.ContactUs .Contact-Container .Contact-Header p {
+    font-size: 20px;
+    width: 80%;
 }
 
-.contactName {
-    float:inline-start;
-    text-align: left;
+.ContactUs .Contact-Container .Form-Main {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding-top: 20px;
+    margin-top: 20px;
 }
 
-.shy {
-    float: left;
-}
-
-input[type=text], select, textarea {
+.ContactUs .Contact-Container .Form-Main .Form-Name,
+.ContactUs .Contact-Container .Form-Main .Form-Email,
+.ContactUs .Contact-Container .Form-Main .Form-Message {
     width: 100%;
-    padding: 12px;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.ContactUs .Contact-Container .Form-Main .Form-Name label,
+.ContactUs .Contact-Container .Form-Main .Form-Email label,
+.ContactUs .Contact-Container .Form-Main .Form-Message label {
+    width: 20%;
+    text-align: right;
+    padding: 3px 20px 0 0;
+}
+
+.ContactUs .Contact-Container .Form-Main .Form-Name input,
+.ContactUs .Contact-Container .Form-Main .Form-Email input,
+.ContactUs .Contact-Container .Form-Main .Form-Message textarea {
+    width: 70%;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-  }
+    border-radius: 5px;
+    padding: 3px 0 0 10px;
+}
 
-  input[type=submit]:hover {
-    background-color: #3586ff;
-  }
+.ContactUs .Contact-Container .Form-Main .Form-Message #subject {
+    height: 150px;
+}
 
-  input[type=submit] {
-    padding: 15px 25px;
-    font-size: 12px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
+.ContactUs .Contact-Container .Form-Main .Form-Submit {
+    margin: 0 auto;
+}
+
+.ContactUs .Contact-Container .Form-Main .Form-Submit button {
+    width: 150px;
+    background: #3586ff;
     color: #fff;
-    background-color: black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 10px;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px #999;
-  }
+    transition: 0.5s;
+}
 
+.ContactUs .Contact-Container .Form-Main .Form-Submit button:hover {
+    background: #111;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
 
-  @media screen and (max-width: 600px) {
-   .contact {
-    height: 100vh;
-   }
+@media only screen and (max-width: 1100px) {
+    .ContactUs {
+        width: 80%;
+    }
+}
 
-   h1 {
-    font-size: 60px;
-   }
-  }
-
- @media only screen and (max-width: 768px) {
-    /* Tablet View */
-
-    h1 {
-        font-size: 55px;
-        text-align: center;
+@media only screen and (max-width: 800px) {
+    .ContactUs .Contact-Container .Form-Main {
+        height: 550px;
     }
 
-    .Contact {
-        margin-top: 200px;
-       display: flex;
-       justify-content: center;
-       
-        
+    .ContactUs .Contact-Container .Form-Main .Form-Name,
+    .ContactUs .Contact-Container .Form-Main .Form-Email,
+    .ContactUs .Contact-Container .Form-Main .Form-Message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
     }
 
-    input[type=text], select, textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-        margin-top: 30px;
-        margin-bottom: 16px;
-      }
- }
+    .ContactUs .Contact-Container .Form-Main .Form-Name label,
+    .ContactUs .Contact-Container .Form-Main .Form-Email label,
+    .ContactUs .Contact-Container .Form-Main .Form-Message label {
+        width: 65%;
+        text-align: left;
+    }
+
+    .ContactUs .Contact-Container .Form-Main .Form-Message #subject {
+        height: 250px;
+    }
+}

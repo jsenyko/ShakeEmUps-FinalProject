@@ -21,6 +21,7 @@
     flex-wrap: wrap;
     width: 100%;
     cursor: pointer;
+    margin-bottom: 10px;
 }
   
 .SearchForm .SearchTypes .radio {
@@ -62,22 +63,28 @@
 }
 
 .SearchForm .SearchBar {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
     width: 60%;
 }
 
 .SearchForm .SearchBar .bar {
     border-radius: 5px;
-    margin: 15px;
-    width: 65%;
+    width: 60%;
     padding: 2px 7px;
+    margin-bottom: 15px;
     font-size: 18px;
     text-align: center;
 }
- 
-.SearchForm .SearchBar button {
-    width: 15%;
+
+.SearchForm .SearchBar .Search-Button {
+    width: 20%;
+    margin: 0px 10px;
+}
+
+.SearchForm .SearchBar .Search-Button button {
     border-radius: 5px;
-    margin-top: 10px;
     font-size: 18px;
     padding: 2px 20px;
     transition: 0.3s;
@@ -87,38 +94,57 @@
     cursor: pointer;
 }
   
-.SearchForm .SearchBar button:hover {
+.SearchForm .SearchBar .Search-Button button:hover {
     background: #E3E3E3;
     border-color: #E3E3E3;
     color: #3586ff;
     cursor: pointer;
 }
 
-.SearchForm .FilterResults {
+.SearchForm .Search-Filter {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin: 10px 0 25px;
+    width: 40%;
+}
+
+.SearchForm .Search-Filter .Filter-Category {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
     font-size: 18px;
-    margin: auto 0;
-    padding-top: 10px;
 }
 
-.SearchForm .FilterResults label {
-    padding-right: 30px;
-}
-
-.SearchForm .FilterResults input {
+.SearchForm .Search-Filter .Filter-Category input,
+.SearchForm .Search-Filter .Filter-Count input {
     border-radius: 5px;
     text-align: center;
 }
 
+.SearchForm .Search-Filter .Filter-Count {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+}
+
+.SearchForm .Search-Filter .Filter-Count input {
+    width: 30%;
+}
+
 @media screen and (max-width: 1600px) {
-    .SearchForm .bar {
-        width: 70%;
+    .SearchForm .SearchBar .bar {
+        width: 80%;
     }
 
     .SearchForm .SearchTypes {
         width: 100%;
+    }
+
+    .SearchForm .Search-Filter {
+        width: 55%;
     }
 }
 
@@ -127,8 +153,26 @@
         justify-content: space-evenly;
     }
 
-    .SearchForm .bar {
-        width: 80%;
+    .SearchForm .SearchBar {
+        width: 90%;
+    }
+
+    .SearchForm .SearchBar .bar {
+        width: 90%;
+    }
+
+    .SearchForm .Search-Filter {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .SearchForm .Search-Filter {
+        flex-direction: column;
+    }
+
+    .SearchForm .Search-Filter .Filter-Count {
+        margin-top: 15px;
     }
 }
 
@@ -142,12 +186,13 @@
         justify-content: space-between;
     }
 
-    .SearchForm .radio {
-        font-size: 14px;
+    .SearchForm .SearchBar .bar {
+        width: 95%;
     }
 
-    .SearchForm .bar {
-        width: 95%;
+    .SearchForm .Search-Filter .Filter-Category label,
+    .SearchForm .Search-Filter .Filter-Count label {
+        margin-right: 10px;
     }
 }
 
@@ -156,7 +201,7 @@
         justify-content: center;
     }
 
-    .SearchForm .bar {
+    .SearchForm .SearchBar .bar {
         width: 100%;
     }
 }

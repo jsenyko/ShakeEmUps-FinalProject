@@ -5,6 +5,9 @@ const defaultValue: CocktailContextModel = {
     favorites: [],
     addCocktail: () => {},
     removeCocktail: () => {},
+    sortFavoritesAZ: () => {},
+    sortFavoritesZA: () => {},
+    sortFavoritesRandom: () => {},
 }
 
 const CocktailContext = createContext(defaultValue);

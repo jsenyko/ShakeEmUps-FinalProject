@@ -26,28 +26,34 @@ const [message, setMessage] = useState("");
   };
     
     return (
-        <div className="Contact" id="contactus" >
-            <form id="contactForm" action=""  onSubmit={sendEmail}>
-            <div className="contactName">
-            
-                <h1>Contact Us</h1>
-                <h2>GET IN TOUCH</h2>
-                
-                <div className="name">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" name="user_name" value={value} onChange={(e) => setValue(e.target.value)}  placeholder="Enter your name" />
-                </div>
-                <div className="contactEmail">
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" name="user_email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter a valid email address" />
-                </div>
-                <div className="contactEmail">
-                    <label htmlFor="message">Message:</label>
-                    <textarea id="subject" name="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Write something.."></textarea>
+        <div className="ContactUs" id="contactus" >
+            <form className="Contact-Container" action=""  onSubmit={sendEmail}>
 
-                    <input type="submit" value="Submit"  />
+                <div className="Contact-Header">
+                    <h1>Contact Us</h1>
+                    <p>Have a suggestion for the App?  Please let us know so we can review and see how we can make the site better!</p>
                 </div>
-            </div>
+
+                <div className="Form-Main">
+                    <div className="Form-Name">
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" name="user_name" value={value} onChange={(e) => setValue(e.target.value)}  placeholder="Enter your name" />
+                    </div>
+
+                    <div className="Form-Email">
+                        <label htmlFor="email">Email:</label>
+                        <input type="text" name="user_email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter a valid email address" />
+                    </div>
+
+                    <div className="Form-Message">
+                        <label htmlFor="message">Message:</label>
+                        <textarea id="subject" name="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Write something..."></textarea>
+                    </div>
+                    <div className="Form-Submit">
+                        <button type="submit" value="Submit">Submit</button>
+                    </div>
+                
+                </div>
         </form>
         </div>
     );
