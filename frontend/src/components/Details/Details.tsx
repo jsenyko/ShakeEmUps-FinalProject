@@ -172,7 +172,11 @@ export function Details(){
             }
 
             <div className="User-Drink-Details">
-                 <p>{details?.strGlass}</p> 
+                 
+                 
+
+
+
             </div>
 
         </div>
