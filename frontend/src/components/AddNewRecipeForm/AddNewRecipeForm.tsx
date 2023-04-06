@@ -86,7 +86,6 @@ export function AddNewRecipeForm( {initialTo = ""}: Props){
         setStrMeasure1(""), setStrMeasure2(""), setStrMeasure3(""), setStrMeasure4(""), setStrMeasure5(""), setStrMeasure6(""), setStrMeasure7(""),
         setStrMeasure8(""), setStrMeasure9(""), setStrMeasure10(""), setStrMeasure11(""), setStrMeasure12(""), setStrMeasure13(""), setStrMeasure14(""), 
         setStrMeasure15(""), setStrImageSource(""), setStrImageAttribution(""), setStrCreativeCommonsConfirmed(""), setDateModified("")
-     
        }) 
 
 

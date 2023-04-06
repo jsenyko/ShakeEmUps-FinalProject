@@ -21,6 +21,28 @@ export function Favorites(){
         setValue(event.target.value);
     };
 
+    // Initial state of the Filter by Category option is blank
+    const [category, setCategory] = useState<string>("")
+    const categories = [{name: "All"},{name: "Cocktail"}, {name: "Shot"}, {name: "Ordinary Drink"}, {name: "Homemade Liqueur"}, {name: "Beer"}, {name: "Shake"}, {name: "Coffee / Tea"}, {name: "Punch / Party Drink"}, {name: "Cocoa"}, {name: "Soft Drink"}]
+    const clear = (event:any) => {
+        event.target.value = ""
+    };
+    
+    // When a user selects a category from the dropdown list, then set that as the useState variable
+    const onCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setCategory(event.target.value);
+    };
+
+
+    useEffect(() => {
+        getUserDrinks().then((data) =>{
+            setUserDrinks(data);
+            console.log(userDrinks)
+        })
+    },[])
+
+
+
     // Allows users to sort results A->Z or Z->A
     const [sortAlpha, setSortAlpha] = useState<boolean>(true)
     const changeSortAlpha = () => {
@@ -35,6 +57,7 @@ export function Favorites(){
             </div>
 
             <section className="Favorites_Filter">
+
             <p className="SpiritTypes-Header">Filter by Base Spirit</p>
             <div className="SpiritTypes">
                 {/* Takes the array of string above and maps them out to individual radio buttons */}
