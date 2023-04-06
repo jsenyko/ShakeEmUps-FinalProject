@@ -37,7 +37,7 @@ export function RecommendationsCarousel(){
 
         // API call is made with that ID and we want the cocktail Name and Image (uses Name for the alt)
         return (
-                <div className="media-element" onClick={() => navigate(`/details/${cocktail?.drinks[0].idDrink}`)} >
+                <div className="media-element" onClick={() => navigate(`/details/${cocktail?.drinks[0].idDrink}/0`)} >
                 <img src={cocktail?.drinks[0].strDrinkThumb} alt={cocktail?.drinks[0].strDrink} />
                 <div className="content">
                     <p>{cocktail?.drinks[0].strDrink}</p>

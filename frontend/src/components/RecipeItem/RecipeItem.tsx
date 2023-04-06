@@ -29,7 +29,7 @@ export function RecipeItem(props:IRecipeItemProps){
                 <h2>{cocktail.strDrink}</h2>
             </div>
             <div className="RecipeCard-Buttons">
-                <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}`)}>
+                <button className="Button-Details" onClick={() => navigate(`/details/${cocktail.idDrink}/0`)}>
                     Details
                 </button>
                 <button
